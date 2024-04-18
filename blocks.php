@@ -9,7 +9,13 @@ Description: A custom template for my specific needs.
     <?php get_template_part( 'new-website/navigation' ); ?>
     <?php get_template_part( 'new-website/slider-cta' ); ?>
     <?php get_template_part( 'new-website/google-widget' ); ?>
-    
+
+    <style>
+        :root{
+            --main-colour: #3555c8;
+            --secondary-colour: #333333;
+        }   
+    </style>
     <style>
         .grid-links{display: flex;justify-content: space-between;}.grid-links a{color:#fe9eb9!important}@media(max-width:1100px){.grid-links{flex-direction: column;}}
             body{
