@@ -1,17 +1,46 @@
 <style>
-    .grid_text h1, .grid_text h2, .grid_text h3 {
+    .d-flex_newcss{
+        display:flex;
+    }
+    .d-grid_newcss{
+        display: grid;
+    }
+    .justify-center_newcss{
+        justify-content: center;
+    }
+    .gap_1{
+        gap: 1rem;
+    }
+    .grid_text h1,.grid_text h2,.grid_text h3 {
         font-weight: 900;
         font-size: 2.5rem;
         color:#000;
         margin:0;
     }
-    .grid_text h4, .grid_text h5, .grid_text h6,{
+    .grid_text h4,.grid_text h5,.grid_text h6{
         font-weight: 900;
-        color: #d42127;
+        color: var(--main-colour);
         font-size: 1.2rem;
     }
     .grid_text p{
         font-size:1.1rem;
+    }
+    .text_card h1,.text_card h2,.text_card h3 {
+        font-weight: 900;
+        font-size: 1.6rem;
+        color:#000;
+        margin:0;
+    }
+    .text_card h4,.text_card h5,.text_card h6{
+        font-weight: 900;
+        color: var(--main-colour);
+        font-size: 1.2rem;
+    }
+    .text_card p{
+        font-size:1.1rem;
+    }
+    .front-grid{
+        padding: 2rem 0;
     }
     .front-grid_card-img-wrap{
         position: relative;
@@ -30,8 +59,11 @@
         background: #fff;
     }
     .grid-square:hover{
-        border: 4px solid #D42127;
+        border: 4px solid var(--main-colour);
     }
+	.grid-square p{
+		color:#000;
+	}
     .grid-square:before{
         content: '';
         display: block;
@@ -51,7 +83,7 @@
         position: absolute;
         right: 0px;
         top: 0px;
-        border-top: 40px solid #d42127;
+        border-top: 40px solid var(--main-colour);
         border-left: 40px solid transparent;
     }
     .gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
@@ -61,7 +93,7 @@
     } 
     .view-more-button{
         margin: 1rem;
-        background: #D42127;
+        background: var(--main-colour);
         font-size: 17px;
         padding: 16px 30px;
         color: #fff;
@@ -69,7 +101,7 @@
         border:none;
     }
     .view-more-button:hover{
-        background: #aa1b1c;
+        background: #8e7b00;
     }
     .front-grid-2{
         grid-template-columns: 1fr 1fr;
@@ -91,7 +123,7 @@
     }
 </style>
 
-<section class="front-grid d-flex_newcss justify-center_newcss blocks-padding">
+<section class="front-grid d-flex_newcss justify-center_newcss">
     <div class="container">
         <div class="grid_text">
             <?php echo get_sub_field('grid_text')?>
@@ -116,15 +148,10 @@
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
                                 </div>
                             <?php endif; ?>
-                            <div class="gridtitle">
-                                <h2>
-                                    <?php echo $gridTitle ?>
-                                </h2>
-                            </div>
                         </div>
-                            <div class="text_grid text-center">
-                                <?php echo $gridContent ?>
-                            </div>
+                        <div class="text_card text-center">
+                            <?php echo $gridContent ?>
+                        </div>
                         <?php if (!empty($link) && isset($link['url'])): ?>
                             </a>
                         <?php endif; ?>
@@ -133,9 +160,11 @@
                 <?php endwhile; ?>
                 <!-- View More Button -->
             </div>
+            <?php if ($count >= 6): ?>
             <div class="d-flex_newcss justify-center_newcss">
                 <button class="view-more-button" onclick="toggleExtraGrid()">View More</button>
             </div>
+            <?php endif; ?>
         </div>
     </section>
     <script>
