@@ -94,6 +94,21 @@
         background: #fff;
         color: #000 !important;
     }
+    .content-article img{
+        width: 100%;
+        height: auto;
+    }
+    @media(max-width:1100px){
+        .inner_container{
+            flex-direction: column-reverse;
+        }
+        .content-aside{
+            width: 100%;
+        }
+        .content-article{
+            width: 100%;
+        }
+    }
 </style>
 <main class="main-content container">
     <div class="inner_container d-flex gap-2">
@@ -103,51 +118,15 @@
     		        <div>
         			    <nav class="menu-residential-services-container" aria-label="Menu">
         			        <ul id="menu-residential-services" class="menu">
-        			            <li id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-843" element-id="1437">
-                                    <a href="#" class="menu-link">
-                                        Menu 1
-                                    </a>
-                                </li>
-                                <li id="menu-item-845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-845" element-id="1434">
-                                    <a href="#" class="menu-link">
-                                        Menu 2
-                                    </a>
-                                </li>
-                                <li id="menu-item-848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-848" element-id="1431">
-                                    <a href="#" class="menu-link">
-                                        Menu 3
-                                    </a>
-                                </li>
-                                <li id="menu-item-844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-844" element-id="1428">
-                                    <a href="#" class="menu-link">
-                                        Menu 4
-                                    </a>
-                                </li>
-                                <li id="menu-item-842" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-233 current_page_item menu-item-842">
-                                    <a href="#" aria-current="page" class="menu-link">
-                                        Menu 5
-                                    </a>
-                                </li>
-                                <li id="menu-item-2058" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2058" element-id="1422">
-                                    <a href="#" class="menu-link">
-                                        Menu 6
-                                    </a>
-                                </li>
-                                <li id="menu-item-2057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2057" element-id="1419">
-                                    <a href="#" class="menu-link">
-                                        Menu 7
-                                    </a>
-                                </li>
-                                <li id="menu-item-3986" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3986" element-id="1416">
-                                    <a href="#" class="menu-link">
-                                        Menu 8
-                                    </a>
-                                </li>
-                                <li id="menu-item-3985" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3985" element-id="1414">
-                                    <a href="#" class="menu-link">
-                                        Menu 9
-                                    </a>
-                                </li>
+        			            <li id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-843" element-id="1437"><a href="https://www.directpointelectrical.com.au/residential-electrical-services/" class="menu-link">Residential Electrical Services</a></li>
+                                <li id="menu-item-845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-845" element-id="1434"><a href="https://www.directpointelectrical.com.au/switchboard-upgrades/" class="menu-link">Switchboard Upgrades</a></li>
+                                <li id="menu-item-848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-848" element-id="1431"><a href="https://www.directpointelectrical.com.au/air-conditioning/" class="menu-link">Air Conditioning</a></li>
+                                <li id="menu-item-844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-844" element-id="1428"><a href="https://www.directpointelectrical.com.au/security-cctv-alarm/" class="menu-link">Security, CCTV, Alarm</a></li>
+                                <li id="menu-item-842" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-233 current_page_item menu-item-842"><a href="https://www.directpointelectrical.com.au/electrical-services-for-new-home-builds/" aria-current="page" class="menu-link">Electrical Services for New Home Builds</a></li>
+                                <li id="menu-item-2058" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2058" element-id="1422"><a href="https://www.directpointelectrical.com.au/lighting/" class="menu-link">Lighting</a></li>
+                                <li id="menu-item-2057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2057" element-id="1419"><a href="https://www.directpointelectrical.com.au/renovations/" class="menu-link">Renovations</a></li>
+                                <li id="menu-item-3986" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3986" element-id="1416"><a href="https://www.directpointelectrical.com.au/home-theatre-installations-melbourne/" class="menu-link">Home Theatre Installations</a></li>
+                                <li id="menu-item-3985" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3985" element-id="1414"><a href="https://www.directpointelectrical.com.au/emergency-electrician-melbourne/" class="menu-link">Emergency</a></li>
                             </ul>
                         </nav>
                 	</div>
@@ -156,7 +135,7 @@
             <div class="service-ques" element-id="1408">
                 <i class="fad fa-calendar-alt" aria-hidden="true" element-id="1407"></i>
             	<h6 class="sidebar_cta-title">
-            		Get a Quote
+            		Get Your Electrical Quote
             	</h6>
             	<p style=" color: #fff;" element-id="1405">
             		Enter your job details below for a free quote or consultation
