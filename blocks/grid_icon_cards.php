@@ -42,27 +42,32 @@
     .front-grid{
         padding: 2rem 0;
     }
-    .front-grid_card-img-wrap{
+    .front-grid_card-icon-wrap {
         position: relative;
         overflow: hidden;
-        width: 4rem;
-        border-radius: 2rem;
+        width: 2.5rem;
         height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 0.25rem;
     }
-    .grid-square{
-        border: 4px double #ccc;
-        position:relative;
-        padding: 1rem;
+    .grid-square_icon {
+        border: 2px solid #ccc;
+        position: relative;
+        padding: 0 1rem;
         background: #fff;
+        display: flex;
+        align-items: center;
+        border-radius: 1rem;
+        gap:0.5rem;
     }
-    .grid-square:hover{
-        border: 4px solid var(--main-colour);
+    .grid-square_icon:hover{
+        border: 2px solid var(--main-colour);
     }
-	.grid-square p{
+	.grid-square_icon p{
 		color:#000;
+        text-align:left;
 	}
     .gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
         color:#000;
@@ -100,8 +105,8 @@
         }
     }
 </style>
-
-<section class="front-grid d-flex_newcss justify-center_newcss">
+<?php $bgcolour = get_sub_field('bg_colour'); ?>
+<section style="background:<?php echo $bgcolour; ?>" class="front-grid d-flex_newcss justify-center_newcss">
     <div class="container">
         <div class="grid_text">
             <?php echo get_sub_field('grid_text')?>
@@ -116,13 +121,13 @@
                     $gridContent = get_sub_field('content');
                     $gridTitle = get_sub_field('title');
                 ?>
-                    <div class="grid-square <?php if ($count >= 6) echo 'extra'; ?>" <?php if ($count >= 6) echo 'style="display:none;"'; ?>>
+                    <div class="grid-square_icon <?php if ($count >= 6) echo 'extra'; ?>" <?php if ($count >= 6) echo 'style="display:none;"'; ?>>
                         <?php if (!empty($link) && isset($link['url'])): ?>
                             <a href="<?php echo esc_url($link['url']); ?>">
                         <?php endif; ?>
                         <div class="d-flex_newcss justify-center_newcss align-center_newcss">
                             <?php if (!empty($image) && isset($image['url'])): ?>
-                                <div class="front-grid_card-img-wrap">
+                                <div class="front-grid_card-icon-wrap">
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
                                 </div>
                             <?php endif; ?>
@@ -147,7 +152,7 @@
     </section>
     <script>
         function toggleExtraGrid() {
-            var extraGrid = document.querySelectorAll('.grid-square.extra');
+            var extraGrid = document.querySelectorAll('.grid-square_icon.extra');
             extraGrid.forEach(function(grid) {
                 grid.style.display = (grid.style.display === 'none' || grid.style.display === '') ? 'block' : 'none';
             });

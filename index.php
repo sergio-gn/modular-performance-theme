@@ -32,8 +32,6 @@ if ( have_posts() ) {
 		get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) );
 	}
 
-	// Previous/next page navigation.
-	twenty_twenty_one_the_posts_navigation();
 
 } else {
 

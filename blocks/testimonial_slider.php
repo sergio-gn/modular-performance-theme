@@ -188,14 +188,14 @@
 ?>
         <section class="container d-flex_newcss flex-column_mb">
             <div class="flex-1 col-6_newcss col-12_mb">
-                <?php if (!empty($video)): ?>
+                <?php if ($video): ?>
                     <div class="video-container" id="lazyVideoContainer">
                         <video video controls muted loop preload="none" class="lazyVideo w-100_newcss img-wrapper-videotag_newcss" src="<?php echo $video['url']; ?>"></video>
                     </div>
                 <?php endif; ?>
             </div>
             <div class="flex-1 col-6_newcss col-12_mb">
-                <div id="intro" class="slider glide2 glide--ltr glide--carousel glide--swipeable">
+                <div id="intro" class="slider glide glide--ltr glide--carousel glide--swipeable">
                     <div class="slider__track glide__track" data-glide-el="track">
                         <ul class="slider__slides glide__slides">
                             <?php while (have_rows('repeater_testimonial')) : the_row(); ?>
@@ -218,23 +218,6 @@
                         <?php endfor; ?>
                     </div>
                 </div>
-                
-                <script src="./js/glide.js"></script>
-                <script>
-                    var glide = new Glide('.glide2', {
-                        type: 'carousel',
-                        focusAt: 'center',
-                        perView: 1,
-                        animationDuration: 300,
-                        autoplay: false,
-                        hoverpause: true,
-                        startAt: 0,
-                        pagination: {
-                            el: '.glide__bullets',
-                        }
-                    });
-                    glide.mount();
-                </script>
             </div>
         </section>
 <?php

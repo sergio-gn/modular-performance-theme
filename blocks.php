@@ -2,18 +2,22 @@
 /* Template Name: Blocks */
 
 get_header();
+
+get_template_part( 'parts/navigation' );
+
     if (have_posts()):
         while (have_posts()) : the_post();	?>
 
-            <section class="blocks-template">
+            <section>
                 <style>
                     :root{
-                        --main-colour: #ea6f5b;
+                        --main-colour: #607466;
                         --secondary-colour: #7d89aa;
                         --background-colour: #21242f;
-                    }
-                    .blocks-template{
-                        margin-top: 6rem;
+                        --font-gradient-left: #30513A;
+                        --font-gradient-right: #607466;
+                        --white-tone: #F5F5F5;
+
                     }
                     .grid-links{
                         display: flex;
@@ -27,6 +31,7 @@ get_header();
                     }
                     body{
                         background:#ffffff!important;
+                        font-family: system-ui;
                     }
                     body h2, body h3, body h3, body h4, body h5, body h6{
                         color: #000;
@@ -267,68 +272,64 @@ get_header();
                     
                 <article class="main-article">
                     <?php 
+                    $has_glide = false;
                         if( have_rows('blocks') ): 
                             while( have_rows('blocks') ): the_row();
                                 if(get_row_layout() == 'page_banner'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'homepage_banner'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'grid_images'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'grid_cards'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'separated_zigzag'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'grid_icon_cards'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'stylized_zigzag'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'stylized_zigzag'):
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'repeater_zigzag'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'testimonial_slider'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'faq_blocks'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'text_centered'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'content_sidebar'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'testimonial_slider'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                    $has_glide = true;
                                 elseif(get_row_layout() == 'carousel'):
-                                    include 'blocks-pure/' . get_row_layout() . '.php';
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                    $has_glide = true;
                                 endif;
                             endwhile;
                         endif; 
                     ?>
                 </article>
             </section>
-        <?php 
-            if( have_rows('blocks') ): 
-                while( have_rows('blocks') ): the_row();
-                    if(get_row_layout() == 'carousel'):?>
-                        <script src="/carousel-assets/block-carousel.js"></script>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const sliders = document.querySelectorAll('.glide');
-                                const conf = {
-                                    type: 'carousel',
-                                    focusAt: 'center',
-                                    perView: 3,
-                                    animationDuration: 300,
-                                    autoplay: false,
-                                    hoverpause: true,
-                                };
-                            
-                                sliders.forEach(item => {
-                                    new Glide(item, conf).mount();
-                                });
-                            });
-                        </script>
-                    <?php 
-                    endif;
-                endwhile;
-            endif;
-        ?>
-<?php   endwhile;
+        <?php if($has_glide): ?>
+            <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const sliders = document.querySelectorAll('.glide');
+                    const conf = {
+                        type: 'carousel',
+                        focusAt: 'center',
+                        perView: 1,
+                        animationDuration: 300,
+                        autoplay: false,
+                        hoverpause: true,
+                    };
+                
+                    sliders.forEach(item => {
+                        new Glide(item, conf).mount();
+                    });
+                });
+            </script>
+<?php       endif;
+        endwhile;
     endif;
 ?>
-
-
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>

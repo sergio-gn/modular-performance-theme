@@ -1,6 +1,6 @@
 <style>
     .front-hero{
-        height: 40vh;
+        margin-top: -6.5rem;
         position: relative;
         background-position: center;
     }
@@ -23,32 +23,33 @@
         right:0;
         background: #00000057;
     }
-    .main-title_newcss{
-        background: #d42127;
-        border-right: 4px solid #fff;
-        border-top: 4px solid #fff;
-        border-bottom: 4px solid #fff;
+    .banner-text h1{
         font-size:4rem;
-        padding: 1rem 0 1rem 3rem;
         line-height: 1;
+        margin: 1rem 0;
+    }
+    .banner-text h1 strong{
+        background: -webkit-linear-gradient(#30513A, #607466);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 </style>
 <?php if (have_rows('page_banner')) :
     while (have_rows('page_banner')) : the_row();
-        $description = get_sub_field('description');
+        $content = get_sub_field('content');
         $link = get_sub_field('link');
         $image = get_sub_field('image');
 ?>
-        <div class="front-hero" style="background-image:url(<?php echo $image['url'];?>);">
-            <div class="center-title">
-                <div class="banner-text">
-                    <h1 class="main-title_newcss">
-                        <?php the_title(); ?>
-                    </h1>
+        <div class="front-hero" style="height: <?php echo is_front_page() ? '100vh' : '50vh'; ?>; background-image: url(<?php echo $image['url']; ?>);">
+            <div class="container">
+                <div class="center-title">
+                    <div class="banner-text">
+                        <?php echo $content ?>
+                    </div>
                 </div>
-            </div>
-            <div class="background-shadow">
-            </div>
+                <div class="background-shadow">
+                </div>
+            </div>    
         </div>
 <?php
     endwhile;

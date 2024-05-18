@@ -49,11 +49,11 @@
                     </div>
                     <?php if ($order !== 'order-center'): ?>
                         <div class="front-zag flex-1 img-wrapper_newcss">
-                            <?php if (!empty($video)): ?>
+                            <?php if ($video): ?>
                                 <div class="video-container">
                                     <video video controls muted loop preload="none" class="lazyVideo w-100_newcss img-wrapper-videotag_newcss" src="<?php echo $video['url']; ?>"></video>
                                 </div>
-                            <?php else: ?>
+                            <?php elseif($image): ?>
                                 <img loading="lazy" class="w-100_newcss img-wrapper-imgtag_newcss" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                             <?php endif; ?>
                         </div>
@@ -63,52 +63,6 @@
         </section>
     <?php endwhile; ?>
 <?php endif; ?>
-
-<script>
-    // Function to check if the device is desktop
-    function isDesktop() {
-        // Check if the screen width is greater than a certain value (e.g., 768px)
-        return window.matchMedia("(min-width: 768px)").matches;
-    }
-
-    // Function to update layout based on device width
-    function updateLayout() {
-        if (isDesktop()) {
-            // Select the zig_content element
-            var zigContent = document.querySelector('.zig_content');
-
-            // Check if zig_content exists
-            if (zigContent) {
-                // Set max-height to 500px
-                zigContent.style.maxHeight = '500px';
-                
-                // Set overflow to hidden
-                zigContent.style.overflow = 'hidden';
-
-                // If the content exceeds 500px, enable scrolling
-                if (zigContent.scrollHeight > 500) {
-                    zigContent.style.overflowY = 'scroll';
-                }
-            }
-        } else {
-            // Reset styles for mobile view
-            var zigContent = document.querySelector('.zig_content');
-            if (zigContent) {
-                zigContent.style.maxHeight = '';
-                zigContent.style.overflow = '';
-                zigContent.style.overflowY = '';
-            }
-        }
-    }
-
-    // Initial call to updateLayout to set the layout based on the initial screen width
-    updateLayout();
-
-    // Listen for the resize event on the window and update layout accordingly
-    window.addEventListener('resize', updateLayout);
-</script>
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -130,4 +84,3 @@
     }
   });
 </script>
-
