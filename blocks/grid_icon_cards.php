@@ -1,13 +1,4 @@
 <style>
-    .d-flex_newcss{
-        display:flex;
-    }
-    .d-grid_newcss{
-        display: grid;
-    }
-    .justify-center_newcss{
-        justify-content: center;
-    }
     .gap_1{
         gap: 1rem;
     }
@@ -125,7 +116,7 @@
                         <?php if (!empty($link) && isset($link['url'])): ?>
                             <a href="<?php echo esc_url($link['url']); ?>">
                         <?php endif; ?>
-                        <div class="d-flex_newcss justify-center_newcss align-center_newcss">
+                        <div class="d-flex_newcss justify-center_newcss align_center_blocks">
                             <?php if (!empty($image) && isset($image['url'])): ?>
                                 <div class="front-grid_card-icon-wrap">
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">

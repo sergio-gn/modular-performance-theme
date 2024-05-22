@@ -1,10 +1,23 @@
 <style>
+        :root{
+        --main-colour: #607466;
+        --main_colour_darker: #30513A;
+        --secondary-colour: #7d89aa;
+        --background-colour: #21242f;
+        --font-gradient-left: #30513A;
+        --font-gradient-right: #607466;
+        --white-tone: #F5F5F5;
+    }
     /*******  globals *********/
     body{
         margin: 0;
     }
     header{
         font-family: system-ui;
+    }
+    .custom-logo img {
+        width: 6rem;
+        height: auto;
     }
     /* Fixed width container */
     .container {
@@ -33,14 +46,14 @@
     /* Responsive fixed width container for large screens */
     @media (min-width: 992px) {
         .container {
-            max-width: 960px;
+            max-width: 1100px;
         }
     }
 
     /* Responsive fixed width container for extra large screens */
     @media (min-width: 1200px) {
         .container {
-            max-width: 1140px;
+            max-width: 1400px;
         }
     }
     .menu-item a{
@@ -150,13 +163,14 @@
     }
     .menu-item-has-children .sub-menu {
         display: none;
-        transition: display 0.3s ease-in-out;
+        transition: display 0.5s ease-in-out;
         list-style: none;
         padding: 0;
     }
     .menu-item-has-children:hover .sub-menu {
         display: block;
         position: absolute;
+        transition-duration: 1s;
     }
     .menu-item-has-children:after{
         content: '⌵';
@@ -209,13 +223,17 @@
         padding:1rem;
         text-decoration: none;
         display:block;
+        background: var(--white-tone);
+        color: var(--main-colour);
+    }
+    .menu-item-has-children .sub-menu li a:hover{
+        background: var(--main-colour);
+        color: var(--white-tone);
+        transition-duration: 0.5s;
     }
     .menu-main-menu-container .menu-item-has-children .sub-menu li a:hover {
-        color: #fff;
-    }
-
-    .menu-item-has-children .sub-menu li:hover{
-        background: #d42127;
+        background: var(--main-colour);
+        color: var(--white-tone);
     }
     .head-book{
         color: #fff !important;
@@ -239,6 +257,10 @@
     }
     .desktop_none{
         display:none;
+    }
+    .heading_raw h1, .heading_raw h2,.heading_raw h3,.heading_raw h4,.heading_raw h5,.heading_raw h6{
+        margin: 0;
+        line-height: 1;
     }
     @media(max-width:1100px){
         .navigation{
@@ -282,7 +304,7 @@
         }
     }
 </style>
-<header>
+<header style="<?php if ( is_user_logged_in() ) { echo 'margin-top: 32px;'; } ?>">
 	<div class="navbar-bar">
 		<div class="container mobile_nav">
 	        <div class="d-flex align-center justify-between gap-1">

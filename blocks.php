@@ -10,15 +10,6 @@ get_template_part( 'parts/navigation' );
 
             <section>
                 <style>
-                    :root{
-                        --main-colour: #607466;
-                        --secondary-colour: #7d89aa;
-                        --background-colour: #21242f;
-                        --font-gradient-left: #30513A;
-                        --font-gradient-right: #607466;
-                        --white-tone: #F5F5F5;
-
-                    }
                     .grid-links{
                         display: flex;
                         justify-content: space-between; 
@@ -36,7 +27,9 @@ get_template_part( 'parts/navigation' );
                     body h2, body h3, body h3, body h4, body h5, body h6{
                         color: #000;
                         font-weight: 800;
-                            margin: 2rem 0 1rem 0;
+                        margin: 2rem 0 1rem 0;
+                        line-height: 1;
+                        margin: 0;
                     }
                     body h2{
                         font-size: 2.5rem;
@@ -110,6 +103,9 @@ get_template_part( 'parts/navigation' );
                     }
         
                     /* new */
+                    .d-block{
+                        display:block;
+                    }
                     .d-flex_newcss{
                         display:flex;
                     }
@@ -136,13 +132,13 @@ get_template_part( 'parts/navigation' );
                     .fd-column{
                         flex-direction:column;
                     }
-                    .container_newcss{
+                    .container{
                         max-width: 1300px;
                     }
                     .justify-center_newcss{
                         justify-content: center;
                     }
-                    .align-center_newcss{
+                    .align_center_blocks{
                         align-items: center;
                     }
                     .vthz-center{
@@ -165,10 +161,13 @@ get_template_part( 'parts/navigation' );
                     .headings_small_newcss{
                         font-size: 1.6rem;
                     }
-                    .cta_button_newcss {
+                    .cta_button {
                         background: var(--main-colour) !important;
-                        border-radius: 4px;
+                        display: block;
+                        width: fit-content;
+                        border-radius: 10rem;
                         padding: 1rem 2rem;
+                        margin: 1rem 0;
                         color: #fff !important;
                         font-size: 16px;
                         text-align: center;
@@ -180,19 +179,8 @@ get_template_part( 'parts/navigation' );
                     .flex-1{
                         flex: 1;
                     }
-        
-                    .front-two_cards{
-                        margin-top: -5rem;
-                    }
                     .justify-space-around{
                         justify-content: space-around;
-                    }
-                    .front-two_cards_card{
-                        width: 35rem;
-                        justify-content: space-between;
-                        display: flex;
-                        flex-direction: column;
-                        overflow-wrap: break-word;
                     }
                     .b-radius-1{
                         border-radius:1rem;
@@ -238,7 +226,7 @@ get_template_part( 'parts/navigation' );
                         .headings_newcss{
                             font-size:2rem;
                         }
-                        .container_newcss{
+                        .container{
                             margin: 0 1rem;
                         }
                         .front-hero{
@@ -248,12 +236,6 @@ get_template_part( 'parts/navigation' );
                         .banner-img{
                             position: unset;
                             margin-right: unset;
-                        }
-                        .front-two_cards_card{
-                            width: 100%;
-                        }
-                        .front-two_cards{
-                            margin-top: unset;
                         }
                         #colophon .footer-form-section-wrap{
                             margin: -50px auto 0;
@@ -271,8 +253,24 @@ get_template_part( 'parts/navigation' );
                 </style>
                     
                 <article class="main-article">
-                    <?php 
+                <?php 
                     $has_glide = false;
+                        if( have_rows('blocks') ): 
+                            while( have_rows('blocks') ): the_row();
+                                if(get_row_layout() == 'testimonial_slider'):
+                                    $has_glide = true;
+                                elseif(get_row_layout() == 'carousel'):
+                                    $has_glide = true;
+                                endif;
+                            endwhile;
+                        endif;
+                    ?>
+
+                    <?php if($has_glide): ?>
+                        <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
+                    <?php endif;?>
+
+                    <?php
                         if( have_rows('blocks') ): 
                             while( have_rows('blocks') ): the_row();
                                 if(get_row_layout() == 'page_banner'):
@@ -287,7 +285,7 @@ get_template_part( 'parts/navigation' );
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'stylized_zigzag'):
                                     include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'stylized_zigzag'):
+                                elseif(get_row_layout() == 'separated_zigzag'):
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'repeater_zigzag'):
                                     include 'blocks/' . get_row_layout() . '.php';
@@ -295,40 +293,54 @@ get_template_part( 'parts/navigation' );
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'text_centered'):
                                     include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'two_cards'):
+                                    include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'content_sidebar'):
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'testimonial_slider'):
                                     include 'blocks/' . get_row_layout() . '.php';
-                                    $has_glide = true;
                                 elseif(get_row_layout() == 'carousel'):
                                     include 'blocks/' . get_row_layout() . '.php';
-                                    $has_glide = true;
                                 endif;
                             endwhile;
-                        endif; 
+                        endif;
                     ?>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            <?php
+                                $carouselConfig = [
+                                    'testimonial' => isset($howManySlidesTestimonial) ? $howManySlidesTestimonial : 1,
+                                    'carousel' => isset($howManySlidesCarousel) ? $howManySlidesCarousel : 1,
+                                ];
+                            ?>
+                            const carouselConfig = <?php echo json_encode($carouselConfig); ?>;
+                            const sliders = document.querySelectorAll('.glide');
+                            sliders.forEach(item => {
+                                let perView = 1;
+
+                                if (item.classList.contains('testimonial-carousel')) {
+                                    perView = carouselConfig.testimonial;
+                                } else if (item.classList.contains('main-carousel')) {
+                                    perView = carouselConfig.carousel;
+                                }
+
+                                const conf = {
+                                    type: 'carousel',
+                                    focusAt: 'center',
+                                    perView: perView,
+                                    animationDuration: 300,
+                                    autoplay: false,
+                                    hoverpause: true,
+                                };
+
+                                new Glide(item, conf).mount();
+                            });
+                        });
+                    </script>
                 </article>
             </section>
-        <?php if($has_glide): ?>
-            <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const sliders = document.querySelectorAll('.glide');
-                    const conf = {
-                        type: 'carousel',
-                        focusAt: 'center',
-                        perView: 1,
-                        animationDuration: 300,
-                        autoplay: false,
-                        hoverpause: true,
-                    };
-                
-                    sliders.forEach(item => {
-                        new Glide(item, conf).mount();
-                    });
-                });
-            </script>
-<?php       endif;
+<?php
         endwhile;
     endif;
 ?>

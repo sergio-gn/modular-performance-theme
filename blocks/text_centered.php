@@ -4,12 +4,13 @@
             $text_centered_image = get_sub_field('image');
             $contentCard = get_sub_field('content_card');
             $button_centered_image = get_sub_field('button');
+            $bgcolour = get_sub_field('background_color');
         endwhile;
     endif;
 ?>
 
-<section class="text_centered d-flex_newcss justify-center_newcss blocks-padding">
-    <div class="container_newcss">
+<section class="text_centered d-flex_newcss justify-center_newcss blocks-padding" style="background:<?php echo $bgcolour ?>">
+    <div class="container">
         <div class="flex-d-column_mb justify-space-around gap_1">
             <div class="front-card_no-padding b-radius-1">
                 <?php if($text_centered_image): ?>
@@ -23,7 +24,7 @@
                     </div>
                 <?php if($button_centered_image): ?>
                     <div class="d-flex_newcss justify-center_newcss">
-                        <a class="cta_button_newcss" href="<?php echo $button_centered_image['url']; ?>">
+                        <a class="cta_button" href="<?php echo $button_centered_image['url']; ?>">
                             <?php echo $button_centered_image['title']; ?>
                         </a>
                     </div>

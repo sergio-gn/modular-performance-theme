@@ -1,12 +1,16 @@
 <style>
-    .front-hero{
+    .homepage_hero{
         margin-top: -6.5rem;
         position: relative;
-        background-position: center;
+        background-position: bottom;
+        height: 80vh;
+    }
+    .sidepage_hero{
+        height: 50vh;
     }
     .center-title{
     	position:absolute;
-    	top: 0;
+    	top: 5rem;
         bottom:0;
         margin: auto;
         height: fit-content;
@@ -21,7 +25,7 @@
         bottom: 0;
         left: 0;
         right:0;
-        background: #00000057;
+        background: #92929257;
     }
     .banner-text h1{
         font-size:4rem;
@@ -33,6 +37,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+    @media(max-width:1300px){
+        .banner-text h1{
+            font-size: 2.5rem;
+        }
+        .homepage_hero{
+            height:100vh;
+        }
+    }
 </style>
 <?php if (have_rows('page_banner')) :
     while (have_rows('page_banner')) : the_row();
@@ -40,7 +52,7 @@
         $link = get_sub_field('link');
         $image = get_sub_field('image');
 ?>
-        <div class="front-hero" style="height: <?php echo is_front_page() ? '100vh' : '50vh'; ?>; background-image: url(<?php echo $image['url']; ?>);">
+        <div class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>" style="background-image: url(<?php echo $image['url']; ?>);background-size: cover;">
             <div class="container">
                 <div class="center-title">
                     <div class="banner-text">

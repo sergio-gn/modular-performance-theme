@@ -22,6 +22,16 @@ function remove_block_library_style() {
 }
 add_action( 'wp_enqueue_scripts', 'remove_block_library_style' );
 
+function dequeue_global_styles_inline_css() {
+    // Remove block styles
+    wp_dequeue_style('global-styles');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wp-block-library');
+    // Optionally remove other styles as needed
+}
+add_action('wp_enqueue_scripts', 'dequeue_global_styles_inline_css', 100);
+
+
 // Block wp-emoji-release script
 function remove_emoji_script() {
     wp_dequeue_script('wp-emoji-release');

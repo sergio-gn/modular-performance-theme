@@ -76,7 +76,6 @@
     margin: -5rem auto 0 auto;
     }
     .glide__arrow{
-    border: 4px solid #d42127;
     padding: 0.5rem 0.7rem;
     color: #d42127;
     background:#fff!important;
@@ -179,41 +178,43 @@
     }
 </style>
 
+
+<?php $howManySlidesTestimonial = get_sub_field('slide_number'); ?>
 <?php 
     $video = get_sub_field('video');
     if (have_rows('repeater_testimonial')) :
             $quote = get_sub_field('quote');
             $name = get_sub_field('name');
-            $slide_number = 0;
+            $slide_counter = 0;
 ?>
         <section class="container d-flex_newcss flex-column_mb">
             <div class="flex-1 col-6_newcss col-12_mb">
                 <?php if ($video): ?>
                     <div class="video-container" id="lazyVideoContainer">
-                        <video video controls muted loop preload="none" class="lazyVideo w-100_newcss img-wrapper-videotag_newcss" src="<?php echo $video['url']; ?>"></video>
+                        <video video controls muted loop preload="none" class="lazyVideo w-100_newcss" src="<?php echo $video['url']; ?>"></video>
                     </div>
                 <?php endif; ?>
             </div>
             <div class="flex-1 col-6_newcss col-12_mb">
-                <div id="intro" class="slider glide glide--ltr glide--carousel glide--swipeable">
+                <div id="intro" class="testimonial-carousel slider glide glide--ltr glide--carousel glide--swipeable">
                     <div class="slider__track glide__track" data-glide-el="track">
                         <ul class="slider__slides glide__slides">
                             <?php while (have_rows('repeater_testimonial')) : the_row(); ?>
-                                <li class="testimonials_slider__frame glide__slide <?php echo $slide_number; ?>">
+                                <li class="testimonials_slider__frame glide__slide <?php echo $slide_counter; ?>">
                                     <div class="testimonials_slider-wrapper">
                                         <p><?php the_sub_field('quote'); ?></p>
                                         <p style="text-align: center; font-size: 25px; font-weight: 600; color: #d42127;" element-id="1586"><?php the_sub_field('name'); ?></p>
                                     </div>
                                 </li>
                             <?php 
-                                $slide_number++; // Increment slide number
+                                $slide_counter++; // Increment slide number
                                 endwhile; 
                             ?>
                         </ul>
                     </div>
 
                     <div class="glide__bullets" data-glide-el="controls[nav]">
-                        <?php for ($i = 0; $i < $slide_number; $i++) : ?>
+                        <?php for ($i = 0; $i < $slide_counter; $i++) : ?>
                             <button class="glide__bullet" data-glide-dir="=<?php echo $i; ?>" aria-label="bullet"></button>
                         <?php endfor; ?>
                     </div>

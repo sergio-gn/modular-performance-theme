@@ -61,7 +61,7 @@
                         <?php
                             if (!empty($link) && isset($link['url']) && isset($link['title'])) {
                                 ?>
-                                <a href="<?php echo esc_url($link['url']); ?>" class="cta_button_newcss">
+                                <a href="<?php echo esc_url($link['url']); ?>" class="cta_button">
                                     <?php echo esc_html($link['title']); ?>
                                 </a>
                                 <?php
