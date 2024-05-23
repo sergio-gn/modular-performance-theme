@@ -8,7 +8,6 @@
         font-size: 3rem;
         color: #5C5C5C;
     }
-
     .separated_zigzag h1 strong, .separated_zigzag h2 strong, .separated_zigzag h3 strong, .separated_zigzag h4 strong, .separated_zigzag h5 strong, .separated_zigzag h6 strong {
         font-size: 3rem;
         font-weight: 900;
@@ -23,7 +22,20 @@
         width: 30vw;
         padding: 1rem 0;
     }
+    .separated_zigzag_half{
+        width:50%;
+    }
+    .separated_zigzag_half_content{
+        padding: 2rem;
+    }
+    .separated_zigzag_half img{
+        width:100%;
+        height:auto;
+    }
     @media(max-width:1100px){
+        .separated_zigzag_half{
+            width:unset;
+        }
         .separated_zigzag img{
             width:100%;
         }
@@ -39,18 +51,16 @@
         $image= get_sub_field('image');
         $bgcolour = get_sub_field('bg_colour');
 ?>
-        <section style="background:<?php echo $bgcolour; ?>" class="separated_zigzag d-flex_newcss">
-            <div>
-                <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3">
-                    <?php if(!empty($image)):?>
-                        <div class="flex-1">
-                            <img class="d-block" loading="lazy" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">
-                        </div>
-                    <?php endif;?>
-                    <div class="flex-1">
-                        <div>
-                            <?php echo $content; ?>
-                        </div>
+        <section style="background:<?php echo $bgcolour; ?>" class="separated_zigzag">
+            <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3">
+                <?php if(!empty($image)):?>
+                    <div class="separated_zigzag_half">
+                        <img class="d-block" loading="lazy" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">
+                    </div>
+                <?php endif;?>
+                <div class="separated_zigzag_half">
+                    <div class="separated_zigzag_half_content">
+                        <?php echo $content; ?>
                         <?php
                             if (!empty($link) && isset($link['url']) && isset($link['title'])) {
                                 ?>

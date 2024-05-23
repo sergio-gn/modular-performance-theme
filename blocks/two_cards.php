@@ -23,6 +23,9 @@
         overflow-wrap: break-word;
         overflow:hidden;
     }
+    .two_cards_1_content{
+        padding: 2rem;
+    }
     .two_cards_1,.two_cards_1_content{
         width:65%;
     }
@@ -42,7 +45,10 @@
             margin-top: unset;
         }
         .front-two_cards_card,.two_cards_1,.two_cards_1_content,.two_cards_1_img_wrapper,.two_cards_2{
-            width:100%;
+            width:unset;
+        }
+        .two_cards_card_image{
+            flex-direction:column;
         }
     }
 </style>
@@ -51,8 +57,8 @@
     <div class="container">
         <div class="front-two_cards d-flex_newcss flex-d-column_mb justify-space-around gap_1">
             <div class="front-two_cards_card two_cards_1 b-radius-1" style="background:<?php echo $bgcolour;?>">
-                <div class="d-flex align_center_blocks">
-                    <div class="two_cards_1_content py-2">
+                <div class="two_cards_card_image d-flex align_center_blocks">
+                    <div class="two_cards_1_content">
                         <?php if($contentCard1): ?>
                             <?php echo $contentCard1; ?>
                         <?php endif;?>

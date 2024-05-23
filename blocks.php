@@ -161,18 +161,6 @@ get_template_part( 'parts/navigation' );
                     .headings_small_newcss{
                         font-size: 1.6rem;
                     }
-                    .cta_button {
-                        background: var(--main-colour) !important;
-                        display: block;
-                        width: fit-content;
-                        border-radius: 10rem;
-                        padding: 1rem 2rem;
-                        margin: 1rem 0;
-                        color: #fff !important;
-                        font-size: 16px;
-                        text-align: center;
-                        text-decoration: none;
-                    }
                     .w-100_newcss{
                         width:100%;
                     }
@@ -225,9 +213,6 @@ get_template_part( 'parts/navigation' );
                         }
                         .headings_newcss{
                             font-size:2rem;
-                        }
-                        .container{
-                            margin: 0 1rem;
                         }
                         .front-hero{
                             margin-bottom: unset!important;
@@ -332,6 +317,11 @@ get_template_part( 'parts/navigation' );
                                     animationDuration: 300,
                                     autoplay: false,
                                     hoverpause: true,
+                                    breakpoints: {
+                                        768: {
+                                            perView: 1
+                                        }
+                                    }
                                 };
 
                                 new Glide(item, conf).mount();

@@ -9,6 +9,17 @@ function theme_prefix_setup() {
 }
 add_action('after_setup_theme', 'theme_prefix_setup');
 
+function add_menu_toggle($item_output, $item, $depth, $args) {
+    if (in_array('menu-item-has-children', $item->classes)) {
+        $item_output = '<div class="menu_item_wrapper">' . $item_output;
+        $item_output .= '<button class="sub-menu-toggle" aria-expanded="false">⌵</button>';
+        $item_output .= '</div>';
+    }
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'add_menu_toggle', 10, 4);
+
+
 function allow_svg_upload( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
@@ -67,8 +78,8 @@ function custom_buttons_shortcode() {
     <div class="wpb_text_column wpb_content_element">
         <div class="wpb_wrapper">
             <div style="text-align: center; display: flex; gap: 10px;margin:1rem 0">
-                <a style="background-color: #607466; color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 10rem; display: inline-block;" href="tel:+74987123">456 654 65465</a>
-                <a style="background-color: #607466; color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 10rem; display: inline-block;" href="#">Enquire Online</a>
+                <a class="cta_button" href="tel:+74987123">456 654 65465</a>
+                <a class="cta_button" href="/contact-us/">Enquire Online</a>
             </div>
         </div>
     </div>

@@ -1,4 +1,8 @@
 <style>
+    .logo_footer_wrap{
+        display:flex;
+        justify-content: space-between;
+    }
     .footer-background {
         background: #000;
         width: 100%;
@@ -19,7 +23,7 @@
     }
     .site-footer {
         font-family: system-ui;
-        background-color: var(--white-tone);
+        background-color: var(--white_tone);
     }
     .z-1{
         position:relative;
@@ -119,10 +123,33 @@
         color: #fff;
         font-family: monospace;
     }
+    .grid_footer{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @media(max-width:1100px){
+        .logo_footer_wrap{
+            flex-direction: column;
+        }
+        .grid_footer{
+            grid-template-columns: 1fr 1fr;
+        }
+        .grid_footer div:nth-child(1) {
+            grid-column: span 1;
+        }
+        .grid_footer div:nth-child(2) {
+            grid-column: span 1;
+        }
+        .grid_footer div:nth-child(3) {
+            grid-column: span 2;
+        }
+        .grid_footer div:nth-child(4) {
+            grid-column: span 2;
+        }
+    }
 </style>
 <footer class="site-footer z-1" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
     <div class="container">
-        <div class="d-flex justify-between py-1">
+        <div class="logo_footer_wrap py-1">
             <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
                 <div class="custom-logo">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home" aria-current="page">
@@ -142,7 +169,7 @@
                 <?php echo do_shortcode('[custom_buttons]') ?>
             </div>
         </div>
-        <div class="d-grid grid-4 grid-1_mb gap-2">
+        <div class="d-grid grid_footer gap-2">
             <div class="site-footer-primary-section-2 site-footer-section site-footer-section-2">
                 <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-4" aria-label="Footer Widget 4">
                     <section id="custom_html-12" class="widget_text widget widget_custom_html">
@@ -238,8 +265,8 @@
                 </section>    
             </div>
             <div class="site-footer-primary-section-5 site-footer-section site-footer-section-5">
-                <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-3" aria-label="Footer Widget 3">
-                    <section id="custom_html-4" class="widget_text widget widget_custom_html">
+                <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" aria-label="Footer Widget 3">
+                    <section class="widget_text widget widget_custom_html">
                         <div class="textwidget custom-html-widget">
                             <div class="footer-contact">
                                 <p class="widget-title-1">

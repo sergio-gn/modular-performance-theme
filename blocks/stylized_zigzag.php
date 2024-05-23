@@ -7,6 +7,9 @@
     .stylized_zigzag{
         padding: 3rem 0;
     }
+    .flex_stylized_zigzag{
+        gap: 3rem;
+    }
     .stylized_zigzag p {
         font-size: 1rem;
         margin: 0;
@@ -37,6 +40,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+    @media(max-width:1100px){
+        .flex_stylized_zigzag{
+            gap: 0rem;
+        }
+        .stylized_zigzag_content{
+            margin-left:0
+        }
+    }
 
 </style>
 <?php if (have_rows('stylized_zigzag')) :
@@ -46,9 +57,9 @@
         $image= get_sub_field('image');
         $bgcolour = get_sub_field('bg_colour');
 ?>
-        <section style="background:<?php echo $bgcolour; ?>" class="stylized_zigzag d-flex_newcss justify-center_newcss bg-white">
+        <section class="stylized_zigzag d-flex_newcss justify-center_newcss" style="background:<?php echo $bgcolour; ?>">
             <div class="container">
-                <div class="d-flex_newcss justify-center_newcss fd-column-r_mb vthz-center gap_3">
+                <div class="flex_stylized_zigzag d-flex_newcss justify-center_newcss fd-column-r_mb vthz-center">
                     <?php if(!empty($image)):?>
                         <div class="stylized_zigzag_img_div">
                             <img loading="lazy" class="stylized_zigzag_img w-100_newcss" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">

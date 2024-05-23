@@ -166,6 +166,26 @@
         transform: scale(1.1);
         transition: ease-in 0.2s;
     }
+    .glide_controls{
+        display:none;
+    }
+    @media(max-width:1100px){
+        .glide_controls{
+            display:block;
+        }
+        .slide_glide_content {
+            font-size: 2rem;
+        }
+        .custom_slider_slide{
+            width: unset;
+        }
+        .carousel_container_mb{
+            flex-direction: column
+        }
+        .custom_slider_content{
+            width:100%;
+        }
+    }
 </style>
 <section class="carousel">
     <?php 
@@ -176,7 +196,7 @@
 
     <div class="carousel-container">
         <?php if(have_rows('carousel_images')):?>
-            <div class="container d-flex gap-1">
+            <div class="carousel_container_mb container d-flex gap-1">
                 <div class="custom_slider_content col-12_mb heading_raw">
                     <?php if($content): ?>
                         <div>
@@ -187,11 +207,11 @@
                 <div class="custom_slider_slide col-12_mb">
                     <div id="intro" class="main-carousel slider glide glide_carousel glide--ltr glide--carousel glide--swipeable">
                         
-                        <!-- <div data-glide-el="controls">
+                        <div class="glide_controls" data-glide-el="controls">
                             <button class="glide__arrow glide__arrow--prev" data-glide-dir="<">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16.1486" cy="15.9245" r="15.7993" fill="#636364"/><path d="M18.3707 20.3687L13.9266 15.9246L18.3707 11.4805" stroke="white" stroke-width="1.5"/></svg>
                             </button>
-                        </div> -->
+                        </div>
                         
                         <div class="slider__track glide__track" data-glide-el="track">
                             <ul class="slider__slides glide__slides">
@@ -217,11 +237,11 @@
                             </ul>
                         </div>
                         
-                        <!-- <div data-glide-el="controls">
+                        <div class="glide_controls" data-glide-el="controls">
                             <button class="glide__arrow glide__arrow--next" data-glide-dir="&gt;">
                                 <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16.2477" cy="15.9245" r="15.7993" fill="#636364"/><path d="M14.0257 20.3687L18.4698 15.9246L14.0257 11.4805" stroke="white" stroke-width="1.5"/></svg>
                             </button>
-                        </div> -->
+                        </div>
                         
                     </div>
                 </div>

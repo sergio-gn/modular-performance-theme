@@ -1,12 +1,18 @@
 <style>
-        :root{
+    :root{
         --main-colour: #607466;
         --main_colour_darker: #30513A;
         --secondary-colour: #7d89aa;
         --background-colour: #21242f;
         --font-gradient-left: #30513A;
         --font-gradient-right: #607466;
-        --white-tone: #F5F5F5;
+        --white_tone: #F5F5F5;
+        --black_tone: #292929;
+    }
+    @media screen and (max-width: 600px) {
+        #wpadminbar {
+            position: fixed !important;
+        }
     }
     /*******  globals *********/
     body{
@@ -19,6 +25,43 @@
         width: 6rem;
         height: auto;
     }
+    /* Custom Buttons */
+    .cta_button {
+        background: var(--main-colour);
+        display: block;
+        width: fit-content;
+        border-radius: 10rem;
+        padding: 0.75rem 1rem;
+        color: var(--white_tone);
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+    }
+    .cta_button:hover{
+        background-color: var(--main_colour_darker);
+        transition: 1s;
+    }
+    /* Custom Buttons */
+    /* Contact Form */
+    .wpcf7-form input, .wpcf7-form textarea{
+        background: #363636;
+        padding: 1rem;
+        border-radius: 1rem;
+        border:none;
+        color: #fff;
+    }
+    .wpcf7-form input[type="submit"]{
+        background: #607466;
+        padding: 1rem;
+        border-radius: 1rem;
+        border:none;
+        width:100%;
+        color: #fff;
+    }
+    .wpcf7-form label{
+        color: #fff;
+    }
+    /* Contact Form */
     /* Fixed width container */
     .container {
         width: 100%;
@@ -140,7 +183,7 @@
     /*******  navbar-bar *********/
     .navbar-bar{
         position: relative;
-        z-index: 1;
+        z-index: 99;
     }
 
     .top-details li{
@@ -158,51 +201,48 @@
     .icon-arrow{
         display:none;
     }
-    .menu-item-has-children .sub-menu{
-        display:none
-    }
     .menu-item-has-children .sub-menu {
         display: none;
         transition: display 0.5s ease-in-out;
         list-style: none;
         padding: 0;
+        background: var(--white_tone);
+        border-radius:1rem;
     }
     .menu-item-has-children:hover .sub-menu {
         display: block;
         position: absolute;
         transition-duration: 1s;
     }
-    .menu-item-has-children:after{
+    .menu-item-has-children div > a:after{
         content: '⌵';
+        padding: 0 0 0 0.5rem;
+    }
+    .sub-menu-toggle{
+        display:none;
     }
     .menu-item-has-children .icon-arrow{
         display:unset;
     }
-    
-
-    .menu-main-menu-container ul.nav-class {
+    .navigation ul.nav-class {
         display:flex;
         justify-content: space-between;
-        list-style-type: none; /* Remove default list styles */
+        list-style-type: none;
         margin: 0;
         padding: 0;
     }
-
-    .menu-main-menu-container li a {
+    .navigation li a {
         padding:1rem;
         display:block;
-        color:#000;
+        color:var(--black_tone);
         font-weight: bold;
         font-size:1rem;
-        text-decoration: none; /* Remove underline from links */
+        text-decoration: none;
     }
-
-    .menu-main-menu-container li a:hover {
-        color: #d42127;
+    .navigation li a:hover {
+        color: var(--main-colour);
     }
-
-    /* Styling for sub-menu items */
-    .menu-main-menu-container ul.nav-class li ul.sub-menu {
+    .navigation ul.nav-class li ul.sub-menu {
         display: none;
         position: absolute;
         background-color: #fff;
@@ -210,30 +250,27 @@
         padding: 0;
         z-index:999;
     }
-
-    .menu-main-menu-container ul.nav-class li ul.sub-menu li {
-        display: block; /* Display sub-menu items vertically */
+    .navigation ul.nav-class li ul.sub-menu li {
+        display: block;
     }
-
-    .menu-main-menu-container ul.nav-class li:hover ul.sub-menu {
-        display: block; /* Show sub-menu on hover */
+    .navigation ul.nav-class li:hover ul.sub-menu {
+        display: block;
     }
-
     .menu-item-has-children .sub-menu li a{
         padding:1rem;
         text-decoration: none;
         display:block;
-        background: var(--white-tone);
         color: var(--main-colour);
     }
     .menu-item-has-children .sub-menu li a:hover{
+        border-radius:1rem;
         background: var(--main-colour);
-        color: var(--white-tone);
+        color: var(--white_tone);
         transition-duration: 0.5s;
     }
-    .menu-main-menu-container .menu-item-has-children .sub-menu li a:hover {
+    .navigation .menu-item-has-children .sub-menu li a:hover {
         background: var(--main-colour);
-        color: var(--white-tone);
+        color: var(--white_tone);
     }
     .head-book{
         color: #fff !important;
@@ -263,29 +300,57 @@
         line-height: 1;
     }
     @media(max-width:1100px){
+        .menu-item-has-children div > a:after{
+            display:none;
+        }
+        .sub-menu-toggle{
+            display:block;
+            background: var(--black_tone);
+            color: var(--white_tone);
+            border: none;
+            border-radius: 1rem;
+            padding: 0.25rem 0.5rem;
+        }
+        .menu_item_wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navigation ul.nav-class li ul.sub-menu{
+            position: unset;
+            background-color: #ececec;
+            box-shadow: rgb(196 202 198) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        }
+        .cta_buttons_nav{
+            display:none;
+        }
         .navigation{
             display:none;
         }
-        .menu-main-menu-container{
+        .navigation{
             display:none;
         }
         .mobile_nav{
             padding: 0.7rem;
         }
         .button_mb{
-            background: #000;
-            color: #fff;
+            background: var(--black_tone);
+            color:var(--white_tone);
             border: none;
             padding: 0.5rem 1rem;
+            border-radius:1rem;
         }
-        .menu-main-menu-container ul.nav-class{
+        .navigation ul.nav-class{
             flex-direction: column;
         }
-        .menu-main-menu-container.active{
+        .navigation.active {
             display: block;
-        }
-        .custom-logo{
-            width: 40%;
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            width: 100%;
+            top: 4rem;
+            background: var(--white_tone);
         }
         .mb_none{
             display:none;
@@ -326,13 +391,15 @@
                         <?php
                             wp_nav_menu(array(
                                 'theme_location' => 'primary_menu',
-                                'menu_class' => 'nav-class', // Add a CSS class to style the menu
-                                // You can add more parameters as needed
+                                'menu_class' => 'nav-class',
                             ));
                         ?>
                     </div>
                 </div>
-	            <div>
+                <button class="button_mb desktop_none" onclick="toggleActiveClass()">
+                    ☰
+                </button>
+	            <div class="cta_buttons_nav">
                     <?php echo do_shortcode('[custom_buttons]') ?>
 	            </div>
 	        </div>
@@ -340,8 +407,44 @@
 	</div>
     <script>
         function toggleActiveClass() {
-          var menuContainer = document.querySelector('.menu-main-menu-container');
+          var menuContainer = document.querySelector('.navigation');
           menuContainer.classList.toggle('active');
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all toggle buttons
+            var toggleButtons = document.querySelectorAll('.sub-menu-toggle');
+
+            toggleButtons.forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Find the parent menu item
+                    var parentItem = this.closest('.menu-item-has-children');
+                    
+                    // Toggle the 'open' class on the parent menu item
+                    parentItem.classList.toggle('open');
+                    
+                    // Find the sub-menu within the parent item and toggle its display
+                    var subMenu = parentItem.querySelector('.sub-menu');
+                    if (subMenu) {
+                        if (subMenu.style.display === 'block') {
+                            subMenu.style.display = 'none';
+                        } else {
+                            subMenu.style.display = 'block';
+                        }
+                    }
+                    
+                    // Toggle the aria-expanded attribute
+                    if (this.getAttribute('aria-expanded') === 'true') {
+                        this.setAttribute('aria-expanded', 'false');
+                    } else {
+                        this.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+
     </script>
 </header>

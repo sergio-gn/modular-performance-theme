@@ -2,9 +2,11 @@
     .accordion {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 75%;
+        margin:auto;
         height: auto;
         box-sizing: border-box;
+        margin: 2rem auto;
     }
     .accordion .a-container {
         display: flex;
@@ -16,18 +18,18 @@
         margin: 0;
         position: relative;
         padding: 15px 30px;
-        color: #4d4d4d;
+        color: var(--white_tone);
         font-weight: 400;
         display: block;
         font-weight: 500;
-        background-color: #f8f8f8;
+        background-color: var(--black_tone);
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        border-radius: 5px;
+        border-radius: 10rem;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .15), 0 10px 10px -5px rgba(0, 0, 0, .1) !important;
     }
     .accordion .a-container .a-btn:hover{
-        color:#000;
+        color:var(--white_tone);
     }
     .accordion .a-container .a-btn span {
         display: block;
@@ -42,7 +44,7 @@
         width: 14px;
         height: 3px;
         border-radius: 2px;
-        background-color: #000;
+        background-color: var(--main-colour);
         position: absolute;
         top: 6px;
     }
@@ -51,7 +53,7 @@
         width: 14px;
         height: 3px;
         border-radius: 2px;
-        background-color: #000;
+        background-color: var(--main-colour);
         position: absolute;
         top: 6px;
         transform: rotate(90deg);
@@ -71,7 +73,7 @@
         border-color: #f0f0f0;
     }
     .accordion .a-container.active .a-btn {
-        color: #000;
+        color:var(--white-tone);
     }
     .accordion .a-container.active .a-btn span::before {
         transform: rotate(0deg);
@@ -82,15 +84,24 @@
         box-sizing: border-box;
         max-height: 500px;
     }
-    .faq-text h2{
+    .faq_text{
+        width: 75%;
+        margin: auto;
+    }
+    .faq_text h2{
         font-size: 2.5rem;
         font-weight: 800;
-        color:#000;
+        color:var(--black_tone);
+    }
+    @media(max-width:1100px){
+        .accordion{
+            width: 100%;
+        }
     }
 </style>
 
-<div class="container ">
-    <div class="faq-text">
+<div class="container">
+    <div class="faq_text">
         <?php echo get_sub_field('faq_text'); ?>
     </div>
     <div class="accordion v1">

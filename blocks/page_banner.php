@@ -1,20 +1,19 @@
 <style>
     .homepage_hero{
-        margin-top: -6.5rem;
+        display: flex;
+        align-items: center;
+        margin-top: -5rem;
         position: relative;
         background-position: bottom;
-        height: 80vh;
+        height: 90vh;
     }
     .sidepage_hero{
         height: 50vh;
     }
     .center-title{
-    	position:absolute;
-    	top: 5rem;
-        bottom:0;
-        margin: auto;
-        height: fit-content;
-        z-index:1;
+    	position:relative;
+    	top: 3rem;
+        z-index:2;
     }
     .banner-text {
         width: 40vw;
@@ -25,7 +24,18 @@
         bottom: 0;
         left: 0;
         right:0;
-        background: #92929257;
+        z-index:1;
+        background: linear-gradient(to top, rgb(0 0 0 / 39%), rgb(255 255 255 / 1%));
+    }
+    .hero_img_background{
+        object-fit: cover;
+        width:100%;
+        height:100%;
+        top: 0;
+        left:0;
+        right:0;
+        bottom:0;
+        position:absolute;
     }
     .banner-text h1{
         font-size:4rem;
@@ -42,7 +52,13 @@
             font-size: 2.5rem;
         }
         .homepage_hero{
-            height:100vh;
+            margin-top:-7rem;
+            height:80vh;
+        }
+    }
+    @media(max-width:798px){
+        .banner-text{
+            width:100%;
         }
     }
 </style>
@@ -52,7 +68,7 @@
         $link = get_sub_field('link');
         $image = get_sub_field('image');
 ?>
-        <div class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>" style="background-image: url(<?php echo $image['url']; ?>);background-size: cover;">
+        <section class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>">
             <div class="container">
                 <div class="center-title">
                     <div class="banner-text">
@@ -61,8 +77,9 @@
                 </div>
                 <div class="background-shadow">
                 </div>
+                <img class="hero_img_background" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
             </div>    
-        </div>
+        </section>
 <?php
     endwhile;
 endif;
