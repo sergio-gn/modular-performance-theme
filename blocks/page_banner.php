@@ -9,14 +9,22 @@
     }
     .sidepage_hero{
         height: 50vh;
+        position:relative;
+        display: flex;
+        align-items: center;
     }
-    .center-title{
+    .center_title{
     	position:relative;
     	top: 3rem;
         z-index:2;
     }
+    .center_title_sidebar{
+        top: unset;
+        position: relative;
+        z-index: 2;
+    }
     .banner-text {
-        width: 40vw;
+        width: <?php echo is_front_page() ? '40vw' : '30vw'; ?>
     }
     .background-shadow{
         position: absolute;
@@ -70,7 +78,7 @@
 ?>
         <section class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>">
             <div class="container">
-                <div class="center-title">
+                <div class="<?php echo is_front_page() ? 'center_title' : 'center_title_sidebar'; ?>">
                     <div class="banner-text">
                         <?php echo $content ?>
                     </div>

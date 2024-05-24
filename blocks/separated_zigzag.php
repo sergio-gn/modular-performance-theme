@@ -31,6 +31,9 @@
     .separated_zigzag_half img{
         width:100%;
         height:auto;
+        min-height: 70vh;
+        max-height: 100vh;
+        object-fit: cover;
     }
     @media(max-width:1100px){
         .separated_zigzag_half{
@@ -49,10 +52,11 @@
         $content = get_sub_field('content');
         $link = get_sub_field('button');
         $image= get_sub_field('image');
+        $order = get_sub_field('order');
         $bgcolour = get_sub_field('bg_colour');
 ?>
         <section style="background:<?php echo $bgcolour; ?>" class="separated_zigzag">
-            <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3">
+            <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3 <?php echo $order ?>">
                 <?php if(!empty($image)):?>
                     <div class="separated_zigzag_half">
                         <img class="d-block" loading="lazy" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">

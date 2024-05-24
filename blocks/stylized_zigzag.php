@@ -13,9 +13,12 @@
     .stylized_zigzag p {
         font-size: 1rem;
         margin: 0;
+        padding: 1rem 0;
     }
     .stylized_zigzag_img{
         border-radius: 1rem;
+        max-height: 60vh;
+        object-fit: cover;
     }
     .stylized_zigzag_img_div{
         flex:2;
@@ -27,7 +30,7 @@
         border-radius: 1rem;
         flex: 1.5;
     }
-    .stylized_zigzag_content h1, .stylized_zigzag_content h2,.stylized_zigzag_content h3,.stylized_zigzag_content h4,.stylized_zigzag_content h5, .stylized_zigzag_content h6{
+    .stylized_zigzag_content h1,.stylized_zigzag_content h2,.stylized_zigzag_content h3,.stylized_zigzag_content h4,.stylized_zigzag_content h5, .stylized_zigzag_content h6{
         margin: 0;
         font-size: 1.4rem;
         color: #5C5C5C;

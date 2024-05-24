@@ -1,4 +1,7 @@
 <style>
+    .faq_blocks{
+        padding: 2rem 0;
+    }
     .accordion {
         display: flex;
         flex-direction: column;
@@ -73,7 +76,7 @@
         border-color: #f0f0f0;
     }
     .accordion .a-container.active .a-btn {
-        color:var(--white-tone);
+        color:var(--white_tone);
     }
     .accordion .a-container.active .a-btn span::before {
         transform: rotate(0deg);
@@ -100,7 +103,7 @@
     }
 </style>
 
-<div class="container">
+<section class="faq_blocks container">
     <div class="faq_text">
         <?php echo get_sub_field('faq_text'); ?>
     </div>
@@ -116,7 +119,7 @@
             <?php endwhile; ?>
         <?php endif; ?>
     </div>
-</div>
+</section>
 
 <script>
     function initAcc(elem, option){

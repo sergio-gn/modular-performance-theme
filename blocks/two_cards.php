@@ -14,9 +14,6 @@
     endif;
 ?>
 <style>
-    .front-two_cards{
-        margin-top: -5rem;
-    }
     .front-two_cards_card{
         justify-content: space-between;
         display: flex;

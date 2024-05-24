@@ -1,6 +1,6 @@
 <style>
     .repeater_zigzag h1, .repeater_zigzag h2, .repeater_zigzag h3, .repeater_zigzag h4, .repeater_zigzag h5, .repeater_zigzag h6 {
-        font-size: 3rem;
+        font-size: 1.5rem;
         color: #5C5C5C;
     }
     .repeater_zigzag h1 strong, .repeater_zigzag h2 strong, .repeater_zigzag h3 strong, .repeater_zigzag h4 strong, .repeater_zigzag h5 strong, .repeater_zigzag h6 strong {

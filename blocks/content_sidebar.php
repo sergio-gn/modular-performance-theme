@@ -37,7 +37,7 @@
         width: 70%;
     }
     .sidebar_style {
-        border: 1px solid #D42127;
+        border: 1px solid var(--main-colour);
         padding: 20px 20px 10px;
     }
     .widget_nav_menu li {
@@ -64,11 +64,11 @@
         text-decoration: none;
     }
     .content-aside .menu a:hover {
-        background: #5D5E5E;
+        background: var(--main-colour);
         color: #fff;
     }
     .content-aside .current-menu-item a {
-        background: #5D5E5E;
+        background: var(--main-colour);
         transition: 0.5s;
         color: #fff !important;
     }
@@ -83,16 +83,16 @@
     .sidebar_cta-title{
         padding: 15px 0 10px;
         margin: 0;
-        color: #d42127;
+        color: var(--main-colour);
     }
     .book-btn a {
-        background: #D42127;
-        color: #fff;
+        background: var(--main-colour);
+        color: var(--white_tone);
         padding: 17px 30px 19px;
     }
     .book-btn a:hover {
-        background: #fff;
-        color: #000 !important;
+        background: var(--white_tone);
+        color: var(--black_tone)!important;
     }
     .content-article img{
         width: 100%;

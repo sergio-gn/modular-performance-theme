@@ -26,7 +26,7 @@ add_action( 'acf/include_fields', function() {
 				'layout_654818787c3a8' => array(
 					'key' => 'layout_654818787c3a8',
 					'name' => 'page_banner',
-					'label' => 'page Banner',
+					'label' => 'Page Banner',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
@@ -316,7 +316,7 @@ add_action( 'acf/include_fields', function() {
 									'name' => 'content',
 									'aria-label' => '',
 									'type' => 'wysiwyg',
-									'instructions' => '',
+									'instructions' => 'Make sure to add BOLD to the title part you want highlighted',
 									'required' => 0,
 									'conditional_logic' => 0,
 									'wrapper' => array(
@@ -375,27 +375,6 @@ add_action( 'acf/include_fields', function() {
 									'default_value' => '',
 									'enable_opacity' => false,
 									'return_format' => 'string',
-									'parent_repeater' => 'field_6548156141d85',
-								),
-								array(
-									'key' => 'field_6607306d97502',
-									'label' => 'video',
-									'name' => 'video',
-									'aria-label' => '',
-									'type' => 'file',
-									'instructions' => '',
-									'required' => 0,
-									'conditional_logic' => 0,
-									'wrapper' => array(
-										'width' => '',
-										'class' => '',
-										'id' => '',
-									),
-									'return_format' => 'array',
-									'library' => 'all',
-									'min_size' => '',
-									'max_size' => '',
-									'mime_types' => '',
 									'parent_repeater' => 'field_6548156141d85',
 								),
 								array(
@@ -739,7 +718,7 @@ add_action( 'acf/include_fields', function() {
 				'layout_6609z90484037' => array(
 					'key' => 'layout_6609z90484037',
 					'name' => 'carousel',
-					'label' => 'carousel',
+					'label' => 'Carousel',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
@@ -1121,6 +1100,25 @@ add_action( 'acf/include_fields', function() {
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
+									'key' => 'field_6542159d41d8b',
+									'label' => 'Image Order',
+									'name' => 'order',
+									'aria-label' => '',
+									'type' => 'radio',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'choices' => array(
+										'order-right' => 'order-right',
+										'order-left' => 'order-left',
+									),
+								),
+								array(
 									'key' => 'field_65493a41c2ce9',
 									'label' => 'image',
 									'name' => 'image',
@@ -1151,7 +1149,7 @@ add_action( 'acf/include_fields', function() {
 									'name' => 'content',
 									'aria-label' => '',
 									'type' => 'wysiwyg',
-									'instructions' => '',
+									'instructions' => 'Make sure to add BOLD to the title part you want highlighted',
 									'required' => 0,
 									'conditional_logic' => 0,
 									'wrapper' => array(
@@ -1422,7 +1420,7 @@ add_action( 'acf/include_fields', function() {
 				'layout_6608c38baf940' => array(
 					'key' => 'layout_6608c38baf940',
 					'name' => 'faq_blocks',
-					'label' => 'faq_blocks',
+					'label' => 'FAQ Blocks',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
@@ -1517,7 +1515,7 @@ add_action( 'acf/include_fields', function() {
 				'layout_6609d90484037' => array(
 					'key' => 'layout_6609d90484037',
 					'name' => 'testimonial_slider',
-					'label' => 'testimonial slider',
+					'label' => 'Testimonials Slider',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
@@ -1642,7 +1640,7 @@ add_action( 'acf/include_fields', function() {
 				'layout_660af71c36e95' => array(
 					'key' => 'layout_660af71c36e95',
 					'name' => 'content_sidebar',
-					'label' => 'content_sidebar',
+					'label' => 'Content Sidebar',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(

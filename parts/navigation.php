@@ -36,6 +36,9 @@
         font-size: 16px;
         text-align: center;
         text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
     }
     .cta_button:hover{
         background-color: var(--main_colour_darker);
@@ -43,12 +46,17 @@
     }
     /* Custom Buttons */
     /* Contact Form */
+    .wpcf7{
+        width: 40vw;
+    }
     .wpcf7-form input, .wpcf7-form textarea{
         background: #363636;
         padding: 1rem;
         border-radius: 1rem;
         border:none;
         color: #fff;
+        width: 100%;
+        box-sizing: border-box;
     }
     .wpcf7-form input[type="submit"]{
         background: #607466;
@@ -60,6 +68,11 @@
     }
     .wpcf7-form label{
         color: #fff;
+    }
+    @media(max-width:1100px){
+        .wpcf7{
+            width: 100vw;
+        }
     }
     /* Contact Form */
     /* Fixed width container */
@@ -246,7 +259,7 @@
         display: none;
         position: absolute;
         background-color: #fff;
-        box-shadow: rgb(0 0 0 / 30%) 7px 8px 8px 0px;
+        box-shadow: rgb(0 0 0 / 15%) 7px 8px 8px 0px;
         padding: 0;
         z-index:999;
     }
@@ -261,6 +274,7 @@
         text-decoration: none;
         display:block;
         color: var(--main-colour);
+        min-width: 10rem;
     }
     .menu-item-has-children .sub-menu li a:hover{
         border-radius:1rem;

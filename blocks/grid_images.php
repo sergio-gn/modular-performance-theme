@@ -6,7 +6,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 2rem;
-        height: 100%;
+        height: 25rem;
         width: 100%;
         display: flex;
         align-items: center;
@@ -94,9 +94,11 @@
                                 <div class="front-grid-img-wrap width-<?php echo $image['width']?>">
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
                                 </div>
-                                <div class="text_grid text-center">
-                                    <?php echo $gridContent ?>
-                                </div>
+                                <?php if($gridContent):?>
+                                    <div class="text_grid text-center">
+                                        <?php echo $gridContent ?>
+                                    </div>
+                                <?php endif;?>
                             <?php
                                 if (!empty($link) && isset($link['url'])) {
                             ?>
