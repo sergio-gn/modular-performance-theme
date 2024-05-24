@@ -16,12 +16,12 @@
     .center_title{
     	position:relative;
     	top: 3rem;
-        z-index:2;
+        z-index:1;
     }
     .center_title_sidebar{
         top: unset;
         position: relative;
-        z-index: 2;
+        z-index: 1;
     }
     .banner-text {
         width: <?php echo is_front_page() ? '40vw' : '30vw'; ?>
@@ -32,7 +32,7 @@
         bottom: 0;
         left: 0;
         right:0;
-        z-index:1;
+        z-index:0;
         background: linear-gradient(to top, rgb(0 0 0 / 39%), rgb(255 255 255 / 1%));
     }
     .hero_img_background{
@@ -44,6 +44,7 @@
         right:0;
         bottom:0;
         position:absolute;
+        z-index: -1;
     }
     .banner-text h1{
         font-size:4rem;

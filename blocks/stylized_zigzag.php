@@ -58,6 +58,7 @@
         $content = get_sub_field('content');
         $link = get_sub_field('link');
         $image= get_sub_field('image');
+        $video= get_sub_field('video');
         $bgcolour = get_sub_field('bg_colour');
 ?>
         <section class="stylized_zigzag d-flex_newcss justify-center_newcss" style="background:<?php echo $bgcolour; ?>">
@@ -66,6 +67,13 @@
                     <?php if(!empty($image)):?>
                         <div class="stylized_zigzag_img_div">
                             <img loading="lazy" class="stylized_zigzag_img w-100_newcss" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">
+                        </div>
+                    <?php elseif(!empty($video)):?>
+                        <div class="stylized_zigzag_img_div">
+                            <video autoplay loop muted playsinline
+                                src="<?php echo esc_url( $video['url'] ); ?>"
+                                data-mobile-mp4="<?php echo esc_url( $video['url'] ); ?>">
+                            </video>
                         </div>
                     <?php endif;?>
                     <div class="stylized_zigzag_content d-flex_newcss justify-center_newcss">

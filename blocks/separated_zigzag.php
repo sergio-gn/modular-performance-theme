@@ -39,8 +39,16 @@
         .separated_zigzag_half{
             width:unset;
         }
+        .separated_zigzag_half_img{
+            width:unset;
+            overflow: hidden;
+            max-height: 50vh;
+        }
         .separated_zigzag img{
             width:100%;
+            object-fit:cover;
+            min-height: unset;
+            max-height: unset;
         }
         .separated_zigzag p{
             width: 100%;
@@ -58,7 +66,7 @@
         <section style="background:<?php echo $bgcolour; ?>" class="separated_zigzag">
             <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3 <?php echo $order ?>">
                 <?php if(!empty($image)):?>
-                    <div class="separated_zigzag_half">
+                    <div class="separated_zigzag_half separated_zigzag_half_img">
                         <img class="d-block" loading="lazy" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">
                     </div>
                 <?php endif;?>

@@ -1,6 +1,6 @@
 <style>
     .faq_blocks{
-        padding: 2rem 0;
+        padding: 2rem;
     }
     .accordion {
         display: flex;
@@ -103,22 +103,46 @@
     }
 </style>
 
+<?php $use_global_faq = get_sub_field('use_global_faq');?>
 <section class="faq_blocks container">
     <div class="faq_text">
-        <?php echo get_sub_field('faq_text'); ?>
+        <?php 
+            $faqGlobal = get_field('faq_text', 'option');
+            $faq = get_sub_field('faq_text');
+            if($use_global_faq && in_array('use_global', $use_global_faq)){
+                echo $faqGlobal;
+            }else{
+                echo $faq;
+            }
+        ?>
     </div>
     <div class="accordion v1">
-        <?php if( have_rows('repeater_faq') ): ?>
-            <?php while( have_rows('repeater_faq') ): the_row(); ?>
-                <div class="a-container">
-                    <p class="a-btn"><?php the_sub_field('question'); ?><span></span></p>
-                    <div class="a-panel">
-                        <p><?php the_sub_field('answer'); ?></p>
+        <?php 
+        if( $use_global_faq && in_array('use_global', $use_global_faq) ): ?>
+            <?php if( have_rows('repeater_faq_global', 'option') ): ?>
+                <?php while( have_rows('repeater_faq_global', 'option') ): the_row(); ?>
+                    <div class="a-container">
+                        <p class="a-btn"><?php the_sub_field('question'); ?><span></span></p>
+                        <div class="a-panel">
+                            <p><?php the_sub_field('answer'); ?></p>
+                        </div>
                     </div>
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php if( have_rows('repeater_faq') ): ?>
+                <?php while( have_rows('repeater_faq') ): the_row(); ?>
+                    <div class="a-container">
+                        <p class="a-btn"><?php the_sub_field('question'); ?><span></span></p>
+                        <div class="a-panel">
+                            <p><?php the_sub_field('answer'); ?></p>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
+
 </section>
 
 <script>

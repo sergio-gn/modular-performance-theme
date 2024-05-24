@@ -196,7 +196,7 @@
     /*******  navbar-bar *********/
     .navbar-bar{
         position: relative;
-        z-index: 99;
+        z-index: 1;
     }
 
     .top-details li{

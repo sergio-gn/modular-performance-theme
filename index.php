@@ -1,43 +1,74 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
-
-get_header(); ?>
+ * Blogs 
+ **/
+get_header();
+get_template_part( 'parts/navigation' );
+?>
 
 <?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
-	<header class="page-header alignwide">
+	<header class="container">
 		<h1 class="page-title"><?php single_post_title(); ?></h1>
 	</header><!-- .page-header -->
 <?php endif; ?>
 
 <?php
-if ( have_posts() ) {
+ // set up the arguments for the query to select the main post
+ $args = array(
+	 'post_type' => 'post',
+	 'post_status' => 'publish',
+	 'posts_per_page' => 20
+ );
 
-	// Load posts loop.
-	while ( have_posts() ) {
-		the_post();
+ // create a new WP_Query instance with the arguments
+ $query = new WP_Query( $args );
 
-		get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) );
-	}
+ // start the loop
+ if ( $query->have_posts() ) : 
+	 while ( $query->have_posts() ) : $query->the_post(); 
+ ?>
+		 <article class="d-flex">
+			<div class="container">
+				<?php
+					if (has_post_thumbnail()): ?>
+						<a href="<?php the_permalink(); ?>">
+							<div class="img-wrapper_first-post">
+								<div class="post__thumbnail">
+									<?php if (has_post_thumbnail()) :
+										$thumbnail_id = get_post_thumbnail_id(); // Get the ID of the post thumbnail
+										$thumbnail = wp_get_attachment_image($thumbnail_id, 'medium_large', false, array('class' => 'post__thumbnail')); // Get the HTML for the post thumbnail without lazy loading
+										?>
+										<?php echo $thumbnail; ?>
+									<?php endif; ?>
+								</div>
+							</div>
+						</a>
+					<?php
+					endif;
+					?>
 
+				<header class="post__header p-2" role="heading">
+				<h2 class="fs-2">
+					<a style="color: #000;" href="<?php the_permalink(); ?>">
+					<?php the_title(); ?>
+					</a>
+				</h2>
+				<p class="post__date"><time><?php echo human_time_diff(strtotime($post->post_date)) . ' ' . __('atrás'); ?></time></p>
+				<p class="fc-5">
+					<?php 
+					$excerpt = get_the_excerpt();
+					$excerpt = wp_trim_words( $excerpt, 20, '...' );
+					echo $excerpt;
+					?>
+				</p>
+				</header>
+			</div>
+		 </article>
+ <?php
+	 endwhile;
+ endif;
 
-} else {
-
-	// If no content, include the "No posts found" template.
-	get_template_part( 'template-parts/content/content-none' );
-
-}
-
+ // reset the query
+ wp_reset_postdata();
 get_footer();
+?>

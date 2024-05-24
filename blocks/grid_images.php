@@ -55,6 +55,16 @@
     }
 
     @media(max-width:1100px){
+        .front-grid-img-wrap{
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            height: 20rem;
+            width: 80vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .front-images-2,.front-images-3,.front-images-4,.front-images-5,.front-images-6 {
             flex: unset;
         }

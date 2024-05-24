@@ -1,50 +1,86 @@
 <?php
 /**
  * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
+*/
 
 get_header();
+get_template_part( 'parts/navigation' );
+?>
+<main class="main mt-xl-3" role="main">
+    <div class="container">
+        <div class="d-flex justify-center gap-5 flex-d-columb-mb">
+            <div class="mainpost">
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <article <?php post_class(); ?>>
+                        <?php if (has_post_thumbnail()): ?>
+                            <div class="featured-image-wrapper">
+                                <?php the_post_thumbnail('full', ['class' => 'featured-image']); ?>
+                            </div>
+                        <?php endif; ?>
+                        <header class="post__header" role="heading">
+                            <h1 class="post__title"><?php the_title(); ?></h1>
+                        </header>
+                        <p class="post__date pb-1">
+                            Date: <?php echo esc_html(get_the_date('F j, Y'));?>
+                        </p>
+                        <hr>
+                        <div class="post__content">
+                            <?php the_content(); ?>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+            <div class="sidebar">
+                <div>
+                    <p class="sidebar-title">Recent Blogs</p>
+                    <?php
+                            // set up the arguments for the query to select the main post
+                            $args = array(
+                                'post_type' => 'post',
+                                'post_status' => 'publish',
+                                'posts_per_page' => 5, // Set the number of recent posts to display
+                                'orderby' => 'date',
+                                'order' => 'DESC'
+                            );
+                        
+                            // create a new WP_Query instance with the arguments
+                            $query = new WP_Query( $args );
+                        
+                            // start the loop
+                            if ( $query->have_posts() ) : 
+                                while ( $query->have_posts() ) : $query->the_post(); 
+                        ?>
+                                <div style="border-top: 1px solid #414141;">
+                                    <article <?php post_class(); ?>>
+                                        <div class="d-flex align-items-center">
+                                            <?php if(has_post_thumbnail()): ?>
+                                                <div class="img-wrapper_sixpack_sidebar">
+                                                    <div style="border-radius:.5rem" class="img-wrapper_thumbnail">
+                                                        <?php the_post_thumbnail( array(40, 40) ); ?>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                            <header class="post__header px-1" role="heading">
+                                                <p class="recent-posts-title">
+                                                    <a class="bold" href="<?php the_permalink(); ?>">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                </p>
+                                            </header>
+                                        </div>
+                                    </article>
+                                </div>
+                        <?php
+                                endwhile;
+                            endif;
+                            // reset the query
+                            wp_reset_postdata();
+                        ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
 
-	get_template_part( 'template-parts/content/content-single' );
-
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
-
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
-
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
-
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
-
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
-
-get_footer();
+<?php get_footer();?>

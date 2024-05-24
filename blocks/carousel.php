@@ -6,7 +6,7 @@
     .carousel-container {
         position: relative;
         padding: 3rem 0;
-        z-index: 2;
+        z-index: 1;
     }
     .carousel_frame{
         border-radius:1rem;
