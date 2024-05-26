@@ -23,6 +23,13 @@
     .stylized_zigzag_img_div{
         flex:2;
     }
+    .stylized_zigzag_video_div{
+        flex: unset;
+    }
+    .stylized_zigzag_video_div video{
+        flex: unset;
+        max-height: 60vh;
+    }
     .stylized_zigzag_content{
         margin-left: -15rem;
         background: #fff;
@@ -69,14 +76,14 @@
                             <img loading="lazy" class="stylized_zigzag_img w-100_newcss" src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>">
                         </div>
                     <?php elseif(!empty($video)):?>
-                        <div class="stylized_zigzag_img_div">
-                            <video autoplay loop muted playsinline
+                        <div class="stylized_zigzag_video_div">
+                            <video loop playsinline controls
                                 src="<?php echo esc_url( $video['url'] ); ?>"
                                 data-mobile-mp4="<?php echo esc_url( $video['url'] ); ?>">
                             </video>
                         </div>
                     <?php endif;?>
-                    <div class="stylized_zigzag_content d-flex_newcss justify-center_newcss">
+                    <div <?php if(!empty($video)){ echo 'style="margin-left:unset"'; } ?>class="stylized_zigzag_content d-flex_newcss justify-center_newcss">
                         <div>
                             <?php echo $content; ?>
                         </div>
