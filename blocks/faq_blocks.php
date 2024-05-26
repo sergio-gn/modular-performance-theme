@@ -96,6 +96,26 @@
         font-weight: 800;
         color:var(--black_tone);
     }
+    .accordion .a-container:nth-child(n+8) {
+        display: none;
+    }
+    
+    /* Style the Show More button */
+    #show-more-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: var(--main-colour);
+        color: var(--white_tone);
+        border: none;
+        cursor: pointer;
+        border-radius: 10rem;
+    }
+    
+    #show-more-btn.show-less {
+        background-color: var(--main-colour);
+        color: var(--white_tone);
+    }
     @media(max-width:1100px){
         .accordion{
             width: 100%;
@@ -118,34 +138,71 @@
     </div>
     <div class="accordion v1">
         <?php 
-        if( $use_global_faq && in_array('use_global', $use_global_faq) ): ?>
-            <?php if( have_rows('repeater_faq_global', 'option') ): ?>
-                <?php while( have_rows('repeater_faq_global', 'option') ): the_row(); ?>
+        $accordion_count = 0; // Initialize counter
+    
+        if ($use_global_faq && in_array('use_global', $use_global_faq)): ?>
+            <?php if (have_rows('repeater_faq_global', 'option')): ?>
+                <?php while (have_rows('repeater_faq_global', 'option')): the_row(); ?>
                     <div class="a-container">
                         <p class="a-btn"><?php the_sub_field('question'); ?><span></span></p>
                         <div class="a-panel">
                             <p><?php the_sub_field('answer'); ?></p>
                         </div>
                     </div>
+                    <?php $accordion_count++; // Increment counter ?>
                 <?php endwhile; ?>
             <?php endif; ?>
         <?php else: ?>
-            <?php if( have_rows('repeater_faq') ): ?>
-                <?php while( have_rows('repeater_faq') ): the_row(); ?>
+            <?php if (have_rows('repeater_faq')): ?>
+                <?php while (have_rows('repeater_faq')): the_row(); ?>
                     <div class="a-container">
                         <p class="a-btn"><?php the_sub_field('question'); ?><span></span></p>
                         <div class="a-panel">
                             <p><?php the_sub_field('answer'); ?></p>
                         </div>
                     </div>
+                    <?php $accordion_count++; // Increment counter ?>
                 <?php endwhile; ?>
             <?php endif; ?>
         <?php endif; ?>
     </div>
-
+    
+    <?php if ($accordion_count > 7): // Show button only if there are more than 7 accordions ?>
+        <button id="show-more-btn" class="show-more">Show More</button>
+    <?php endif; ?>
 </section>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var showMoreBtn = document.getElementById('show-more-btn');
+    var accordions = document.querySelectorAll('.accordion .a-container');
+    
+    if (showMoreBtn) {
+        // Hide extra accordions
+        for (var i = 7; i < accordions.length; i++) {
+            accordions[i].style.display = 'none';
+        }
+
+        showMoreBtn.addEventListener('click', function() {
+            var isShowingMore = this.classList.toggle('show-less');
+
+            if (isShowingMore) {
+                // Show all accordions
+                for (var i = 7; i < accordions.length; i++) {
+                    accordions[i].style.display = 'block';
+                }
+                this.textContent = 'Show Less';
+            } else {
+                // Hide extra accordions
+                for (var i = 7; i < accordions.length; i++) {
+                    accordions[i].style.display = 'none';
+                }
+                this.textContent = 'Show More';
+            }
+        });
+    }
+});
+
     function initAcc(elem, option){
     document.addEventListener('click', function (e) {
         if (!e.target.matches(elem+' .a-btn')) return;
