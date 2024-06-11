@@ -1,5 +1,4 @@
 <style>
-    
     .testimonials_slider-wrapper {
         position: relative;
         overflow: hidden;
@@ -15,6 +14,10 @@
     .testimonials_slider-wrapper p{
         color: #000;
         font-weight: normal;
+    }
+    .testimonials_slider-wrapper .quote_name{
+        color: var(--main-colour);
+        font-weight: bold;
     }
     @media(max-width:1100px){
         .testimonials_slider-wrapper {
@@ -161,49 +164,47 @@
         padding: 1rem;
         gap: 0.5rem;
     }
-    .glide__bullet, .glide__bullet--active{
+    .container .testimonial-carousel button.glide__bullet.glide__bullet--active{
         cursor: pointer;
         width: 1rem;
         height: 1rem;
         border-radius: 1rem;
         border: none;
-    }
-    .glide__bullet{
-        background: #d42127;
-        opacity: .5;
-    }
-    .glide__bullet--active{
-        background: #d42127;
+        background: var(--main-colour)!important;
         opacity: 1;
+    }
+    .container .testimonial-carousel button.glide__bullet{
+        cursor: pointer;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 1rem;
+        border: none;
+        background: var(--main_colour_darker)!important;
+        opacity: .5;
     }
 </style>
 
 
 <?php $howManySlidesTestimonial = get_sub_field('slide_number'); ?>
 <?php 
-    $video = get_sub_field('video');
     if (have_rows('repeater_testimonial')) :
-            $quote = get_sub_field('quote');
-            $name = get_sub_field('name');
             $slide_counter = 0;
 ?>
         <section class="container d-flex_newcss flex-column_mb">
             <div class="flex-1 col-6_newcss col-12_mb">
-                <?php if ($video): ?>
-                    <div class="video-container" id="lazyVideoContainer">
-                        <video video controls muted loop preload="none" class="lazyVideo w-100_newcss" src="<?php echo $video['url']; ?>"></video>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <div class="flex-1 col-6_newcss col-12_mb">
                 <div id="intro" class="testimonial-carousel slider glide glide--ltr glide--carousel glide--swipeable">
                     <div class="slider__track glide__track" data-glide-el="track">
                         <ul class="slider__slides glide__slides">
-                            <?php while (have_rows('repeater_testimonial')) : the_row(); ?>
+                            <?php while (have_rows('repeater_testimonial')) : the_row();
+                                $quote = get_sub_field('quote');
+                                $name = get_sub_field('name');
+                            ?>
                                 <li class="testimonials_slider__frame glide__slide <?php echo $slide_counter; ?>">
                                     <div class="testimonials_slider-wrapper">
-                                        <p><?php the_sub_field('quote'); ?></p>
-                                        <p style="text-align: center; font-size: 25px; font-weight: 600; color: #d42127;" element-id="1586"><?php the_sub_field('name'); ?></p>
+                                        <p><?php echo $quote  ?></p>
+                                        <p class="quote_name">
+                                            <?php echo $name  ?>
+                                        </p>
                                     </div>
                                 </li>
                             <?php 
