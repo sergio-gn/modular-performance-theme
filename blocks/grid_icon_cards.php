@@ -19,7 +19,7 @@
     .text_card h1,.text_card h2,.text_card h3 {
         font-weight: 900;
         font-size: 1.6rem;
-        color:#000;
+        color:var(--main-colour);
         margin:0;
     }
     .text_card h4,.text_card h5,.text_card h6{
@@ -36,7 +36,6 @@
     .front-grid_card-icon-wrap {
         position: relative;
         overflow: hidden;
-        width: 2.5rem;
         height: auto;
         display: flex;
         align-items: center;
@@ -52,12 +51,17 @@
         align-items: center;
         border-radius: 1rem;
         gap:0.5rem;
+            box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3);
+            
     }
     .grid-square_icon:hover{
         border: 2px solid var(--main-colour);
     }
+    .grid-square_icon a{
+        text-decoration: none;
+    }
 	.grid-square_icon p{
-		color:#000;
+		color:var(--grey_tone);
         text-align:left;
 	}
     .gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
@@ -65,7 +69,7 @@
         font-size: 1.2rem;
         font-weight:800;
     } 
-    .view-more-button{
+    .view_more_button{
         margin: 1rem;
         background: var(--main-colour);
         font-size: 17px;
@@ -74,8 +78,8 @@
         cursor: pointer;
         border:none;
     }
-    .view-more-button:hover{
-        background: var(--main-colour);
+    .view_more_button:hover{
+        background: var(--main_colour_darker);
     }
     .front-grid-2{
         grid-template-columns: 1fr 1fr;
@@ -110,9 +114,9 @@
                     $link = get_sub_field('link');
                     $image = get_sub_field('image');
                     $gridContent = get_sub_field('content');
-                    $gridTitle = get_sub_field('title');
+                    $countLimit = 10;
                 ?>
-                    <div class="grid-square_icon <?php if ($count >= 6) echo 'extra'; ?>" <?php if ($count >= 6) echo 'style="display:none;"'; ?>>
+                    <div class="grid-square_icon <?php if ($count >= $countLimit) echo 'extra'; ?>" <?php if ($count >= 6) echo 'style="display:none;"'; ?>>
                         <?php if (!empty($link) && isset($link['url'])): ?>
                             <a href="<?php echo esc_url($link['url']); ?>">
                         <?php endif; ?>
@@ -134,9 +138,9 @@
                 <?php endwhile; ?>
                 <!-- View More Button -->
             </div>
-            <?php if ($count >= 6): ?>
+            <?php if ($count >= $countLimit): ?>
             <div class="d-flex_newcss justify-center_newcss">
-                <button class="view-more-button" onclick="toggleExtraGrid()">View More</button>
+                <button class="view_more_button" onclick="toggleExtraGrid()">View More</button>
             </div>
             <?php endif; ?>
         </div>
