@@ -1,7 +1,7 @@
 <style>
     .repeater_zigzag h1, .repeater_zigzag h2, .repeater_zigzag h3, .repeater_zigzag h4, .repeater_zigzag h5, .repeater_zigzag h6 {
-        font-size: 1.5rem;
-        color: #5C5C5C;
+        font-size: 2rem;
+        color: var(--main-colour);
     }
     .repeater_zigzag h1 strong, .repeater_zigzag h2 strong, .repeater_zigzag h3 strong, .repeater_zigzag h4 strong, .repeater_zigzag h5 strong, .repeater_zigzag h6 strong {
         font-size: 3rem;
@@ -21,7 +21,7 @@
     }
     .img_wrapper_repeater_zigzag{
         overflow:hidden;
-        height: 40rem;
+        max-height: 40rem;
     }
     .img_wrapper_repeater_zigzag_imgtag{
         width: 100%;
@@ -44,9 +44,10 @@
         $link = get_sub_field('link');
         $order = get_sub_field('order');
         $bgColour = get_sub_field('bg_colour');
+        $padding = get_sub_field('padding');
     ?>
-        <section class="repeater_zigzag d-flex_newcss justify-center_newcss blocks-padding" style="background-color: <?php echo $bgColour; ?>">
-            <div class="repeater_zigzag_container container">
+        <section class="repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo 'blocks-padding';} ?>" style="background-color: <?php echo $bgColour; ?>">
+            <div class="repeater_zigzag_container container" <?php if(!$padding){echo 'style="padding:0"';} ?>>
                 <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3 <?php echo $order ?>">
                     <div class="flex-1">
                         <div class="front-zig zig_content">

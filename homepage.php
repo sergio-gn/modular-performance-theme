@@ -6,6 +6,7 @@ Description: A custom template for my specific needs.
 ?>
 <?php get_header();?>
 <body style="margin:0">
+
     <?php get_template_part( 'new-website/navigation' ); ?>
     <?php get_template_part( 'new-website/newbanner' ); ?>
     <?php get_template_part( 'new-website/slider-cta' ); ?>

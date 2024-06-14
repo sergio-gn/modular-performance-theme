@@ -16,11 +16,15 @@
     .grid_text p{
         font-size:1.1rem;
     }
+    .text_card{
+        padding: 1.5rem;
+    }
     .text_card h1,.text_card h2,.text_card h3 {
         font-weight: 900;
         font-size: 1.6rem;
         color:var(--main-colour);
         margin:0;
+        padding-bottom:1rem;
     }
     .text_card h4,.text_card h5,.text_card h6{
         font-weight: 900;
@@ -47,7 +51,6 @@
         position: relative;
         padding: 0 1rem;
         background: #fff;
-        display: flex;
         align-items: center;
         border-radius: 1rem;
         gap:0.5rem;

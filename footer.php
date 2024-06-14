@@ -1,4 +1,60 @@
 <style>
+    footer {
+        font-size: .875rem;
+        background-color: #030501;
+        padding: 28px 0;
+    }
+    .return_to_top{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        width: 100% !important;
+    }
+    #return-to-top {
+        position: fixed;
+        bottom: 95px;
+        right: 13px;
+        z-index: 9;
+        background: #1094c4;
+        width: 50px;
+        height: 50px;
+        display: block;
+        text-decoration: none;
+        -webkit-border-radius: 35px;
+        -moz-border-radius: 35px;
+        border-radius: 35px;
+        display: none;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+    .footer_row{
+        justify-content: space-between !important;
+        align-items: center !important;
+        --bs-gutter-y: 1.5rem;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1* var(--bs-gutter-y));
+        margin-right: calc(-0.5* var(--bs-gutter-x));
+        margin-left: calc(-0.5* var(--bs-gutter-x));
+    }
+    .footer_info_{
+            color: #fff;
+            gap: 0.5rem;
+        justify-content: center !important;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1* var(--bs-gutter-y));
+        margin-right: calc(-0.5* var(--bs-gutter-x));
+        margin-left: calc(-0.5* var(--bs-gutter-x));
+    }
     .logo_footer_wrap{
         display:flex;
         justify-content: space-between;
@@ -23,7 +79,7 @@
     }
     .site-footer {
         font-family: system-ui;
-        background-color: var(--white_tone);
+        background-color: var(--white_tone_darker);
     }
     .z-1{
         position:relative;
@@ -127,6 +183,11 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     @media(max-width:1100px){
+        .custom_logo_footer{
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
         .logo_footer_wrap{
             flex-direction: column;
         }
@@ -147,11 +208,11 @@
         }
     }
 </style>
-<footer class="site-footer z-1" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
+<section class="site-footer z-1" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
     <div class="container">
         <div class="logo_footer_wrap py-1">
             <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
-                <div class="custom-logo">
+                <div class="custom-logo custom_logo_footer">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home" aria-current="page">
                         <?php
                             $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -169,6 +230,7 @@
                 <?php echo do_shortcode('[custom_buttons]') ?>
             </div>
         </div>
+        <?php if(!is_front_page()):?>
         <div class="d-grid grid_footer gap-2">
             <div class="site-footer-primary-section-2 site-footer-section site-footer-section-2">
                 <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-4" aria-label="Footer Widget 4">
@@ -262,7 +324,7 @@
                             'menu_class'     => 'footer-menu-list',
                         ) );
                     ?>
-                </section>    
+                </section>
             </div>
             <div class="site-footer-primary-section-5 site-footer-section site-footer-section-5">
                 <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" aria-label="Footer Widget 3">
@@ -270,17 +332,10 @@
                         <div class="textwidget custom-html-widget">
                             <div class="footer-contact">
                                 <p class="widget-title-1">
-                                    Contact Us
+                                    Info
                                 </p>
                                 <div class="d-flex gap-1">
-                                    <i class="footer-icon">
-                                        <svg fill="#fff" width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M49,18.92A23.74,23.74,0,0,0,25.27,42.77c0,16.48,17,31.59,22.23,35.59a2.45,2.45,0,0,0,3.12,0c5.24-4.12,22.1-19.11,22.1-35.59A23.74,23.74,0,0,0,49,18.92Zm0,33.71a10,10,0,1,1,10-10A10,10,0,0,1,49,52.63Z"/></svg>
-                                    </i>
-                                    <div>
-                                        <a class="footer_info" href="https://goo.gl/maps/NZLBbyXvNxxKSrZZ6" target="_blank" rel="noopener">
-                                            4-6 Smithfield Rd, Smithfield NSW 2164, Austrália
-                                        </a>
-                                    </div>
+
                                 </div>
                                 <div class="d-flex gap-1 py-1">
                                     <div class="align-center d-flex gap-1">
@@ -291,7 +346,7 @@
                                         </i>
                                         <div>
                                             <p class="footer_info">
-                                                Mon – Fri: 08:00–15:30
+                                                Mon – Sun: 24h
                                             </p>
                                         </div>
                                     </div>
@@ -310,11 +365,48 @@
                 </aside>
             </div>
         </div>
+        <?php endif;?>
     </div>
-    <div class="footer-bottom z-1">
-        <div class="container p-1">
-            <p class="footer-copyright">Copyright © <?php echo date("Y"); ?> | <?php bloginfo('name'); ?></p>
+</section>
+<footer>
+    <div class="container">
+        <div class="footer_row">
+            <div class="col-auto">
+                <div class="footer_info_">
+                    <div class="col-auto text-center">Copyright 2024</div>
+                    <div class="col-auto text-primary">|</div>
+                    <div class="col-auto text-center">Response Plumbing Melbourne</div>
+                    <div class="col-auto text-primary">|</div>
+                    <div class="col-auto text-center">All Rights Reserved</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="d-flex align-center gap-2">
+                    <div class="col-12 col-lg-auto">
+                        <div class="footer_info_">
+                            <div class="col-auto text-center">Terms &amp; Conditions</div>
+                            <div class="col-auto text-primary">|</div>
+                            <div class="col-auto text-center">Privacy Policies</div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <a href="https://www.aiims.com.au/like-our-work/" target="_blank">
+                            <img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/aiims.png alt=aiims class=''>                        
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <?php wp_footer();?>
 </footer>
+<a href="javascript:" id="return-to-top">
+	<div class="return_to_top">
+		<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffffff" class="bi bi-arrow-up" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+		</svg>
+	</div>
+</a>
+<script type="text/javascript" src="https://melbournefirstchoiceplumbing.com.au/assets/js/app.js?v=0.3"></script>
+</body>
+    <?php wp_footer();?>
+</html>

@@ -1,13 +1,16 @@
 <style>
     :root{
-        --main-colour: #607466;
-        --main_colour_darker: #30513A;
+        --main-colour: #1094c4;
+        --main_colour_darker: #01698f;
         --secondary-colour: #7d89aa;
         --background-colour: #21242f;
         --font-gradient-left: #30513A;
         --font-gradient-right: #607466;
-        --white_tone: #F5F5F5;
-        --black_tone: #292929;
+        --white_tone: #fff;
+        --white_tone_darker: #f0f0f0;
+        --black_tone: #030501;
+        --grey_tone: #353535;
+        --light_grey_tone: #cdcdcd;
     }
     @media screen and (max-width: 600px) {
         #wpadminbar {
@@ -21,29 +24,119 @@
     header{
         font-family: system-ui;
     }
+    .text-primary{
+        color: var(--main-colour);
+    }
     .custom-logo img {
-        width: 6rem;
         height: auto;
+        max-height: 3rem;
     }
     /* Custom Buttons */
-    .cta_button {
-        background: var(--main-colour);
+    .cta_button{
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        display: flex!important;
+        align-items: center;
+        gap: 0.35rem;
         display: block;
         width: fit-content;
         border-radius: 10rem;
         padding: 0.75rem 1rem;
-        color: var(--white_tone);
         font-size: 16px;
         text-align: center;
         text-decoration: none;
-        display: flex;
-        align-items: center;
+        display: flex!important;
         gap: 0.35rem;
+        width: fit-content;
+        border-radius: 10rem;
+        padding: 0.75rem 1rem;
+        text-decoration:none;
+        --tw-bg-opacity: 1;
+        --tw-text-opacity: 1;
+        transition-duration: 1s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        overflow: hidden;
+        height: 3.5rem;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
-    .cta_button:hover{
+    .cta_button_text{
+        position: relative;
+        z-index: 1;
+    }
+    .cta_button_primary {
+        background-color: var(--main-colour);
+        color: var(--white_tone);
+        fill: var(--white_tone);
+    }
+    .cta_button_primary:before {
+        --tw-bg-opacity: 1;
         background-color: var(--main_colour_darker);
-        transition: 1s;
+        content: "";
+        height: 0;
+        left: 0;
+        outline: none;
+        position: absolute;
+        top: 0;
+        transition: all .8s ease;
+        width: 0;
+        z-index: 1;
     }
+    .cta_button_primary:hover {
+        --tw-shadow: 4px 4px #ffae35;
+        --tw-shadow-colored: 4px 4px;
+    }
+    .cta_button_primary:hover:before {
+        --tw-text-opacity: 1;
+        border-radius: 50px;
+        color: rgb(255 255 255);
+        height: 30px;
+        transform: scale(36.5);
+        width: 30px;
+    }
+
+    .cta_button_secondary {
+        background-color: var(--white_tone);
+        color: var(--main-colour);
+        fill: var(--main-colour);
+    }
+    .cta_button_secondary:before {
+        --tw-bg-opacity: 1;
+        background-color: var(--main-colour);
+        content: "";
+        height: 0;
+        left: 0;
+        outline: none;
+        position: absolute;
+        top: 0;
+        transition: all .8s ease;
+        width: 0;
+        z-index: 1;
+    }
+    .cta_button_secondary:hover {
+        --tw-shadow: 4px 4px #ffae35;
+        --tw-shadow-colored: 4px 4px;
+        color: var(--white_tone);
+    }
+    .cta_button .cta_button_secondary {
+        transition: fill 1.5s ease;
+    }
+    .cta_button:hover .cta_button_secondary{
+        fill: var(--white_tone);
+    }
+    .cta_button_secondary:hover:before {
+        --tw-text-opacity: 1;
+        border-radius: 50px;
+        color: var(--white_tone);
+        height: 30px;
+        transform: scale(36.5);
+        width: 30px;
+    }
+    
     /* Custom Buttons */
     /* Contact Form */
     .wpcf7{
@@ -196,7 +289,7 @@
     /*******  navbar-bar *********/
     .navbar-bar{
         position: relative;
-        z-index: 1;
+        z-index: 90;
     }
 
     .top-details li{
@@ -247,7 +340,7 @@
     .navigation li a {
         padding:1rem;
         display:block;
-        color:var(--black_tone);
+        color:var(--main_colour_darker);
         font-weight: bold;
         font-size:1rem;
         text-decoration: none;
@@ -262,6 +355,7 @@
         box-shadow: rgb(0 0 0 / 15%) 7px 8px 8px 0px;
         padding: 0;
         z-index:999;
+        overflow:hidden;
     }
     .navigation ul.nav-class li ul.sub-menu li {
         display: block;
@@ -277,7 +371,6 @@
         min-width: 10rem;
     }
     .menu-item-has-children .sub-menu li a:hover{
-        border-radius:1rem;
         background: var(--main-colour);
         color: var(--white_tone);
         transition-duration: 0.5s;

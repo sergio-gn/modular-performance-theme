@@ -36,7 +36,7 @@
     .front-grid_card-img-wrap{
         position: relative;
         overflow: hidden;
-        width: 4rem;
+            max-width: 8rem;
         border-radius: 2rem;
         height: auto;
         display: flex;
@@ -48,6 +48,7 @@
         position:relative;
         padding: 1rem;
         background: #fff;
+        border-radius: 1rem;
     }
     .grid-square:hover{
         border: 4px solid var(--main-colour);

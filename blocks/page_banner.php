@@ -24,7 +24,11 @@
         z-index: 1;
     }
     .banner-text {
-        width: <?php echo is_front_page() ? '40vw' : '30vw'; ?>
+        width: 30vw;
+        background-color: rgb(83 90 94 / 15%);
+        backdrop-filter: blur(3px);
+        border-radius: 1rem;
+        padding: 1rem;
     }
     .background-shadow{
         position: absolute;

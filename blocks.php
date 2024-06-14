@@ -82,7 +82,7 @@ get_template_part( 'parts/navigation' );
                     }
         
                     .blocks-padding{
-                        padding: 3rem 0rem;
+                        padding: 1.5rem 0rem;
                     }
         
                     .banner-img{
@@ -180,6 +180,7 @@ get_template_part( 'parts/navigation' );
                     .mb_3{
                         margin-bottom: 3rem!important;
                     }
+                    
                     .text-center{
                         text-align:center;
                     }
@@ -275,6 +276,8 @@ get_template_part( 'parts/navigation' );
                                 elseif(get_row_layout() == 'repeater_zigzag'):
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'faq_blocks'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'text_centered_card'):
                                     include 'blocks/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'text_centered'):
                                     include 'blocks/' . get_row_layout() . '.php';
