@@ -53,7 +53,7 @@ get_template_part( 'parts/navigation' );
 					<?php the_title(); ?>
 					</a>
 				</h2>
-				<p class="post__date"><time><?php echo human_time_diff(strtotime($post->post_date)) . ' ' . __('atrás'); ?></time></p>
+				<p class="post__date"><time><?php echo human_time_diff(strtotime($post->post_date)) . ' ' . __('ago'); ?></time></p>
 				<p class="fc-5">
 					<?php 
 					$excerpt = get_the_excerpt();
