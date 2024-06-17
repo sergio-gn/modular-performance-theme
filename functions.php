@@ -2,6 +2,7 @@
 
 require_once(get_template_directory() . '/functions/acf-blocks.php');
 require_once(get_template_directory() . '/functions/acf-options-page.php');
+require_once(get_template_directory() . '/functions/acf-location.php');
 
 // Add support for custom logo
 function theme_prefix_setup() {

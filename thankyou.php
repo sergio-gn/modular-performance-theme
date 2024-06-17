@@ -1,275 +1,348 @@
 <?php
-/**
-* Template Name: Thank you
-*
-* @package WordPress
-*/
-?>
-<?php get_header() ?>
+/* Template Name: Thank You new 1 */
 
-<body>
-        <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGCKSN5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <?php echo get_template_part( 'parts/navigation-homepage' );?>
-    
-    <?php $banner = get_field('banner');
-    
-    if($banner):
-    ?>
-    
-    <section class="banner">
-        <div class="banner_inner">
-            <div class="banner_innermost">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 col-xl-5">
-                            <div class="bg-secondary px-4 py-3 lh-1 d-inline">
-                                <?php echo $banner['subtitle'] ?>
-                            </div>
-                            <div>
-                                <?php echo $banner['content'] ?>
-                            </div>
-                            
-                            <?php 
-                            $slider = $banner['slider']; 
-                            if($slider):
+get_header();
+
+get_template_part( 'parts/navigation' );
+
+    if (have_posts()):
+        while (have_posts()) : the_post();	?>
+
+            <section>
+                <style>
+                    .grid-links{
+                        display: flex;
+                        justify-content: space-between; 
+                    }
+                    .grid-links a{
+                        color:var(--main-colour)!important;
+                    }
+                    @media(max-width:1100px){
+                        .grid-links{flex-direction: column;}
+                    }
+                    body{
+                        background:#ffffff!important;
+                        font-family: system-ui;
+                    }
+                    body h2, body h3, body h3, body h4, body h5, body h6{
+                        color: #000;
+                        font-weight: 800;
+                        margin: 2rem 0 1rem 0;
+                        line-height: 1;
+                        margin: 0;
+                    }
+                    body h2{
+                        font-size: 2.5rem;
+                    }
+                    body h3{
+                        font-size: 1.6rem;
+                    }
+                    body h4{
+                        font-size: 1.4rem;
+                    }
+                    body h5{
+                        font-size: 1.3rem;
+                    }
+                    body h6{
+                        font-size: 1.2rem;
+                    }
+                    @media (max-width:1100px){
+                        body h2{
+                            font-size: 2rem;
+                        }
+                        body h3{
+                            font-size: 1.4rem;
+                        }
+                        body h4{
+                            font-size: 1.2rem;
+                        }
+                        body h5{
+                            font-size: 1.1rem;
+                        }
+                        body h6{
+                            font-size: 1.1rem;
+                        }
+                    }
+                    .site-main > * {
+                        margin-top: 0!important;
+                        margin-bottom: 0!important;
+                    }
+                    
+                    ::selection {
+                      background-color: var(--main-colour);
+                      color: #fff;
+                    }
+                    
+                    input::selection,
+                    textarea::selection,
+                    input::-moz-selection,
+                    textarea::-moz-selection {
+                      background-color: var(--main-colour);
+                      color: #fff; /
+                    }
+        
+                    .blocks-padding{
+                        padding: 1.5rem 0rem;
+                    }
+        
+                    .banner-img{
+                        position: absolute;
+                        margin-right: -60rem;
+                    }
+                    .text-white p,.text-white h1,.text-white h2,.text-white h3,.text-white h4,.text-white h5,.text-white h6{
+                        color: #fff;
+                    }
+                    .mainh1{
+                        font-size: 3rem;
+                        color: #ffffff!important;
+                        font-weight: bold;
+                        text-shadow: 0 0 5px #32327c, 0 0 5px #32327c, 0 0 5px #32327c, 0 0 5px #32327c, 0 0 5px #32327c;
+                    }
+                    .suburb-banner-section {
+                        justify-content: center;
+                    }
+        
+                    /* new */
+                    .d-block{
+                        display:block;
+                    }
+                    .d-flex_newcss{
+                        display:flex;
+                    }
+                    .d-grid_newcss{
+                        display: grid;
+                    }
+                    .col-6_newcss{
+                        width:50%;
+                    }
+                    .front-img {
+                        position: relative;
+                    }
+                    .img__thumb {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    .front-zag{
+                        display:flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+        
+                    .fd-column{
+                        flex-direction:column;
+                    }
+                    .container{
+                        max-width: 1300px;
+                    }
+                    .justify-center_newcss{
+                        justify-content: center;
+                    }
+                    .align_center_blocks{
+                        align-items: center;
+                    }
+                    .vthz-center{
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .gap_1{
+                        gap: 1rem;
+                    }
+                    .gap_3{
+                        gap: 3rem;
+                    }
+                    .bg-white{
+                        background-color: #fff;
+                    }
+
+                    .headings_newcss{
+                        font-size: 3rem;
+                    }
+                    .headings_small_newcss{
+                        font-size: 1.6rem;
+                    }
+                    .w-100_newcss{
+                        width:100%;
+                    }
+                    .flex-1{
+                        flex: 1;
+                    }
+                    .justify-space-around{
+                        justify-content: space-around;
+                    }
+                    .b-radius-1{
+                        border-radius:1rem;
+                    }
+                    .py-2{
+                        padding: 2rem;
+                    }
+
+                    .mb_3{
+                        margin-bottom: 3rem!important;
+                    }
+                    
+                    .text-center{
+                        text-align:center;
+                    }
+                    .order-left{
+                        flex-direction: row-reverse;
+                    }
+                    .order-right{
+                        flex-direction: row;
+                    }
+                    .centered-block_img{
+                        max-height: 10rem;
+                        overflow: hidden;
+                    }
+                    @media(max-width: 1600px){
+                        .banner-img{
+                            margin-right: -80rem;
+                        }
+                    }
+                    @media(max-width:1100px){
+                        .blocks-padding{
+                            padding: 0rem;
+                        } 
+                        .row_newcss{
+                            flex-direction: column;
+                        }
+                        .fd-column-r_mb{
+                            flex-direction:column-reverse;
+                        }
+                        .flex-d-column_mb{
+                            flex-direction: column;
+                        }
+                        .headings_newcss{
+                            font-size:2rem;
+                        }
+                        .front-hero{
+                            margin-bottom: unset!important;
+                            padding-top: unset!important;
+                        }
+                        .banner-img{
+                            position: unset;
+                            margin-right: unset;
+                        }
+                        #colophon .footer-form-section-wrap{
+                            margin: -50px auto 0;
+                        }
+                        .order-left{
+                            flex-direction: column;
+                        }
+                        .order-right{
+                            flex-direction: column;
+                        }
+                        .break-anywhere{
+                            overflow-wrap: anywhere;
+                        }
+                    }
+                </style>
+                <div class=""
+                    <h1>
+                        Thank You for contacting us
+                    </h1>
+                <article class="main-article">
+                <?php 
+                    $has_glide = false;
+                        if( have_rows('blocks') ): 
+                            while( have_rows('blocks') ): the_row();
+                                if(get_row_layout() == 'testimonial_slider'):
+                                    $has_glide = true;
+                                elseif(get_row_layout() == 'carousel'):
+                                    $has_glide = true;
+                                endif;
+                            endwhile;
+                        endif;
+                    ?>
+
+                    <?php if($has_glide): ?>
+                        <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
+                    <?php endif;?>
+
+                    <?php
+                        if( have_rows('blocks') ): 
+                            while( have_rows('blocks') ): the_row();
+                                if(get_row_layout() == 'page_banner'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'homepage_banner'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'grid_images'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'grid_cards'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'grid_icon_cards'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'stylized_zigzag'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'separated_zigzag'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'repeater_zigzag'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'faq_blocks'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'text_centered_card'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'text_centered'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'two_cards'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'content_sidebar'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'testimonial_slider'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                elseif(get_row_layout() == 'carousel'):
+                                    include 'blocks/' . get_row_layout() . '.php';
+                                endif;
+                            endwhile;
+                        endif;
+                    ?>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            <?php
+                                $carouselConfig = [
+                                    'testimonial' => isset($howManySlidesTestimonial) ? $howManySlidesTestimonial : 1,
+                                    'carousel' => isset($howManySlidesCarousel) ? $howManySlidesCarousel : 1,
+                                ];
                             ?>
-                                <div class="banner-slider mt-4">
-                                    <?php foreach ($slider as $slide):
-                                        $img = $slide['image'];
-                                        $content1 = $slide['content'];
-                                        $content2 = $slide['content_2'];
-                                        $content3 = $slide['content_3'];
-                                    ?>
-                                    <div class="banner-slider-content px-4 px-lg-5">
-                                        <div class="row align-items-center justify-content-around w-100 gy-4">
-                                            <div class="col-auto fs-38 fw-700 lh-1 text-capitalize py-2 py-lg-0">
-                                                <?php echo $content1 ?>
-                                            </div>
-                                            
-                                            <?php if($content2): ?>
-                                                <div class="col-auto fs-24 fw-600 lh-1">
-                                                    <?php echo $content2; ?>
-                                                </div>
-                                            <?php endif;?>
-                                            
-                                            <div class="col-auto p-1">
-                                                <?php if($img):?>
-                                                    <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt'] ?>" class="block drain">
-                                                <?php 
-                                                    elseif($content3):
-                                                        echo $content3;
-                                                    endif;
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endforeach;?>
-                                </div>
-                            <?php endif;?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <img src="<?php echo $banner['background_image']['url'] ?>" alt="<?php echo $banner['background_image']['alt'] ?>" class='w-100 d-xl-none'>
-    </section>
-    <?php endif; ?>
-    
-    <?php
-    $form = get_field('form');
-    if($form):
-        $content = $form['content'];
-        $content_square = $form['content_square'];
-        $shortcode = $form['shortcode'];
-        $image = $form['image'];
-    ?>
-    <section class="form" id="form">
-        <div class="container-fluid">
-            <div class="row gy-5 align-items-center">
-                <div class="col-xl-6">
-                    <div class="qualification">
-                        <div class="row">
-                            <div class="col-md-7 col-lg-8">
-                                <?php echo $content ;?>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="bg-tertiary p-3">
-                                    <?php echo $content_square; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>" class="w-100 d-md-none bg-primary">            
-                </div>
-                <div class="col-lg">
-                    <?php echo $shortcode; ?>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php endif;?>
-    
-    
-    <?php
-    $about = get_field('about');
-    if($about):
-        $rotate_img = $about['image_circle_rotate'];
-        $image1 = $about['image_1'];
-        $image2 = $about['image_2'];
-        $content = $about['content'];
-        $button1 = $about['button_1'];
-        $button2 = $about['button_2'];
-    ?>
-    <section class="about">
-        <div class="container">
-            <div class="row align-items-center gy-5">
-                <div class="col-lg-6 position-relative d-flex justify-content-center">
-                    <div class="about-gallery">
-                        <img src="<?php echo $rotate_img['url'] ?>"  alt="<?php echo $rotate_img['alt'] ?>" class="about-circle">
-                        <div class="about-gallery-slider">
-                            <img src="<?php echo $image1['url'] ?>"  alt="<?php echo $image1['alt'] ?>" class="gal-1">
-                            <img src="<?php echo $image2['url'] ?>"  alt="<?php echo $image2['alt'] ?>" class="gal-2">                 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg">
-                    <div>
-                        <?php echo $content ?>
-                    </div>
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-12 col-md-auto">
-                            <a href="<?php echo $button1['url'] ?>" class="btn btn-primary rounded-0 text-white py-3 px-md-4 px-lg-3 px-xl-4">
-                                <?php echo $button1['title'] ?>        
-                            </a>
-                        </div>
-                        <div class="col-12 col-md-auto">
-                            <a href="<?php echo $button2['url'] ?>" class="btn bordered border-primary rounded-0 text-primary py-3 px-md-5 px-lg-3 px-xl-5">
-                                <?php echo $button2['title'] ?> 
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php endif;?>
-    
-    <?php
-    $services = get_field('services');
-    if($services):
-        $rotate_img = $services['image_circle_rotate'];
-        $image = $services['image'];
-        $content = $services['content'];
-        $button1 = $services['button_1'];
-        $button2 = $services['button_2'];
-        $slider_icon = $services['slider'];
-    ?>
-    <section class="services">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xxl-11">
-                    <div class="first-choice">
-                        <div class="row align-items-center gy-5">
-                            <div class="col-lg-8">
-                                <div class="row justify-content-center">
-                                    <div class="col-11 col-xl-9">
-                                        <div>
-                                            <?php echo $content ?>
-                                        </div>
-                                        
-                                        <div class="row gx-0 align-items-center">
-                                            <div class="col-12 col-md-auto">
-                                                <a href="<?php echo $button1['url'] ?>" class="btn btn-white rounded-0 text-primary py-3 px-md-4">
-                                                    <?php echo $button1['title'] ?>                                            
-                                                </a>
-                                            </div>
-                                            <div class="col-12 col-md-auto">
-                                                <a href="<?php echo $button2['url'] ?>" class="btn bordered border-white rounded-0 text-white py-3 px-md-5">
-                                                    <?php echo $button2['title'] ?>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg text-center text-lg-start">
-                                <img src="<?php echo $image['url'] ?>"  alt="<?php echo $image['alt'] ?>">                       
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="our-services py-5">
-            <div class="container">
-                <div class="text-center fs-30">Our <span class="fw-700">Services</span></div>
-                <div class="service-slider-nav">
-                    <?php foreach($slider_icon as $slide_icon): ?>
-                        <div class="service-slider-nav-content">
-                            <div>
-                                <img src="<?php echo $slide_icon['image']['url']?>" alt="<?php echo $slide_icon['image']['alt']?>" />
-                            </div>
-                            <div class="pt-4 text-center"><?php echo $slide_icon['text']?></div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-    
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 col-xl-8">
-                        <div class="service-slider">
-                            <?php foreach($slider_icon as $slidecontent): ?>
-                                <div class="service-slider-content">
-                                    <?php echo $slidecontent['content'] ?>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="container">
-            <div class="text-center mb-n3">
-                <div class="limited-time">Limited Time</div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-11 col-md-6 col-xl-4 col-xxl-3 bg-secondary text-white pt-5 pb-4">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-auto text-end lh-1 fs-30">
-                            <div>Senior</div>
-                            <div class="fw-800">Discount</div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="row align-items-center g-2">
-                                <div class="col-auto fs-79 lh-1 fw-800">10</div>
-                                <div class="col-auto lh-1 fs-30">
-                                    <div>%</div>
-                                    <div>Off</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center align-items-center pt-5 g-5 g-lg-4">
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/everhot.png alt=everhot class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/dux.png alt=dux class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/bosch.png alt=bosch class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/aquamax.png alt=aquamax class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/rheem.png alt=rheem class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/thermann.png alt=thermann class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/stiebel-eltron.png alt=stiebel-eltron class=''></div>
-                <div class="col-auto"><img src=https://melbournefirstchoiceplumbing.com.au/assets/images/logo/vulcan.png alt=vulcan class=''></div>
-            </div>
-        </div>
-    </section>
-    <?php endif;?>
-    <!-- Event snippet for Quote Form conversion page -->
+                            const carouselConfig = <?php echo json_encode($carouselConfig); ?>;
+                            const sliders = document.querySelectorAll('.glide');
+                            sliders.forEach(item => {
+                                let perView = 1;
+
+                                if (item.classList.contains('testimonial-carousel')) {
+                                    perView = carouselConfig.testimonial;
+                                } else if (item.classList.contains('main-carousel')) {
+                                    perView = carouselConfig.carousel;
+                                }
+
+                                const conf = {
+                                    type: 'carousel',
+                                    focusAt: 'center',
+                                    perView: perView,
+                                    animationDuration: 300,
+                                    autoplay: false,
+                                    hoverpause: true,
+                                    breakpoints: {
+                                        768: {
+                                            perView: 1
+                                        }
+                                    }
+                                };
+
+                                new Glide(item, conf).mount();
+                            });
+                        });
+                    </script>
+                </article>
+            </section>
+            <!-- Event snippet for Quote Form conversion page -->
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-10987189108/7dnRCKGqjN8DEPTmjPco'});
 </script>
-<?php get_footer() ?>
+<?php
+        endwhile;
+    endif;
+?>
+
+<?php get_footer(); ?>

@@ -4,6 +4,10 @@
         background-color: #030501;
         padding: 28px 0;
     }
+    .footer_logo{
+        display:flex;
+        align-items: center;
+    }
     .return_to_top{
         display: flex !important;
         align-items: center !important;
@@ -211,7 +215,7 @@
 <section class="site-footer z-1" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
     <div class="container">
         <div class="logo_footer_wrap py-1">
-            <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
+            <aside class="footer_logo" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
                 <div class="custom-logo custom_logo_footer">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home" aria-current="page">
                         <?php

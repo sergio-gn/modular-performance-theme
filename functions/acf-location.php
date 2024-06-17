@@ -5,13 +5,45 @@ add_action( 'acf/include_fields', function() {
 	}
 
 	acf_add_local_field_group( array(
-	'key' => 'group_654811dac9c99',
-	'title' => 'Blocks',
+	'key' => 'group_6548d1dac9c9as9',
+	'title' => 'Blocks Locations',
 	'fields' => array(
+	    array(
+			'key' => 'field_65481872wrdydd',
+			'label' => 'Use Global Location Content?',
+			'name' => 'use_global',
+			'aria-label' => '',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+		    ),
+		    'default_value' => 1,
+        	'return_format' => 'array',
+		),
+	    array(
+			'key' => 'field_65481872w6dcdd',
+			'label' => 'Suburb Name',
+			'name' => 'suburb_name',
+			'aria-label' => '',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+		    ),
+		),
 		array(
-			'key' => 'field_654818726dcdd',
-			'label' => 'Blocks',
-			'name' => 'blocks',
+			'key' => 'field_654818726dcdw',
+			'label' => 'Blocks Locations',
+			'name' => 'blocks_locations',
 			'aria-label' => '',
 			'type' => 'flexible_content',
 			'instructions' => '',
@@ -1884,14 +1916,14 @@ add_action( 'acf/include_fields', function() {
 			array(
 				'param' => 'page_template',
 				'operator' => '==',
-				'value' => 'blocks.php',
+				'value' => 'blocks_locations.php',
 			),
 		),
 		array(
 			array(
-				'param' => 'page_template',
+				'param' => 'options_page',
 				'operator' => '==',
-				'value' => 'homepage-2024.php',
+				'value' => 'acf-options-locations',
 			),
 		),
 	),
@@ -1903,6 +1935,5 @@ add_action( 'acf/include_fields', function() {
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
-	'show_in_rest' => false,
 ) );
 } );

@@ -6,9 +6,71 @@
 get_header();
 get_template_part( 'parts/navigation' );
 ?>
+<style>
+    .main{
+        font-family: system-ui;
+    }
+    .container_blog {
+        width: 100%;
+        padding: 2rem 1rem;
+        margin-right: auto;
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+    .container_blog_inner{
+        gap: 5rem;
+        justify-content: center;
+        display: flex;
+    }
+    .mainpost{
+        width: 75%;
+    }
+    .sidebar{
+        width: 25%;
+    }
+    .sidebar_link{
+        text-decoration: none;
+        color: var(--main-colour);
+    }
+    .post__title{
+        color: var(--main-colour);
+        font-size: 2rem;
+    }
+    @media(max-width:1100px){
+        .container_blog_inner{
+            flex-direction: column;
+        }
+        .mainpost{
+            width:100%;
+        }
+        .sidebar{
+            width: 100%;
+        }
+    }
+    @media (min-width: 576px) {
+        .container_blog {
+            max-width: 540px;
+        }
+    }
+    @media (min-width: 768px) {
+        .container_blog {
+            max-width: 720px;
+        }
+    }
+    @media (min-width: 992px) {
+        .container_blog {
+            max-width: 900px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .container_blog {
+            max-width: 1100px;
+        }
+    }
+</style>
 <main class="main mt-xl-3" role="main">
-    <div class="container">
-        <div class="d-flex justify-center gap-5 flex-d-columb-mb">
+    <div class="container_blog">
+        <div class="container_blog_inner">
             <div class="mainpost">
                 <?php while ( have_posts() ) : the_post(); ?>
                     <article <?php post_class(); ?>>
@@ -62,7 +124,7 @@ get_template_part( 'parts/navigation' );
                                             <?php endif; ?>
                                             <header class="post__header px-1" role="heading">
                                                 <p class="recent-posts-title">
-                                                    <a class="bold" href="<?php the_permalink(); ?>">
+                                                    <a class="sidebar_link bold" href="<?php the_permalink(); ?>">
                                                         <?php the_title(); ?>
                                                     </a>
                                                 </p>

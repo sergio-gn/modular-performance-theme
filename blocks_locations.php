@@ -1,13 +1,27 @@
 <?php
-/* Template Name: Blocks */
+/* Template Name: Blocks Locations */
 
 get_header();
 
 get_template_part( 'parts/navigation' );
 
-    if (have_posts()):
-        while (have_posts()) : the_post();	?>
+$suburbName = get_field('suburb_name');
 
+        
+        
+$useGlobal = get_field('use_global');
+if($useGlobal){
+    $field_name = 'blocks_locations';
+    $option = 'option';
+} else {
+    $field_name = 'blocks_locations';
+    $option = null;
+}
+
+    
+    if (have_posts()):
+        while (have_posts()) : the_post();	
+    ?>
             <section>
                 <style>
                     .grid-links{
@@ -241,8 +255,8 @@ get_template_part( 'parts/navigation' );
                 <article class="main-article">
                 <?php 
                     $has_glide = false;
-                        if( have_rows('blocks') ): 
-                            while( have_rows('blocks') ): the_row();
+                        if($option ? have_rows($field_name, $option) : have_rows($field_name)): 
+                            while($option ? have_rows($field_name, $option) : have_rows($field_name)): the_row();
                                 if(get_row_layout() == 'testimonial_slider'):
                                     $has_glide = true;
                                 elseif(get_row_layout() == 'carousel'):
@@ -253,44 +267,44 @@ get_template_part( 'parts/navigation' );
                     ?>
 
                     <?php if($has_glide): ?>
-                        <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
+                        <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks_location/carousel-assets/carousel.js' ); ?>"></script>
                     <?php endif;?>
 
                     <?php
-                        if( have_rows('blocks') ): 
-                            while( have_rows('blocks') ): the_row();
+                        if($option ? have_rows($field_name, $option) : have_rows($field_name)): 
+                            while($option ? have_rows($field_name, $option) : have_rows($field_name)): the_row();
                                 if(get_row_layout() == 'page_banner'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'homepage_banner'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'grid_images'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'grid_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'grid_icon_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'stylized_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'separated_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'repeater_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'faq_blocks'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'text_centered_card'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'text_centered'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'two_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'content_sidebar'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'testimonial_slider'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'carousel'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 elseif(get_row_layout() == 'location_areas'):
-                                    include 'blocks/' . get_row_layout() . '.php';
+                                    include 'blocks_locations/' . get_row_layout() . '.php';
                                 endif;
                             endwhile;
                         endif;

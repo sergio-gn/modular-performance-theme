@@ -58,7 +58,7 @@
         transition-property: all;
         transition-timing-function: cubic-bezier(.4,0,.2,1);
         overflow: hidden;
-        height: 3.5rem;
+        height: 2rem;
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -103,6 +103,7 @@
         background-color: var(--white_tone);
         color: var(--main-colour);
         fill: var(--main-colour);
+        border: 1px solid var(--white_tone);
     }
     .cta_button_secondary:before {
         --tw-bg-opacity: 1;
@@ -142,25 +143,29 @@
     .wpcf7{
         width: 40vw;
     }
-    .wpcf7-form input, .wpcf7-form textarea{
-        background: #363636;
+    .wpcf7-form input, .wpcf7-form textarea {
+        background: var(--white_tone);
         padding: 1rem;
         border-radius: 1rem;
-        border:none;
-        color: #fff;
+        border: none;
+        color: var(--black_tone);
         width: 100%;
         box-sizing: border-box;
+        box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+        border: solid 1px #cfcfcf;
     }
     .wpcf7-form input[type="submit"]{
-        background: #607466;
+        background: var(--main-colour);
         padding: 1rem;
         border-radius: 1rem;
         border:none;
         width:100%;
-        color: #fff;
+        color: var(--white_tone);
+        box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
     }
     .wpcf7-form label{
-        color: #fff;
+        color: var(--main-colour);
     }
     @media(max-width:1100px){
         .wpcf7{

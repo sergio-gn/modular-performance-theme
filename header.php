@@ -31,5 +31,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'AW-10987189108');
 </script>
+<!--test script-->
 
+<?php if ( is_page(5398) ) { ?>									
+<script>									
+ gtag('event', 'conversion', {'send_to': 'AW-16466794616/onaECPuurpQZEPiw_as9'});									
+</script>									
+									
+<?php } ?>									
+<!--end test script-->
 </head>
