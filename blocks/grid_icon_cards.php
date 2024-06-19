@@ -16,22 +16,24 @@
     .grid_text p{
         font-size:1.1rem;
     }
-    .text_card{
-        padding: 1.5rem;
+    .text_card_img{
+        padding: 1rem 1rem 0.5rem 1rem;
     }
-    .text_card h1,.text_card h2,.text_card h3 {
+    .text_card_icon{
+        padding: 0.5rem 1rem 1rem 1rem;
+    }
+    .text_card_icon h1,.text_card_icon h2,.text_card_icon h3 {
         font-weight: 900;
         font-size: 1.6rem;
         color:var(--main-colour);
         margin:0;
-        padding-bottom:1rem;
     }
-    .text_card h4,.text_card h5,.text_card h6{
+    .text_card_icon h4,.text_card_icon h5,.text_card_icon h6{
         font-weight: 900;
         color: var(--main-colour);
         font-size: 1.2rem;
     }
-    .text_card p{
+    .text_card_icon p{
         font-size:1.1rem;
     }
     .front-grid{
@@ -47,7 +49,6 @@
         border-radius: 0.25rem;
     }
     .grid-square_icon {
-        border: 2px solid #ccc;
         position: relative;
         padding: 0 1rem;
         background: #fff;
@@ -57,15 +58,26 @@
             box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3);
             
     }
-    .grid-square_icon:hover{
-        border: 2px solid var(--main-colour);
-    }
     .grid-square_icon a{
         text-decoration: none;
     }
 	.grid-square_icon p{
 		color:var(--grey_tone);
         text-align:left;
+	}
+	.grid_square_icon_background_primary{
+	    background-color: var(--main-colour);
+	            border: 2px solid var(--main-colour);
+	}
+	.grid_square_icon_background_primary:hover{
+	            border: 2px solid var(--white_tone);
+	}
+	.grid_square_icon_background_secondary{
+	    background-color: var(--white-tone);
+	            border: 2px solid var(--white_tone);
+	}
+	.grid_square_icon_background_secondary:hover{
+	        border: 2px solid var(--main-colour);
 	}
     .gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
         color:#000;
@@ -117,20 +129,21 @@
                     $link = get_sub_field('link');
                     $image = get_sub_field('image');
                     $gridContent = get_sub_field('content');
+                    $backgroundColour = get_sub_field('background_colour');
                     $countLimit = 10;
                 ?>
-                    <div class="grid-square_icon <?php if ($count >= $countLimit) echo 'extra'; ?>" <?php if ($count >= 6) echo 'style="display:none;"'; ?>>
+                    <div class="grid-square_icon <?php if ($count >= $countLimit) echo 'extra'; ?> grid_square_icon_<?php echo $backgroundColour?>" style="<?php if ($count >= 6) echo 'display:none;'; ?>">
                         <?php if (!empty($link) && isset($link['url'])): ?>
                             <a href="<?php echo esc_url($link['url']); ?>">
                         <?php endif; ?>
-                        <div class="d-flex_newcss justify-center_newcss align_center_blocks">
+                        <div class="text_card_img d-flex_newcss justify-center_newcss align_center_blocks">
                             <?php if (!empty($image) && isset($image['url'])): ?>
                                 <div class="front-grid_card-icon-wrap">
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="text_card text-center">
+                        <div class="text_card_icon text-center">
                             <?php echo $gridContent ?>
                         </div>
                         <?php if (!empty($link) && isset($link['url'])): ?>
