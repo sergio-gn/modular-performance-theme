@@ -353,8 +353,4 @@ if($useGlobal){
         endwhile;
     endif;
 ?>
-<!-- Event snippet for Quote Form conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-10987189108/7dnRCKGqjN8DEPTmjPco'});
-</script>
 <?php get_footer(); ?>
