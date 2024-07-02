@@ -5,18 +5,26 @@ get_header();
 
 get_template_part( 'parts/navigation' );
 
-$suburbName = get_field('suburb_name');
 
-        
-        
+$post_id = get_the_ID();
+
+// Get the custom field value
+$suburbName = get_post_meta($post_id, 'suburb_name_custom', true);
+
 $useGlobal = get_field('use_global');
-if($useGlobal){
-    $field_name = 'blocks_locations';
+$field_name = 'blocks_locations';
+
+echo $useGlobal;
+
+if ($useGlobal == null | empty($useGlobal)) {
     $option = 'option';
-} else {
-    $field_name = 'blocks_locations';
+} 
+elseif($useGlobal) {
+    $option = 'option';
+}else{
     $option = null;
 }
+
 
     
     if (have_posts()):
@@ -353,4 +361,8 @@ if($useGlobal){
         endwhile;
     endif;
 ?>
+<!-- Event snippet for Quote Form conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-10987189108/7dnRCKGqjN8DEPTmjPco'});
+</script>
 <?php get_footer(); ?>
