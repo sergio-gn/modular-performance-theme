@@ -42,6 +42,9 @@
         width: 100%;
         height: 100%;
     }
+    .two_cards_card_image{
+        display:flex;
+    }
     @media(max-width:1100px){
         .front-two_cards{
             margin-top: unset;
