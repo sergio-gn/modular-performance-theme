@@ -239,108 +239,75 @@ get_template_part( 'parts/navigation' );
                 </style>
                     
                 <article class="main-article">
-                <?php 
-                    $has_glide = false;
-                        if( have_rows('blocks') ): 
-                            while( have_rows('blocks') ): the_row();
-                                if(get_row_layout() == 'testimonial_slider'):
+                    <?php 
+                        $has_glide = false;
+                        
+                        // Dynamically get block layouts from the 'blocks' directory
+                        $block_directory = get_template_directory() . '/blocks';
+                        $block_files = glob($block_directory . '/*.php');
+
+                        $block_layouts = array_map(function($file) {
+                            return basename($file, '.php');
+                        }, $block_files);
+
+                        if (have_rows('blocks')): 
+                            while (have_rows('blocks')): the_row();
+                                $layout = get_row_layout();
+                                if (in_array($layout, ['testimonial_slider', 'carousel'])) {
                                     $has_glide = true;
-                                elseif(get_row_layout() == 'carousel'):
-                                    $has_glide = true;
-                                endif;
-                            endwhile;
-                        endif;
-                    ?>
-
-                    <?php if($has_glide): ?>
-                        <script src="<?php echo esc_url( get_template_directory_uri() . '/blocks/carousel-assets/carousel.js' ); ?>"></script>
-                    <?php endif;?>
-
-                    <?php
-                        if( have_rows('blocks') ): 
-                            while( have_rows('blocks') ): the_row();
-                                if(get_row_layout() == 'page_banner'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'homepage_banner'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'grid_images'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'grid_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'grid_icon_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'stylized_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'separated_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'repeater_zigzag'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'faq_blocks'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'text_centered_card'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'text_centered'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'two_cards'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'content_sidebar'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'testimonial_slider'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'carousel'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                elseif(get_row_layout() == 'location_areas'):
-                                    include 'blocks/' . get_row_layout() . '.php';
-                                endif;
-                            endwhile;
-                        endif;
-                    ?>
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            <?php
-                                $carouselConfig = [
-                                    'testimonial' => isset($howManySlidesTestimonial) ? $howManySlidesTestimonial : 1,
-                                    'carousel' => isset($howManySlidesCarousel) ? $howManySlidesCarousel : 1,
-                                ];
-                            ?>
-                            const carouselConfig = <?php echo json_encode($carouselConfig); ?>;
-                            const sliders = document.querySelectorAll('.glide');
-                            sliders.forEach(item => {
-                                let perView = 1;
-
-                                if (item.classList.contains('testimonial-carousel')) {
-                                    perView = carouselConfig.testimonial;
-                                } else if (item.classList.contains('main-carousel')) {
-                                    perView = carouselConfig.carousel;
                                 }
 
-                                const conf = {
-                                    type: 'carousel',
-                                    focusAt: 'center',
-                                    perView: perView,
-                                    animationDuration: 300,
-                                    autoplay: false,
-                                    hoverpause: true,
-                                    breakpoints: {
-                                        768: {
-                                            perView: 1
-                                        }
-                                    }
-                                };
+                                if (in_array($layout, $block_layouts)) {
+                                    include $block_directory . '/' . $layout . '.php';
+                                }
+                            endwhile;
+                        endif;
+                    ?>
 
-                                new Glide(item, conf).mount();
+                    <?php if ($has_glide): ?>
+                        <script src="<?php echo esc_url(get_template_directory_uri() . '/blocks/carousel-assets/carousel.js'); ?>"></script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                <?php
+                                    $carouselConfig = [
+                                        'testimonial' => isset($howManySlidesTestimonial) ? $howManySlidesTestimonial : 1,
+                                        'carousel' => isset($howManySlidesCarousel) ? $howManySlidesCarousel : 1,
+                                    ];
+                                ?>
+                                const carouselConfig = <?php echo json_encode($carouselConfig); ?>;
+                                const sliders = document.querySelectorAll('.glide');
+                                sliders.forEach(item => {
+                                    let perView = 1;
+
+                                    if (item.classList.contains('testimonial-carousel')) {
+                                        perView = carouselConfig.testimonial;
+                                    } else if (item.classList.contains('main-carousel')) {
+                                        perView = carouselConfig.carousel;
+                                    }
+
+                                    const conf = {
+                                        type: 'carousel',
+                                        focusAt: 'center',
+                                        perView: perView,
+                                        animationDuration: 300,
+                                        autoplay: false,
+                                        hoverpause: true,
+                                        breakpoints: {
+                                            768: {
+                                                perView: 1
+                                            }
+                                        }
+                                    };
+
+                                    new Glide(item, conf).mount();
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+                    <?php endif; ?>
                 </article>
             </section>
 <?php
         endwhile;
     endif;
 ?>
-<!-- Event snippet for Quote Form conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-10987189108/7dnRCKGqjN8DEPTmjPco'});
-</script>
 <?php get_footer(); ?>
