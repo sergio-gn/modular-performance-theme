@@ -88,7 +88,6 @@
         max-height: 500px;
     }
     .faq_text{
-        width: 75%;
         margin: auto;
     }
     .faq_text h2{
