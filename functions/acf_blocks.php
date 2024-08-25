@@ -2069,14 +2069,7 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'blocks.php',
 			),
-		),
-		array(
-			array(
-				'param' => 'page_template',
-				'operator' => '==',
-				'value' => 'homepage-2024.php',
-			),
-		),
+		)
 	),
 	'menu_order' => 0,
 	'position' => 'normal',
