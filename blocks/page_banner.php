@@ -1,8 +1,11 @@
 <style>
+    .container_banner{
+        padding: 0 2rem;
+    }
     .homepage_hero{
         display: flex;
         align-items: center;
-        margin-top: -5rem;
+        margin-top: -6rem;
         position: relative;
         background-position: bottom;
         height: 90vh;
@@ -56,7 +59,7 @@
         margin: 1rem 0;
     }
     .banner-text h1 strong{
-        background: -webkit-linear-gradient(#30513A, #607466);
+        background: -webkit-linear-gradient(var(--font-gradient-left), var(--font-gradient-right));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -82,7 +85,7 @@
         $image = get_sub_field('image');
 ?>
         <section class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>">
-            <div class="container">
+            <div class="container_banner">
                 <div class="<?php echo is_front_page() ? 'center_title' : 'center_title_sidebar'; ?>">
                     <div class="banner-text">
                         <?php echo $content ?>
