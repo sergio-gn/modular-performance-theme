@@ -11,9 +11,6 @@
         -webkit-text-fill-color: transparent;
         line-height: 1;
     }
-    .repeater_zigzag_container{
-        padding: 2rem;
-    }
     .repeater_zigzag p{
         padding:1rem 0;
         font-size: 1rem;
@@ -46,8 +43,8 @@
         $bgColour = get_sub_field('bg_colour');
         $padding = get_sub_field('padding');
     ?>
-        <section class="repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo 'blocks-padding';} ?>" style="background-color: <?php echo $bgColour; ?>">
-            <div class="repeater_zigzag_container container" <?php if(!$padding){echo 'style="padding:0"';} ?>>
+        <section class="repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo $padding;} ?>" style="background-color: <?php echo $bgColour; ?>">
+            <div class="repeater_zigzag_container container">
                 <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3 <?php echo $order ?>">
                     <div class="flex-1">
                         <div class="front-zig zig_content">

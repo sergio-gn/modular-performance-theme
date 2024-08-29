@@ -7,19 +7,6 @@
     <?php $gtag = get_field('google_tag','option'); if (isset($gtag) && !empty($gtag)){echo $gtag;}?>
 </head>
 <style>
-  :root{
-      --main-colour: #000000;
-      --main_colour_darker: #2e2e2e;
-      --secondary-colour: #7d89aa;
-      --background-colour: #21242f;
-      --font-gradient-left: #30513A;
-      --font-gradient-right: #607466;
-      --white_tone: #fff;
-      --white_tone_darker: #f0f0f0;
-      --black_tone: #030501;
-      --grey_tone: #353535;
-      --light_grey_tone: #cdcdcd;
-  }
   @media screen and (max-width: 600px) {
       #wpadminbar {
           position: fixed !important;
