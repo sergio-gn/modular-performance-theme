@@ -12,6 +12,7 @@
     }
     .sidepage_hero{
         height: 50vh;
+        width: 100vw;
         position:relative;
         display: flex;
         align-items: center;
