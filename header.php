@@ -7,12 +7,29 @@
     <?php $gtag = get_field('google_tag','option'); if (isset($gtag) && !empty($gtag)){echo $gtag;}?>
 </head>
 <style>
+  /*******  globals *********/
+    :root{
+      --main-colour: #2baf4a;
+      --main_colour_darker: #175e28;
+      --secondary-colour: #2baf4a;
+      --background-colour: #21242f;
+      --font-gradient-left: #30513A;
+      --font-gradient-right: #607466;
+      --white_tone: #fff;
+      --white_tone_darker: #f0f0f0;
+      --black_tone: #030501;
+      --grey_tone: #353535;
+      --light_grey_tone: #e5e5e5;
+    }
+    ::selection {
+        background: var(--main-colour);
+        -webkit-text-fill-color: var(--white_tone);
+    }
   @media screen and (max-width: 600px) {
       #wpadminbar {
           position: fixed !important;
       }
   }
-  /*******  globals *********/
   body{
       margin: 0;
       font-family: system-ui;
