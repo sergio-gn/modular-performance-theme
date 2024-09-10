@@ -234,7 +234,7 @@
                     <?php echo do_shortcode('[custom_buttons]') ?>
                 </div>
             </div>
-            <?php if(!is_front_page()):?>
+
             <div class="d-grid grid_footer gap-2">
                 <div class="site-footer-primary-section-2 site-footer-section site-footer-section-2">
                     <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-4" aria-label="Footer Widget 4">
@@ -369,7 +369,6 @@
                     </aside>
                 </div>
             </div>
-            <?php endif;?>
         </div>
     </section>
     <footer class="modular_theme_footer">
