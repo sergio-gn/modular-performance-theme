@@ -108,3 +108,5 @@ if ( ! function_exists('tdav_css') ) {
     }
 }
 add_filter( 'mce_css', 'tdav_css' );
+
+add_theme_support('post-thumbnails');
