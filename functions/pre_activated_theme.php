@@ -22,33 +22,38 @@ function my_theme_install_acf_plugin() {
     include_once(ABSPATH . 'wp-admin/includes/plugin.php');
     include_once(ABSPATH . 'wp-admin/includes/class-wp-upgrader.php');
     
-    $plugin_path = get_template_directory() . '/acf.zip';
+    $plugin_slug = 'advanced-custom-fields-pro';
+    $plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug;
+    $plugin_zip = get_template_directory() . '/acf.zip';
 
+    // Check if the plugin is already installed
     if (file_exists($plugin_path)) {
-        $upgrader = new Plugin_Upgrader();
-        $installed_plugins = get_plugins();
-        
-        // Check if ACF is not already installed
-        if (!isset($installed_plugins['advanced-custom-fields/acf.php'])) {
-            // Install the plugin
-            $upgrader->install($plugin_path);
-        }
-
-        // Delay activation to avoid header issues
-        add_action('admin_init', function() {
-            if (!is_plugin_active('advanced-custom-fields/acf.php')) {
-                $result = activate_plugin('advanced-custom-fields/acf.php');
-                
-                if (is_wp_error($result)) {
-                    error_log('Failed to activate ACF plugin: ' . $result->get_error_message());
-                } else {
-                    error_log('ACF plugin successfully activated.');
-                }
-            }
-        });
+        error_log("The plugin already exists in: " . $plugin_path);
     } else {
-        error_log('ACF zip file not found at: ' . $plugin_path);
+        // Install the plugin
+        if (file_exists($plugin_zip)) {
+            $upgrader = new Plugin_Upgrader();
+            $upgrader->install($plugin_zip);
+        } else {
+            error_log("ACF plugin ZIP file not found: " . $plugin_zip);
+            return;
+        }
     }
+
+    // Delay activation to avoid header issues
+    add_action('admin_init', function() use ($plugin_slug) {
+        $plugin_file = $plugin_slug . '/acf.php';
+        
+        if (!is_plugin_active($plugin_file)) {
+            $result = activate_plugin($plugin_file);
+            
+            if (is_wp_error($result)) {
+                error_log("Failed to activate ACF plugin: " . $result->get_error_message());
+            } else {
+                error_log("ACF plugin activated successfully.");
+            }
+        }
+    });
 }
 
 // Function to import ACF fields from blocks.json after ACF is loaded
