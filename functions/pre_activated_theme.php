@@ -1,12 +1,77 @@
 <?php
 function my_theme_setup() {
-    // Run your setup functions here
+    // Ensure necessary admin files are included
+    if (is_admin()) {
+        // Install and activate ACF plugin
+        my_theme_install_acf_plugin();
+        
+        // Delay ACF field import until after ACF is fully loaded
+        add_action('acf/init', 'my_theme_import_acf_fields');
+    }
+
+    // Run your setup functions
     my_theme_create_pages();
     my_theme_set_homepage();
     my_theme_create_menu();
     my_theme_upload_logo();
 }
 add_action('after_switch_theme', 'my_theme_setup');
+
+function my_theme_install_acf_plugin() {
+    include_once(ABSPATH . 'wp-admin/includes/file.php');
+    include_once(ABSPATH . 'wp-admin/includes/misc.php');
+    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+    include_once(ABSPATH . 'wp-admin/includes/class-wp-upgrader.php');
+    
+    $plugin_path = get_template_directory() . '/acf.zip';
+
+    if (file_exists($plugin_path)) {
+        $upgrader = new Plugin_Upgrader();
+        $installed_plugins = get_plugins();
+        
+        // Check if ACF is not already installed
+        if (!isset($installed_plugins['advanced-custom-fields/acf.php'])) {
+            // Install the plugin
+            $upgrader->install($plugin_path);
+        }
+
+        // Now, activate the plugin if it's not already activated
+        if (!is_plugin_active('advanced-custom-fields/acf.php')) {
+            $result = activate_plugin('advanced-custom-fields/acf.php');
+            
+            // Check if activation caused an error and log it
+            if (is_wp_error($result)) {
+                error_log('Failed to activate ACF plugin: ' . $result->get_error_message());
+            } else {
+                error_log('ACF plugin successfully activated.');
+            }
+        } else {
+            error_log('ACF plugin is already active.');
+        }
+    } else {
+        error_log('ACF zip file not found at: ' . $plugin_path);
+    }
+}
+
+// Function to import ACF fields from blocks.json after ACF is loaded
+function my_theme_import_acf_fields() {
+    // Ensure the ACF function exists
+    if (function_exists('acf_add_local_field_group')) {
+        $acf_json_file = get_template_directory() . '/blocks.json';
+        
+        if (file_exists($acf_json_file)) {
+            $acf_data = json_decode(file_get_contents($acf_json_file), true);
+            
+            if (!empty($acf_data)) {
+                foreach ($acf_data as $acf_group) {
+                    acf_add_local_field_group($acf_group);
+                }
+            }
+        }
+    } else {
+        error_log('ACF plugin is not loaded, cannot import fields.');
+    }
+}
 
 function my_theme_create_pages() {
     // Check if the setup has already been done
