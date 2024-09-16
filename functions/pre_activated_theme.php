@@ -1,19 +1,18 @@
 <?php
 function my_theme_setup() {
-    // Ensure necessary admin files are included
+    ob_start(); // Start output buffering
+    
     if (is_admin()) {
-        // Install and activate ACF plugin
         my_theme_install_acf_plugin();
-        
-        // Delay ACF field import until after ACF is fully loaded
         add_action('acf/init', 'my_theme_import_acf_fields');
     }
 
-    // Run your setup functions
     my_theme_create_pages();
     my_theme_set_homepage();
     my_theme_create_menu();
     my_theme_upload_logo();
+
+    ob_end_flush(); // End output buffering
 }
 add_action('after_switch_theme', 'my_theme_setup');
 
@@ -35,19 +34,18 @@ function my_theme_install_acf_plugin() {
             $upgrader->install($plugin_path);
         }
 
-        // Now, activate the plugin if it's not already activated
-        if (!is_plugin_active('advanced-custom-fields/acf.php')) {
-            $result = activate_plugin('advanced-custom-fields/acf.php');
-            
-            // Check if activation caused an error and log it
-            if (is_wp_error($result)) {
-                error_log('Failed to activate ACF plugin: ' . $result->get_error_message());
-            } else {
-                error_log('ACF plugin successfully activated.');
+        // Delay activation to avoid header issues
+        add_action('admin_init', function() {
+            if (!is_plugin_active('advanced-custom-fields/acf.php')) {
+                $result = activate_plugin('advanced-custom-fields/acf.php');
+                
+                if (is_wp_error($result)) {
+                    error_log('Failed to activate ACF plugin: ' . $result->get_error_message());
+                } else {
+                    error_log('ACF plugin successfully activated.');
+                }
             }
-        } else {
-            error_log('ACF plugin is already active.');
-        }
+        });
     } else {
         error_log('ACF zip file not found at: ' . $plugin_path);
     }
@@ -166,3 +164,4 @@ function my_theme_upload_logo() {
     // Set as theme logo
     set_theme_mod('custom_logo', $attach_id);
 }
+?>
