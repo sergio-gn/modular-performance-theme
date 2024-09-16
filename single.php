@@ -30,10 +30,10 @@ get_template_part( 'parts/navigation' );
     }
     .sidebar_link{
         text-decoration: none;
-        color: var(--main-colour);
+        color: var(--main_colour);
     }
     .post__title{
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-size: 2rem;
     }
     @media(max-width:1100px){

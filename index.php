@@ -9,11 +9,11 @@ get_template_part( 'parts/navigation' );
     .blog_title{
         padding-top: 2rem;
         padding-bottom:2rem;
-        background: var(--main-colour);
+        background: var(--main_colour);
         color: var(--white_tone);
     }
     .blog_link{
-        color: var(--main-colour);
+        color: var(--main_colour);
         text-decoration: none;
     }
     .blog_space{
@@ -36,7 +36,7 @@ get_template_part( 'parts/navigation' );
         box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3);
     }
     .post__header:hover {
-        border: 2px solid var(--main-colour);
+        border: 2px solid var(--main_colour);
     }
     .page-title{
         font-size: 2.5rem;

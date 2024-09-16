@@ -60,7 +60,7 @@
         margin: 1rem 0;
     }
     .banner-text h1 strong{
-        background: -webkit-linear-gradient(var(--font-gradient-left), var(--font-gradient-right));
+        background: -webkit-linear-gradient(var(--font_gradient_left), var(--font_gradient_right));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }

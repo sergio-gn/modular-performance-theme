@@ -56,25 +56,17 @@ function my_theme_install_acf_plugin() {
     });
 }
 
-// Function to import ACF fields from blocks.json after ACF is loaded
-function my_theme_import_acf_fields() {
-    // Ensure the ACF function exists
-    if (function_exists('acf_add_local_field_group')) {
-        $acf_json_file = get_template_directory() . '/blocks.json';
-        
-        if (file_exists($acf_json_file)) {
-            $acf_data = json_decode(file_get_contents($acf_json_file), true);
-            
-            if (!empty($acf_data)) {
-                foreach ($acf_data as $acf_group) {
-                    acf_add_local_field_group($acf_group);
-                }
-            }
-        }
-    } else {
-        error_log('ACF plugin is not loaded, cannot import fields.');
-    }
+function my_acf_json_load_point( $paths ) {
+    // Remove the original path (optional).
+    unset($paths[0]);
+
+    // Append the new path where your JSON files are located.
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+
+    return $paths;    
 }
+add_filter( 'acf/settings/load_json', 'my_acf_json_load_point' );
+
 
 function my_theme_create_pages() {
     // Check if the setup has already been done

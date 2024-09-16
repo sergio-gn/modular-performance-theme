@@ -37,7 +37,7 @@
         width: 70%;
     }
     .sidebar_style {
-        border: 1px solid var(--main-colour);
+        border: 1px solid var(--main_colour);
         padding: 20px 20px 10px;
     }
     .widget_nav_menu li {
@@ -64,11 +64,11 @@
         text-decoration: none;
     }
     .content-aside .menu a:hover {
-        background: var(--main-colour);
+        background: var(--main_colour);
         color: #fff;
     }
     .content-aside .current-menu-item a {
-        background: var(--main-colour);
+        background: var(--main_colour);
         transition: 0.5s;
         color: #fff !important;
     }
@@ -83,10 +83,10 @@
     .sidebar_cta-title{
         padding: 15px 0 10px;
         margin: 0;
-        color: var(--main-colour);
+        color: var(--main_colour);
     }
     .book-btn a {
-        background: var(--main-colour);
+        background: var(--main_colour);
         color: var(--white_tone);
         padding: 17px 30px 19px;
     }

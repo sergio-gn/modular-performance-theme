@@ -21,7 +21,7 @@
         font-weight: normal;
     }
     .testimonials_slider-wrapper .quote_name{
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-weight: bold;
     }
     @media(max-width:1100px){
@@ -85,15 +85,15 @@
     }
     .glide__arrow{
         padding: 0.5rem 0.7rem;
-        color: var(--main-colour);
+        color: var(--main_colour);
         background:#fff!important;
         font-size: 1.5rem;
         font-weight: bold;
         font-family: monospace;
     }
     .glide__arrow:hover{
-        background: var(--main-colour)!important;
-        border: 4px solid var(--main-colour);
+        background: var(--main_colour)!important;
+        border: 4px solid var(--main_colour);
         color: #fff;
         cursor: pointer;
     }
@@ -179,7 +179,7 @@
         height: 1rem;
         border-radius: 1rem;
         border: none;
-        background: var(--main-colour)!important;
+        background: var(--main_colour)!important;
         opacity: 1;
     }
     .container .testimonial-carousel button.glide__bullet{

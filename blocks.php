@@ -10,25 +10,12 @@ get_template_part( 'parts/navigation' );
 
             <section>
                 <style>
-                    :root{
-                        --main-colour: #000000;
-                        --main_colour_darker: #2e2e2e;
-                        --secondary-colour: #7d89aa;
-                        --background-colour: #21242f;
-                        --font-gradient-left: #30513A;
-                        --font-gradient-right: #607466;
-                        --white_tone: #fff;
-                        --white_tone_darker: #f0f0f0;
-                        --black_tone: #030501;
-                        --grey_tone: #353535;
-                        --light_grey_tone: #cdcdcd;
-                    }
                     .grid-links{
                         display: flex;
                         justify-content: space-between; 
                     }
                     .grid-links a{
-                        color:var(--main-colour)!important;
+                        color:var(--main_colour)!important;
                     }
                     @media(max-width:1100px){
                         .grid-links{flex-direction: column;}
@@ -82,7 +69,7 @@ get_template_part( 'parts/navigation' );
                     }
                     
                     ::selection {
-                      background-color: var(--main-colour);
+                      background-color: var(--main_colour);
                       color: #fff;
                     }
                     
@@ -90,7 +77,7 @@ get_template_part( 'parts/navigation' );
                     textarea::selection,
                     input::-moz-selection,
                     textarea::-moz-selection {
-                      background-color: var(--main-colour);
+                      background-color: var(--main_colour);
                       color: #fff; /
                     }
         

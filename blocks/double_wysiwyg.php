@@ -1,12 +1,12 @@
 <style>
     .repeater_zigzag h1, .repeater_zigzag h2, .repeater_zigzag h3, .repeater_zigzag h4, .repeater_zigzag h5, .repeater_zigzag h6 {
         font-size: 2rem;
-        color: var(--main-colour);
+        color: var(--main_colour);
     }
     .repeater_zigzag h1 strong, .repeater_zigzag h2 strong, .repeater_zigzag h3 strong, .repeater_zigzag h4 strong, .repeater_zigzag h5 strong, .repeater_zigzag h6 strong {
         font-size: 3rem;
         font-weight: 900;
-        background: -webkit-linear-gradient(var(--main-colour), var(--main_colour_darker));
+        background: -webkit-linear-gradient(var(--main_colour), var(--main_colour_darker));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1;

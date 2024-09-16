@@ -47,7 +47,7 @@
         width: 14px;
         height: 3px;
         border-radius: 2px;
-        background-color: var(--main-colour);
+        background-color: var(--main_colour);
         position: absolute;
         top: 6px;
     }
@@ -56,7 +56,7 @@
         width: 14px;
         height: 3px;
         border-radius: 2px;
-        background-color: var(--main-colour);
+        background-color: var(--main_colour);
         position: absolute;
         top: 6px;
         transform: rotate(90deg);
@@ -104,7 +104,7 @@
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
-        background-color: var(--main-colour);
+        background-color: var(--main_colour);
         color: var(--white_tone);
         border: none;
         cursor: pointer;
@@ -112,7 +112,7 @@
     }
     
     #show-more-btn.show-less {
-        background-color: var(--main-colour);
+        background-color: var(--main_colour);
         color: var(--white_tone);
     }
     @media(max-width:1100px){

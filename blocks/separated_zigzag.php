@@ -11,7 +11,7 @@
     .separated_zigzag h1 strong, .separated_zigzag h2 strong, .separated_zigzag h3 strong, .separated_zigzag h4 strong, .separated_zigzag h5 strong, .separated_zigzag h6 strong {
         font-size: 3rem;
         font-weight: 900;
-        background: -webkit-linear-gradient(var(--main-colour), var(--main_colour_darker));
+        background: -webkit-linear-gradient(var(--main_colour), var(--main_colour_darker));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1;

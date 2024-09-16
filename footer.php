@@ -90,13 +90,13 @@
             z-index:1;
         }
         .footer-bottom{
-            background-color: var(--main-colour);
+            background-color: var(--main_colour);
             font-family: system-ui;
         }
         .widget-title-1 {
             font-size: 24px !important;
             font-weight: 600 !important;
-            color: var(--main-colour) !important;
+            color: var(--main_colour) !important;
             padding-left: 0px !important;
         }
         .site-primary-footer-wrap{
@@ -121,10 +121,10 @@
             position: absolute;
             left: -1rem;
             font-weight: 900;
-            color: var(--main-colour);
+            color: var(--main_colour);
         }
         .footer-icon {
-            background: var(--main-colour);
+            background: var(--main_colour);
             box-shadow: 4px 4px 0 0 #000000;
             border-radius: 5px;
             height: 2rem;

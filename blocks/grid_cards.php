@@ -10,7 +10,7 @@
     }
     .grid_text h4,.grid_text h5,.grid_text h6{
         font-weight: 900;
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-size: 1.2rem;
     }
     .grid_text p{
@@ -24,7 +24,7 @@
     }
     .text_card h4,.text_card h5,.text_card h6{
         font-weight: 900;
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-size: 1.2rem;
     }
     .text_card p{
@@ -51,7 +51,7 @@
         border-radius: 1rem;
     }
     .grid-square:hover{
-        border: 4px solid var(--main-colour);
+        border: 4px solid var(--main_colour);
     }
 	.grid-square p{
 		color:#000;
@@ -63,7 +63,7 @@
     } 
     .view-more-button{
         margin: 1rem;
-        background: var(--main-colour);
+        background: var(--main_colour);
         font-size: 17px;
         padding: 16px 30px;
         color: #fff;
@@ -71,7 +71,7 @@
         border:none;
     }
     .view-more-button:hover{
-        background: var(--main-colour);
+        background: var(--main_colour);
     }
     .front-grid-2{
         grid-template-columns: 1fr 1fr;

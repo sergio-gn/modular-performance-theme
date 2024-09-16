@@ -8,21 +8,27 @@
 </head>
 <style>
   /*******  globals *********/
-    :root{
-      --main-colour: #2baf4a;
-      --main_colour_darker: #175e28;
-      --secondary-colour: #2baf4a;
-      --background-colour: #21242f;
-      --font-gradient-left: #30513A;
-      --font-gradient-right: #607466;
-      --white_tone: #fff;
-      --white_tone_darker: #f0f0f0;
-      --black_tone: #030501;
-      --grey_tone: #353535;
-      --light_grey_tone: #e5e5e5;
-    }
+    <?php 
+        $websitePalette = get_field('website_palette','option');
+        if($websitePalette):
+    ?>
+        :root{
+        --main_colour: <?php echo $websitePalette['main_colour'] ?>;
+        --main_colour_darker: <?php echo $websitePalette['main_colour_darker'] ?>;
+        --secondary_colour: <?php echo $websitePalette['secondary_colour'] ?>;
+        --background_colour: <?php echo $websitePalette['background_colour'] ?>;
+        --font_gradient_left: <?php echo $websitePalette['font_gradient_colour_1'] ?>;
+        --font_gradient_right: <?php echo $websitePalette['font_gradient_colour_2'] ?>;
+        --white_tone:<?php echo $websitePalette['white_tone'] ?>;
+        --white_tone_darker: <?php echo $websitePalette['white_tone_darker'] ?>;
+        --black_tone: <?php echo $websitePalette['black_tone'] ?>;
+        --grey_tone: <?php echo $websitePalette['grey_tone'] ?>;
+        --light_grey_tone: <?php echo $websitePalette['light_grey_tone'] ?>;
+        }
+    <?php endif;?> 
+    
     ::selection {
-        background: var(--main-colour);
+        background: var(--main_colour);
         -webkit-text-fill-color: var(--white_tone);
     }
   @media screen and (max-width: 600px) {
@@ -35,7 +41,7 @@
       font-family: system-ui;
   }
   .text-primary{
-      color: var(--main-colour);
+      color: var(--main_colour);
   }
   .custom-logo img {
       height: auto;
@@ -79,7 +85,7 @@
       z-index: 1;
   }
   .cta_button_primary {
-      background-color: var(--main-colour);
+      background-color: var(--main_colour);
       color: var(--white_tone);
       fill: var(--white_tone);
   }
@@ -111,13 +117,13 @@
 
   .cta_button_secondary {
       background-color: var(--white_tone);
-      color: var(--main-colour);
-      fill: var(--main-colour);
+      color: var(--main_colour);
+      fill: var(--main_colour);
       border: 1px solid var(--white_tone);
   }
   .cta_button_secondary:before {
       --tw-bg-opacity: 1;
-      background-color: var(--main-colour);
+      background-color: var(--main_colour);
       content: "";
       height: 0;
       left: 0;
@@ -165,7 +171,7 @@
       border: solid 1px #cfcfcf;
   }
   .wpcf7-form input[type="submit"]{
-      background: var(--main-colour);
+      background: var(--main_colour);
       padding: 1rem;
       border-radius: 1rem;
       border:none;
@@ -175,7 +181,7 @@
       cursor: pointer;
   }
   .wpcf7-form label{
-      color: var(--main-colour);
+      color: var(--main_colour);
   }
   @media(max-width:1100px){
       .wpcf7{
@@ -366,7 +372,7 @@
       text-decoration: none;
   }
   .navigation li a:hover {
-      color: var(--main-colour);
+      color: var(--main_colour);
   }
   .navigation ul.nav-class li ul.sub-menu {
       display: none;
@@ -387,16 +393,16 @@
       padding:1rem;
       text-decoration: none;
       display:block;
-      color: var(--main-colour);
+      color: var(--main_colour);
       min-width: 10rem;
   }
   .menu-item-has-children .sub-menu li a:hover{
-      background: var(--main-colour);
+      background: var(--main_colour);
       color: var(--white_tone);
       transition-duration: 0.5s;
   }
   .navigation .menu-item-has-children .sub-menu li a:hover {
-      background: var(--main-colour);
+      background: var(--main_colour);
       color: var(--white_tone);
   }
   .head-book{

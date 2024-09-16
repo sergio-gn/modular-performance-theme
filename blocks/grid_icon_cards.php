@@ -10,7 +10,7 @@
     }
     .grid_text h4,.grid_text h5,.grid_text h6{
         font-weight: 900;
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-size: 1.2rem;
     }
     .grid_text p{
@@ -25,12 +25,12 @@
     .text_card_icon h1,.text_card_icon h2,.text_card_icon h3 {
         font-weight: 900;
         font-size: 1.6rem;
-        color:var(--main-colour);
+        color:var(--main_colour);
         margin:0;
     }
     .text_card_icon h4,.text_card_icon h5,.text_card_icon h6{
         font-weight: 900;
-        color: var(--main-colour);
+        color: var(--main_colour);
         font-size: 1.2rem;
     }
     .text_card_icon p{
@@ -66,8 +66,8 @@
         text-align:left;
 	}
 	.grid_square_icon_background_primary{
-	    background-color: var(--main-colour);
-	            border: 2px solid var(--main-colour);
+	    background-color: var(--main_colour);
+	            border: 2px solid var(--main_colour);
 	}
 	.grid_square_icon_background_primary:hover{
 	            border: 2px solid var(--white_tone);
@@ -77,7 +77,7 @@
 	            border: 2px solid var(--white_tone);
 	}
 	.grid_square_icon_background_secondary:hover{
-	        border: 2px solid var(--main-colour);
+	        border: 2px solid var(--main_colour);
 	}
     .gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
         color:#000;
@@ -86,7 +86,7 @@
     } 
     .view_more_button{
         margin: 1rem;
-        background: var(--main-colour);
+        background: var(--main_colour);
         font-size: 17px;
         padding: 16px 30px;
         color: #fff;
