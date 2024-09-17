@@ -5,7 +5,6 @@
     .front-grid-img-wrap{
         position: relative;
         overflow: hidden;
-        border-radius: 2rem;
         height: 25rem;
         width: 100%;
         display: flex;
@@ -21,13 +20,7 @@
         gap: 1rem;
     }
     .text_grid{
-        margin-top: -3.5rem;
-        position: relative;
-        z-index: 1;
-        background: #607466;
-        color: #fff;
         padding: 1rem 0;
-        border-radius: 10rem;
     }
     .text_grid p{
         font-size: 1.2rem;
@@ -58,7 +51,6 @@
         .front-grid-img-wrap{
             position: relative;
             overflow: hidden;
-            border-radius: 2rem;
             height: 20rem;
             width: 80vw;
             display: flex;
@@ -71,19 +63,20 @@
     }
 </style>
 
-<section class="grid_images">
-    <?php 
-        $grid_text = get_sub_field('grid_text');
-        if($grid_text):
-    ?>
-        <div>
-            <div class="container">
-                <?php echo get_sub_field('grid_text')?>
-            </div>
+
+<?php
+    $bgColour = get_sub_field('background_colour'); 
+    $grid_text = get_sub_field('grid_text');
+    $gridNumber = get_sub_field('grid_column_number');
+?>
+
+<section class="grid_images <?php echo $bgColour ?>">
+    <?php if($grid_text):?>
+        <div class="container">
+            <?php echo $grid_text; ?>
         </div>
     <?php endif;?>
-    
-    <?php $gridNumber = get_sub_field('grid_column_number');?>
+
     <?php if( have_rows('grid_images') ): ?>
         <div class="d-flex_newcss justify-center_newcss">
             <div class="container">
@@ -94,13 +87,10 @@
                         $gridContent = get_sub_field('content');
                     ?>
                         <div class="front-images-<?php echo $gridNumber; ?>">
-                            <?php
-                                if (!empty($link) && isset($link['url'])) {
-                            ?>
-                                    <a href="<?php echo esc_url($link['url']); ?>">
-                            <?php
-                                }
-                            ?>
+                            <?php if (!empty($link) && isset($link['url'])):?>
+                                <a href="<?php echo esc_url($link['url']); ?>">
+                            <?php endif; ?>
+
                                 <div class="front-grid-img-wrap width-<?php echo $image['width']?>">
                                     <img class="img__thumb" loading="lazy" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
                                 </div>
@@ -109,13 +99,10 @@
                                         <?php echo $gridContent ?>
                                     </div>
                                 <?php endif;?>
-                            <?php
-                                if (!empty($link) && isset($link['url'])) {
-                            ?>
+
+                            <?php if (!empty($link) && isset($link['url'])): ?>
                                 </a>
-                            <?php
-                                }
-                            ?>
+                            <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
