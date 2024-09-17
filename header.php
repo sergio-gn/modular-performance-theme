@@ -155,6 +155,27 @@
   }
   
   /* Custom Buttons */
+
+    .light{
+        background-color: var(--white_tone);
+    }
+    .medium{
+        background-color: var(--light_grey_tone);
+    }
+    .dark{
+        background-color: var(--black_tone);
+    }
+
+    .small-padding{
+        padding: 1.5rem 0;
+    }
+    .medium-padding{
+        padding: 2.5rem 0;
+    }
+    .large-padding{
+        padding: 3.5rem 0;
+    }
+
   /* Contact Form */
   .wpcf7{
       width: 40vw;
