@@ -407,7 +407,7 @@
   .navigation ul.nav-class li ul.sub-menu li {
       display: block;
   }
-  .navigation ul.nav-class li:hover ul.sub-menu {
+  .navigation ul.nav-class li:hover > ul.sub-menu {
       display: block;
   }
   .menu-item-has-children .sub-menu li a{
