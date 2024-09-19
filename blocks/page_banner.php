@@ -5,17 +5,23 @@
     .homepage_hero{
         display: flex;
         align-items: center;
-        margin-top: -6rem;
         position: relative;
         background-position: bottom;
-        height: 90vh;
     }
     .sidepage_hero{
-        height: 50vh;
         width: 100%;
         position:relative;
         display: flex;
         align-items: center;
+    }
+    .banner_small{
+        height: 40vh;
+    }
+    .banner_medium{
+        height: 60vh;
+    }
+    .banner_large{
+        height: 80vh;
     }
     .center_title{
     	position:relative;
@@ -28,11 +34,8 @@
         z-index: 1;
     }
     .banner-text {
-        width: 30vw;
-        background-color: rgb(83 90 94 / 15%);
-        backdrop-filter: blur(3px);
-        border-radius: 1rem;
-        padding: 1rem;
+        width: 50vw;
+        color: var(--white_tone);
     }
     .background-shadow{
         position: absolute;
@@ -58,6 +61,7 @@
         font-size:4rem;
         line-height: 1;
         margin: 1rem 0;
+        color: var(--white_tone);
     }
     .banner-text h1 strong{
         background: -webkit-linear-gradient(var(--font_gradient_left), var(--font_gradient_right));
@@ -84,9 +88,10 @@
         $content = get_sub_field('content');
         $link = get_sub_field('link');
         $image = get_sub_field('image');
+        $bannerSize = get_sub_field('banner_size');
 ?>
-        <section class="<?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>">
-            <div class="container_banner">
+        <section class="<?php echo $bannerSize ?> <?php echo is_front_page() ? 'homepage_hero' : 'sidepage_hero'; ?>">
+            <div class="container">
                 <div class="<?php echo is_front_page() ? 'center_title' : 'center_title_sidebar'; ?>">
                     <div class="banner-text">
                         <?php echo $content ?>
