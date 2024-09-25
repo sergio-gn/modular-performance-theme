@@ -44,7 +44,7 @@
         $bgColour = get_sub_field('bg_colour');
         $padding = get_sub_field('padding');
     ?>
-        <section class="repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo 'blocks-padding';} ?>" style="background-color: <?php echo $bgColour; ?>">
+        <section class="repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo 'blocks-padding';} ?> <?php echo $bgColour; ?>">
             <div class="repeater_zigzag_container container" <?php if(!$padding){echo 'style="padding:0"';} ?>>
                 <div class="d-flex_newcss fd-column-r_mb vthz-center gap_3 <?php echo $order ?>">
                     <div class="flex-1">
