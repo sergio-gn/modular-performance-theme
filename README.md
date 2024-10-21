@@ -80,6 +80,10 @@ For further assistance, visit the [support forum](https://wordpress.org/support/
 ### [1.0.0] - 2024-09-17
 - Initial release.
 
+### To-do List
+- Update responsive css to Landscape & Portrait
+- Move all css to separated css stylesheets, 1 for each block. Using the multifile loading of HTTP 3.
+
 ## Credits
 
 - **Theme Developer**: Serg
