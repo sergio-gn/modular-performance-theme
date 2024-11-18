@@ -97,9 +97,9 @@
                         <?php echo $content ?>
                     </div>
                 </div>
+                <img class="hero_img_background" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                 <div class="background-shadow">
                 </div>
-                <img class="hero_img_background" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
             </div>    
         </section>
 <?php
