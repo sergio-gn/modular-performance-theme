@@ -78,7 +78,7 @@ function custom_buttons_shortcode($atts) {
     <div class="wpb_text_column wpb_content_element">
         <div class="wpb_wrapper">
             <div style="display: flex; justify-content: <?php echo esc_attr($alignment); ?>; gap: 10px; margin: 1rem 0;">
-                <a class="cta_button <?php echo esc_attr($button_class); ?>" href="tel:+<?php
+                <a class="cta_button <?php echo esc_attr($button_class); ?>" href="tel:<?php
                     $phone_number = get_field('phone_number', 'option');
                     // Remove any non-digit characters
                     $phone_number_href = preg_replace('/\D/', '', $phone_number);
