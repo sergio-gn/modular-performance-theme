@@ -55,19 +55,8 @@
       display: flex!important;
       align-items: center;
       gap: 0.35rem;
-      display: block;
       width: fit-content;
-      border-radius: 10rem;
       padding: 0.75rem 1rem;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      display: flex!important;
-      gap: 0.35rem;
-      width: fit-content;
-      border-radius: 10rem;
-      padding: 0.75rem 1rem;
-      text-decoration:none;
       --tw-bg-opacity: 1;
       --tw-text-opacity: 1;
       transition-duration: 1s;
@@ -76,9 +65,6 @@
       overflow: hidden;
       height: 2rem;
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
   }
   .cta_button_text{
       position: relative;
