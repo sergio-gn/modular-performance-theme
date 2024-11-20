@@ -66,7 +66,7 @@ function custom_buttons_shortcode($atts) {
             $alignment = 'flex-end';
             break;
         default:
-            $alignment = 'center';
+            $alignment = 'left';
             break;
     }
 
