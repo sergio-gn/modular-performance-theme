@@ -46,14 +46,13 @@ function custom_buttons_shortcode($atts) {
     // Define default attributes
     $atts = shortcode_atts(
         array(
-            'align' => 'center', // Default alignment
+            'align' => 'left', // Default alignment
             'colour' => 'primary' // Default button colour
         ), 
         $atts, 
         'custom_buttons'
     );
-
-    // Determine the text-align value based on the attribute
+    // Determine flex alignment
     $alignment = '';
     switch ($atts['align']) {
         case 'left':
