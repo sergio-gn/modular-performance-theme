@@ -81,6 +81,9 @@
         .footer-menu-list .menu-item a{
             color: #707070;
         }
+        .footer-menu-list li{
+            list-style: none;
+        }
         .site-footer {
             font-family: system-ui;
             background-color: var(--white_tone_darker);
