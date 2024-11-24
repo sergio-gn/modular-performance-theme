@@ -10,6 +10,25 @@ get_template_part( 'parts/navigation' );
 
             <section>
                 <style>
+                   <?php 
+                        $websitePalette = get_field('website_palette','option');
+                        if($websitePalette):
+                    ?>
+                        :root{
+                        --main_colour: <?php echo $websitePalette['main_colour'] ?>;
+                        --main_colour_darker: <?php echo $websitePalette['main_colour_darker'] ?>;
+                        --secondary_colour: <?php echo $websitePalette['secondary_colour'] ?>;
+                        --background_colour: <?php echo $websitePalette['background_colour'] ?>;
+                        --font_gradient_left: <?php echo $websitePalette['font_gradient_colour_1'] ?>;
+                        --font_gradient_right: <?php echo $websitePalette['font_gradient_colour_2'] ?>;
+                        --white_tone:<?php echo $websitePalette['white_tone'] ?>;
+                        --white_tone_darker: <?php echo $websitePalette['white_tone_darker'] ?>;
+                        --black_tone: <?php echo $websitePalette['black_tone'] ?>;
+                        --grey_tone: <?php echo $websitePalette['grey_tone'] ?>;
+                        --light_grey_tone: <?php echo $websitePalette['light_grey_tone'] ?>;
+                        }
+                    <?php endif;?>
+            
                     .grid-links{
                         display: flex;
                         justify-content: space-between; 
