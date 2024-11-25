@@ -181,7 +181,7 @@ body{
 
 @media(max-width:1100px){
     .wpcf7{
-        width: 100vw;
+        width: 100%;
     }
 }
 
