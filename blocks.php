@@ -213,12 +213,30 @@ get_template_part( 'parts/navigation' );
                         max-height: 10rem;
                         overflow: hidden;
                     }
+                    .front-images-2 {
+                        flex: 0 0 calc(50% - (5rem * 2) / 3);
+                    }
+                    .front-images-3 {
+                        flex: 0 0 calc(33.33% - (5rem * 3) / 4);
+                    }
+                    .front-images-4 {
+                        flex: 0 0 calc(25% - (5rem * 4) / 5);
+                    }
+                    .front-images-5 {
+                        flex: 0 0 calc(20% - (5rem * 5) / 5);
+                    }
+                    .front-images-6 {
+                        flex: 0 0 calc(16.6% - (5rem * 6) / 5);
+                    }
                     @media(max-width: 1600px){
                         .banner-img{
                             margin-right: -80rem;
                         }
                     }
                     @media(max-width:1100px){
+                        .front-images-2,.front-images-3,.front-images-4,.front-images-5,.front-images-6 {
+                            flex: unset;
+                        }
                         .blocks-padding{
                             padding: 0rem;
                         } 
