@@ -27,26 +27,6 @@
         padding: 0;
         margin:0;
     }
-    .front-images-2 {
-        flex: 0 0 calc(50% - (1rem * 2) / 3);
-    }
-
-    .front-images-3 {
-        flex: 0 0 calc(33.33% - (1rem * 3) / 4);
-    }
-
-    .front-images-4 {
-        flex: 0 0 calc(25% - (1rem * 4) / 5);
-    }
-
-    .front-images-5 {
-        flex: 0 0 calc(20% - (1rem * 5) / 5);
-    }
-
-    .front-images-6 {
-        flex: 0 0 calc(16.6% - (1rem * 6) / 5);
-    }
-
     @media(max-width:1100px){
         .front-grid-img-wrap{
             position: relative;
@@ -56,9 +36,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .front-images-2,.front-images-3,.front-images-4,.front-images-5,.front-images-6 {
-            flex: unset;
         }
     }
 </style>
