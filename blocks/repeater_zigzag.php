@@ -16,6 +16,15 @@
         font-size: 1rem;
         margin: 0;
     }
+    .repeater_zigzag.dark p{
+        color: var(--white_tone);
+    }
+    .repeater_zigzag.dark li{
+        color: var(--white_tone);
+    }
+    .repeater_zigzag li{
+        list-style-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="%2300aeef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>');
+    }
     .img_wrapper_repeater_zigzag{
         overflow:hidden;
         max-height: 40rem;
