@@ -218,7 +218,7 @@
     <section class="site-footer z-1" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
         <div class="container">
             <div class="logo_footer_wrap py-1">
-                <aside class="footer_logo" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
+                <aside class="footer_logo">
                     <div class="custom-logo custom_logo_footer">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home" aria-current="page">
                             <?php
@@ -240,7 +240,7 @@
 
             <div class="d-grid grid_footer gap-2">
                 <div class="site-footer-primary-section-2 site-footer-section site-footer-section-2">
-                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-4" aria-label="Footer Widget 4">
+                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner">
                         <section id="custom_html-12" class="widget_text widget widget_custom_html">
                             <div class="textwidget custom-html-widget">	
                                 <p class="widget-title-1">
@@ -272,7 +272,7 @@
                     </aside>
                 </div>
                 <div class="site-footer-primary-section-3 site-footer-section site-footer-section-3">
-                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-2" aria-label="Footer Widget 2">
+                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner">
                         <section id="custom_html-17" class="widget_text widget widget_custom_html">
                             <div class="textwidget custom-html-widget">	
                                 <p class="widget-title-1">
@@ -334,7 +334,7 @@
                     </section>
                 </div>
                 <div class="site-footer-primary-section-5 site-footer-section site-footer-section-5">
-                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" aria-label="Footer Widget 3">
+                    <aside class="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner">
                         <section class="widget_text widget widget_custom_html">
                             <div class="textwidget custom-html-widget">
                                 <div class="footer-contact">
