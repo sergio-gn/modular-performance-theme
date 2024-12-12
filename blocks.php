@@ -151,9 +151,6 @@ get_template_part( 'parts/navigation' );
                     .fd-column{
                         flex-direction:column;
                     }
-                    .container{
-                        max-width: 1300px;
-                    }
                     .justify-center_newcss{
                         justify-content: center;
                     }
