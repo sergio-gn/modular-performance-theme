@@ -25,7 +25,6 @@
     }
     .center_title{
     	position:relative;
-    	top: 3rem;
         z-index:1;
     }
     .center_title_sidebar{
