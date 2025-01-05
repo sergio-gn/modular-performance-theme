@@ -44,18 +44,18 @@
         position:absolute;
     }
     /**  library css  **/
-    .glide {
+    .carousel .glide {
         position: relative;
         width: 100%;
         box-sizing: border-box;
     }
-    .glide * {
+    .carousel .glide * {
         box-sizing: inherit;
     }
-    .glide__track {
+    .carousel .glide__track {
         overflow: hidden;
     }
-    .glide__slides {
+    .carousel .glide__slides {
         position: relative;
         width: 100%;
         list-style: none;
@@ -69,10 +69,10 @@
         flex-wrap: nowrap;
         will-change: transform;
     }
-    .glide__slides--dragging {
+    .carousel .glide__slides--dragging {
         user-select: none;
     }
-    .glide__slide {
+    .carousel .glide__slide {
         overflow:hidden;
         width: 100%;
         flex-shrink: 0;
@@ -81,25 +81,25 @@
         -webkit-touch-callout: none;
         -webkit-tap-highlight-color: transparent;
     }
-    .glide__slide a {
+    .carousel .glide__slide a {
         text-decoration: none;
         user-select: none;
         -webkit-user-drag: none;
         -moz-user-select: none;
         -ms-user-select: none;
     }
-    .glide__arrows {
+    .carousel .glide__arrows {
         -webkit-touch-callout: none;
         user-select: none;
     }
-    .glide__bullets {
+    .carousel .glide__bullets {
         -webkit-touch-callout: none;
         user-select: none;
     }
-    .glide--rtl {
+    .carousel .glide--rtl {
         direction: rtl;
     }
-    .glide {
+    .carousel .glide {
         cursor: -webkit-grab;
         width: 100%;
         margin: auto;
@@ -207,10 +207,7 @@
     }
 </style>
 
-
 <?php $useGlobalCarousel = get_sub_field('use_global_carousel');?>
-
-
 <?php if ($useGlobalCarousel && in_array('use_global', $useGlobalCarousel)): ?>
     <section class="carousel">
         <?php 
@@ -230,7 +227,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="custom_slider_slide <?php if (!$content) { echo 'custom_slider_slide_alone'; } ?>">
-                        <div id="intro" class="main-carousel slider glide glide_carousel glide--ltr glide--carousel glide--swipeable">
+                        <div class="carousel_glide main-carousel slider glide glide_carousel glide--ltr glide--carousel glide--swipeable">
                             
                             <div class="glide_controls" data-glide-el="controls">
                                 <button class="glide__arrow glide__arrow--prev" data-glide-dir="<">
@@ -302,7 +299,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="custom_slider_slide <?php if (!$content) { echo 'custom_slider_slide_alone'; } ?>">
-                        <div id="intro" class="main-carousel slider glide glide_carousel glide--ltr glide--carousel glide--swipeable">
+                        <div class="main-carousel carousel_glide slider glide glide_carousel glide--ltr glide--carousel glide--swipeable">
                             
                             <div class="glide_controls" data-glide-el="controls">
                                 <button class="glide__arrow glide__arrow--prev" data-glide-dir="<">
@@ -356,3 +353,26 @@
         <?php endif ?>
     </section>
 <?php endif; ?>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const slidersCarousel = document.querySelectorAll('.carousel_glide'); // NodeList of elements
+		slidersCarousel.forEach(item => {
+			const conf = {
+				type: 'carousel',
+				focusAt: 'center',
+				perView: <?php echo $howManySlidesCarousel ?>,
+				animationDuration: 300,
+				autoplay: false,
+				hoverpause: true,
+				breakpoints: {
+					768: {
+						perView: 1
+					}
+				}
+			};
+
+			new Glide(item, conf).mount();
+		});
+	});
+</script>
