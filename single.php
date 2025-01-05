@@ -36,7 +36,7 @@ get_template_part( 'parts/navigation' );
         color: var(--main_colour);
         font-size: 2rem;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .container_blog_inner{
             flex-direction: column;
         }

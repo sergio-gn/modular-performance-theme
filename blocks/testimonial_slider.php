@@ -24,7 +24,7 @@
         color: var(--main_colour);
         font-weight: bold;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .testimonials_slider-wrapper {
             position: relative;
             overflow: hidden;
@@ -162,7 +162,7 @@
         max-width: 5rem;
         display: flex;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .testimonials_slider__frame {
         height: unset;
         }

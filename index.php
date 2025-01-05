@@ -41,7 +41,7 @@ get_template_part( 'parts/navigation' );
     .page-title{
         font-size: 2.5rem;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .blog_grid{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;

@@ -35,7 +35,7 @@
         width: 100%;
         height: 100%;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .front-two_cards{
             margin-top: unset;
         }

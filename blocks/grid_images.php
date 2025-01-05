@@ -27,7 +27,7 @@
         padding: 0;
         margin:0;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .front-grid-img-wrap{
             position: relative;
             overflow: hidden;

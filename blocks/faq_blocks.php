@@ -115,7 +115,7 @@
         background-color: var(--main_colour);
         color: var(--white_tone);
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .accordion{
             width: 100%;
         }

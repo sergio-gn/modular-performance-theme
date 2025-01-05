@@ -35,7 +35,7 @@
         max-height: 100vh;
         object-fit: cover;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .separated_zigzag_half{
             width:unset;
         }

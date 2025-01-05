@@ -98,7 +98,7 @@
         width: 100%;
         height: auto;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .inner_container{
             flex-direction: column-reverse;
         }

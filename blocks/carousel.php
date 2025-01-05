@@ -179,7 +179,7 @@
         width:100%;
         height:100%;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         li.carousel_frame.glide__slide a{
             max-width: 10rem;
             display: flex;

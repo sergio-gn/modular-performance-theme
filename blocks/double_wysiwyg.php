@@ -29,7 +29,7 @@
         object-fit: cover;
         border-radius: 1rem;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .img_wrapper_repeater_zigzag{
             height: 20rem;
             flex: unset;

@@ -217,7 +217,7 @@ Description: A custom template for my specific needs.
             .grid-links a{
                 color:#fe9eb9!important;
             }
-            @media(max-width:1100px){
+            @media(orientation: portrait){
                 .grid-links{
                     flex-direction: column;
                 }
@@ -231,7 +231,7 @@ Description: A custom template for my specific needs.
                     margin-right: -80rem;
                 }
             }
-            @media(max-width:1100px){
+            @media(orientation: portrait){
                 .flex-column_mb{
                     flex-direction:column;
                 }

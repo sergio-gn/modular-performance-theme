@@ -86,7 +86,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .front-grid_mb{
             grid-template-columns: 1fr;
         }

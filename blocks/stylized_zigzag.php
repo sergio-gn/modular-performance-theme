@@ -50,7 +50,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    @media(max-width:1100px){
+    @media(orientation: portrait){
         .flex_stylized_zigzag{
             gap: 0rem;
         }
