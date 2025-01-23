@@ -1,7 +1,4 @@
 <style>
-    .gap_1{
-        gap: 1rem;
-    }
     .grid_text h1,.grid_text h2,.grid_text h3 {
         font-weight: 900;
         font-size: 2.5rem;
