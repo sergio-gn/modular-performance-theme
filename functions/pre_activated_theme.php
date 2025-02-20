@@ -1,164 +1,188 @@
 <?php
+/**
+ * Main function that runs when the theme is activated.
+ */
 function my_theme_setup() {
-    ob_start(); // Start output buffering
-    
-    if (is_admin()) {
-        my_theme_install_acf_plugin();
-        add_action('acf/init', 'my_theme_import_acf_fields');
+    // Ensure required functions exist before calling them.
+    if (function_exists('my_theme_create_pages')) {
+        my_theme_create_pages();
+    } else {
+        error_log('Function my_theme_create_pages does not exist.');
     }
 
-    my_theme_create_pages();
-    my_theme_set_homepage();
-    my_theme_create_menu();
-    my_theme_upload_logo();
+    if (function_exists('my_theme_set_homepage')) {
+        my_theme_set_homepage();
+    } else {
+        error_log('Function my_theme_set_homepage does not exist.');
+    }
 
-    ob_end_flush(); // End output buffering
+    if (function_exists('my_theme_create_menu')) {
+        my_theme_create_menu();
+    } else {
+        error_log('Function my_theme_create_menu does not exist.');
+    }
+
+    if (function_exists('my_theme_upload_default_logo')) {
+        my_theme_upload_default_logo();
+    } else {
+        error_log('Function my_theme_upload_default_logo does not exist.');
+    }
+
+    // Install and activate the custom-field.zip plugin if not installed
+    my_theme_install_custom_fields_plugin();
+
+    // Create example pages if they don't exist
+    my_theme_create_example_pages();
 }
 add_action('after_switch_theme', 'my_theme_setup');
 
-function my_theme_install_acf_plugin() {
-    include_once(ABSPATH . 'wp-admin/includes/file.php');
-    include_once(ABSPATH . 'wp-admin/includes/misc.php');
-    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    include_once(ABSPATH . 'wp-admin/includes/class-wp-upgrader.php');
-    
-    $plugin_slug = 'advanced-custom-fields-pro';
-    $plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug;
-    $plugin_zip = get_template_directory() . '/acf.zip';
-
-    // Check if the plugin is already installed
-    if (file_exists($plugin_path)) {
-        error_log("The plugin already exists in: " . $plugin_path);
-    } else {
-        // Install the plugin
-        if (file_exists($plugin_zip)) {
-            $upgrader = new Plugin_Upgrader();
-            $upgrader->install($plugin_zip);
-        } else {
-            error_log("ACF plugin ZIP file not found: " . $plugin_zip);
-            return;
-        }
-    }
-
-    // Delay activation to avoid header issues
-    add_action('admin_init', function() use ($plugin_slug) {
-        $plugin_file = $plugin_slug . '/acf.php';
-        
-        if (!is_plugin_active($plugin_file)) {
-            $result = activate_plugin($plugin_file);
-            
-            if (is_wp_error($result)) {
-                error_log("Failed to activate ACF plugin: " . $result->get_error_message());
-            } else {
-                error_log("ACF plugin activated successfully.");
-            }
-        }
-    });
-}
-
-function my_acf_json_load_point( $paths ) {
-    // Remove the original path (optional).
-    unset($paths[0]);
-
-    // Append the new path where your JSON files are located.
-    $paths[] = get_stylesheet_directory() . '/acf-json';
-
-    return $paths;    
-}
-add_filter( 'acf/settings/load_json', 'my_acf_json_load_point' );
-
-
+/**
+ * Creates pages only once by checking a flag in the database.
+ */
 function my_theme_create_pages() {
-    // Check if the setup has already been done
-    // if (get_option('my_theme_pages_created')) {
-        // return; // Exit if pages have already been created
-    // }
-
-    // Create Home page
-    if (!get_page_by_title('Home')) {
-        wp_insert_post(array(
-            'post_title'    => 'Home',
-            'post_content'  => 'Welcome to Modular Theme!',
-            'post_status'   => 'publish',
-            'post_type'     => 'page',
-            'page_template' => 'blocks.php'
-        ));
+    // Check if pages have been created already
+    if (get_option('my_theme_pages_created', false)) {
+        return; // Skip creation if the flag is set
     }
 
-    // Create Inner Page
-    if (!get_page_by_title('Inner Page')) {
-        wp_insert_post(array(
-            'post_title'    => 'Inner Page',
-            'post_content'  => 'Welcome to Modular Theme!',
-            'post_status'   => 'publish',
-            'post_type'     => 'page'
-        ));
-    }
+    // Create the pages if they haven't been created
+    wp_insert_post([
+        'post_title'   => 'Page 1',
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+    ]);
+    wp_insert_post([
+        'post_title'   => 'Page 2',
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+    ]);
 
-    // Set option to indicate that pages have been created
+    // Set the option to true, indicating pages were created
     update_option('my_theme_pages_created', true);
 }
 
-
 function my_theme_set_homepage() {
-    $home = get_page_by_title('Home');
-    if ($home) {
+    $homepage = get_page_by_title('Home');
+    if (!$homepage) {
+        $homepage_id = wp_insert_post([
+            'post_title'  => 'Home',
+            'post_status' => 'publish',
+            'post_type'   => 'page',
+        ]);
+        update_option('page_on_front', $homepage_id);
         update_option('show_on_front', 'page');
-        update_option('page_on_front', $home->ID);
     }
 }
 
 function my_theme_create_menu() {
-    $menu_name = 'Primary Menu';
-    $menu_exists = wp_get_nav_menu_object($menu_name);
-
-    if (!$menu_exists) {
-        $menu_id = wp_create_nav_menu($menu_name);
-
-        // Add pages to the menu
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => 'Home',
-            'menu-item-obj' => 'page',
-            'menu-item-object-id' => get_page_by_title('Home')->ID,
-            'menu-item-type' => 'post_type',
-            'menu-item-status' => 'publish',
-        ));
-
-        // Assign the menu to a theme location
-        $locations = get_theme_mod('nav_menu_locations');
-        $locations['primary'] = $menu_id;
-        set_theme_mod('nav_menu_locations', $locations);
+    if (!wp_get_nav_menu_object('Main Menu')) {
+        $menu_id = wp_create_nav_menu('Main Menu');
+        wp_update_nav_menu_item($menu_id, 0, [
+            'menu-item-title'   => __('Home'),
+            'menu-item-url'     => home_url('/'),
+            'menu-item-status'  => 'publish'
+        ]);
+        set_theme_mod('nav_menu_locations', ['primary' => $menu_id]);
     }
 }
 
-function my_theme_upload_logo() {
-    $logo_url = get_template_directory() . '/default_images/logo.png';
-    $upload_dir = wp_upload_dir();
-    $image_data = file_get_contents($logo_url);
-    $filename = basename($logo_url);
+function my_theme_get_page_id_by_title($title) {
+    $homepage_query = new WP_Query([
+        'post_type'      => 'page',
+        'title'         => $title,
+        'posts_per_page' => 1
+    ]);
 
-    if (wp_mkdir_p($upload_dir['path'])) {
-        $file = $upload_dir['path'] . '/' . $filename;
-    } else {
-        $file = $upload_dir['basedir'] . '/' . $filename;
+    if ($homepage_query->have_posts()) {
+        $homepage_query->the_post();
+        $page_id = get_the_ID();
+        wp_reset_postdata();
+        return $page_id;
     }
 
-    file_put_contents($file, $image_data);
+    return null;
+}
 
-    $wp_filetype = wp_check_filetype($filename, null);
-    $attachment = array(
-        'post_mime_type' => $wp_filetype['type'],
-        'post_title' => sanitize_file_name($filename),
-        'post_content' => '',
-        'post_status' => 'inherit'
-    );
+/**
+ * Installs and activates the Custom Fields plugin (custom-field.zip) if not already installed.
+ */
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+include_once ABSPATH . 'wp-admin/includes/file.php';
+include_once ABSPATH . 'wp-admin/includes/misc.php';
+include_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+include_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
-    $attach_id = wp_insert_attachment($attachment, $file);
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
-    $attach_data = wp_generate_attachment_metadata($attach_id, $file);
-    wp_update_attachment_metadata($attach_id, $attach_data);
+function my_theme_install_custom_fields_plugin() {
+    $plugin_slug = 'advanced-custom-fields-pro/acf.php'; // Ensure this is the correct path to the main plugin file
+    $plugin_path = WP_PLUGIN_DIR . '/' . $plugin_slug;
+    $zip_path = get_template_directory() . '/acf.zip';
 
-    // Set as theme logo
-    set_theme_mod('custom_logo', $attach_id);
+    // Check if plugin is already active
+    if (!is_plugin_active($plugin_slug)) {
+        // Check if the zip file exists
+        if (file_exists($zip_path)) {
+            // Initialize the filesystem
+            global $wp_filesystem;
+            if (empty($wp_filesystem)) {
+                require_once ABSPATH . 'wp-admin/includes/file.php';
+                WP_Filesystem();
+            }
+
+            // Unzip the plugin file to the plugins directory
+            $unzip_result = unzip_file($zip_path, WP_PLUGIN_DIR);
+
+            // Check if unzip was successful
+            if (!is_wp_error($unzip_result)) {
+                error_log('✅ Plugin extracted successfully.');
+
+                // Check if plugin directory exists after extraction
+                if (file_exists($plugin_path)) {
+                    // Try activating the plugin
+                    $activation_result = activate_plugin($plugin_slug);
+
+                    // Check if plugin was activated successfully
+                    if (!is_wp_error($activation_result)) {
+                        error_log('✅ Plugin activated successfully: ' . $plugin_slug);
+                    } else {
+                        error_log('❌ Plugin activation failed: ' . $activation_result->get_error_message());
+                    }
+                } else {
+                    error_log('❌ Plugin file not found after extraction: ' . $plugin_path);
+                }
+            } else {
+                error_log('❌ Failed to unzip plugin: ' . $unzip_result->get_error_message());
+            }
+        } else {
+            error_log('❌ custom-field.zip plugin file not found in theme root.');
+        }
+    } else {
+        error_log('✅ Plugin is already active: ' . $plugin_slug);
+    }
+}
+
+/**
+ * Creates two example pages: "Page 1" and "Page 2" if they don’t exist.
+ */
+function my_theme_create_example_pages() {
+    $pages = ['Page 1', 'Page 2'];
+
+    foreach ($pages as $page_title) {
+        $existing_page = my_theme_get_page_id_by_title($page_title);
+
+        if (!$existing_page) {
+            $page_id = wp_insert_post([
+                'post_title'   => $page_title,
+                'post_content' => 'This is a sample page.',
+                'post_status'  => 'publish',
+                'post_type'    => 'page',
+            ]);
+
+            if ($page_id) {
+                error_log("Created example page: $page_title (ID: $page_id)");
+            } else {
+                error_log("Failed to create example page: $page_title");
+            }
+        }
+    }
 }
 ?>
