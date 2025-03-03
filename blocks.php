@@ -8,7 +8,6 @@ get_template_part( 'parts/navigation' );
     if (have_posts()):
         while (have_posts()) : the_post();	?>
 
-            <section>
                 <article class="main-article">
                     <?php 
                         // Dynamically get block layouts from the 'blocks' directory
@@ -39,7 +38,6 @@ get_template_part( 'parts/navigation' );
                         endif;
                     ?>
                 </article>
-            </section>
 <?php
         endwhile;
     endif;
