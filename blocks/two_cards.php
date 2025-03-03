@@ -11,43 +11,6 @@
         endwhile;
     endif;
 ?>
-<style>
-    .front-two_cards_card{
-        justify-content: space-between;
-        display: flex;
-        overflow-wrap: break-word;
-        overflow:hidden;
-    }
-    .two_cards_1_content{
-        padding: 2rem;
-    }
-    .two_cards_1,.two_cards_1_content{
-        width:65%;
-    }
-    .two_cards_2,.two_cards_1_img_wrapper{
-        width:35%;
-    }
-    .two_cards_1_img_wrapper{
-        height:100%;
-    }
-    .two_cards_1_img_wrapper img{
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-    @media(orientation: portrait){
-        .front-two_cards{
-            margin-top: unset;
-        }
-        .front-two_cards_card,.two_cards_1,.two_cards_1_content,.two_cards_1_img_wrapper,.two_cards_2{
-            width:unset;
-        }
-        .two_cards_card_image{
-            flex-direction:column;
-        }
-    }
-</style>
-
 <section class="d-flex_newcss justify-center_newcss blocks-padding">
     <div class="container">
         <div class="front-two_cards d-flex_newcss flex-d-column_mb justify-space-around gap_1">

@@ -37,3 +37,25 @@ function my_acf_prepopulate_blocks($post_id) {
     }
 }
 add_action('acf/save_post', 'my_acf_prepopulate_blocks', 20);
+
+function enqueue_block_styles() {
+    if (is_singular()) {
+        global $post;
+
+        $css_directory_uri = get_template_directory_uri() . '/blocks_css';
+        $css_directory_path = get_template_directory() . '/blocks_css';
+
+        if (have_rows('blocks', $post->ID)) {
+            foreach (get_field('blocks', $post->ID) as $row) {
+                $layout = $row['acf_fc_layout'];
+                $css_file = $css_directory_path . '/' . $layout . '.css';
+
+                // Check if the CSS file exists before enqueuing
+                if (file_exists($css_file)) {
+                    wp_enqueue_style($layout . '-style', $css_directory_uri . '/' . $layout . '.css', array(), null);
+                }
+            }
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_block_styles');

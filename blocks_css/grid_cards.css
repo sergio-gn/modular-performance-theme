@@ -1,0 +1,89 @@
+.grid_text h1,.grid_text h2,.grid_text h3 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color:#000;
+    margin:0;
+}
+.grid_text h4,.grid_text h5,.grid_text h6{
+    font-weight: 900;
+    color: var(--main_colour);
+    font-size: 1.2rem;
+}
+.grid_text p{
+    font-size:1.1rem;
+}
+.text_card h1,.text_card h2,.text_card h3 {
+    font-weight: 900;
+    font-size: 1.6rem;
+    color:#000;
+    margin:0;
+}
+.text_card h4,.text_card h5,.text_card h6{
+    font-weight: 900;
+    color: var(--main_colour);
+    font-size: 1.2rem;
+}
+.text_card p{
+    font-size:1.1rem;
+}
+.front-grid{
+    padding: 2rem 0;
+}
+.front-grid_card-img-wrap{
+    position: relative;
+    overflow: hidden;
+        max-width: 8rem;
+    border-radius: 2rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid-square{
+    border: 4px double #ccc;
+    position:relative;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 1rem;
+}
+.grid-square:hover{
+    border: 4px solid var(--main_colour);
+}
+.grid-square p{
+    color:#000;
+}
+.gridtitle h1, .gridtitle h2, .gridtitle h3, .gridtitle h4, .gridtitle h5, .gridtitle h6{
+    color:#000;
+    font-size: 1.2rem;
+    font-weight:800;
+} 
+.view-more-button{
+    margin: 1rem;
+    background: var(--main_colour);
+    font-size: 17px;
+    padding: 16px 30px;
+    color: #fff;
+    cursor: pointer;
+    border:none;
+}
+.view-more-button:hover{
+    background: var(--main_colour);
+}
+.front-grid-2{
+    grid-template-columns: 1fr 1fr;
+}
+.front-grid-3{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.front-grid-4{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.front-grid-5{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+@media(orientation: portrait){
+    .front-grid_mb{
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,39 @@
+.grid_images{
+    padding: 2rem 0;
+}
+.front-grid-img-wrap{
+    position: relative;
+    overflow: hidden;
+    height: 25rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid_square_images {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 1rem;
+}
+.text_grid{
+    padding: 1rem 0;
+}
+.text_grid p{
+    font-size: 1.2rem;
+    padding: 0;
+    margin:0;
+}
+@media(orientation: portrait){
+    .front-grid-img-wrap{
+        position: relative;
+        overflow: hidden;
+        height: 20rem;
+        width: 80vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

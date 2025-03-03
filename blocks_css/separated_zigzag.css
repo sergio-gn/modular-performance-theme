@@ -1,0 +1,55 @@
+blocknote{
+    border-color: #D42127;
+    margin: 10px 0px 25px 35px;
+    padding: 15px 0 15px 20px;
+}
+.separated_zigzag h1, .separated_zigzag h2, .separated_zigzag h3, .separated_zigzag h4, .separated_zigzag h5, .separated_zigzag h6 {
+    font-size: 3rem;
+    color: #5C5C5C;
+}
+.separated_zigzag h1 strong, .separated_zigzag h2 strong, .separated_zigzag h3 strong, .separated_zigzag h4 strong, .separated_zigzag h5 strong, .separated_zigzag h6 strong {
+    font-size: 3rem;
+    font-weight: 900;
+    background: -webkit-linear-gradient(var(--main_colour), var(--main_colour_darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+.separated_zigzag p{
+    font-size: 1rem;
+    margin: 0;
+    width: 30vw;
+    padding: 1rem 0;
+}
+.separated_zigzag_half{
+    width:50%;
+}
+.separated_zigzag_half_content{
+    padding: 2rem;
+}
+.separated_zigzag_half img{
+    width:100%;
+    height:auto;
+    min-height: 70vh;
+    max-height: 100vh;
+    object-fit: cover;
+}
+@media(orientation: portrait){
+    .separated_zigzag_half{
+        width:unset;
+    }
+    .separated_zigzag_half_img{
+        width:unset;
+        overflow: hidden;
+        max-height: 50vh;
+    }
+    .separated_zigzag img{
+        width:100%;
+        object-fit:cover;
+        min-height: unset;
+        max-height: unset;
+    }
+    .separated_zigzag p{
+        width: 100%;
+    }
+}
