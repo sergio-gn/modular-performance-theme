@@ -3,6 +3,7 @@
         width: 100%;
     }
     .row_double_wysigywg{
+        display:flex;
         gap:1rem;
     }
     .repeater_zigzag h1, .repeater_zigzag h2, .repeater_zigzag h3, .repeater_zigzag h4, .repeater_zigzag h5, .repeater_zigzag h6 {
