@@ -6,8 +6,8 @@
         $bgColour = get_sub_field('bg_colour');
         $padding = get_sub_field('padding');
     ?>
-        <section class="double_wysigywg repeater_zigzag d-flex_newcss justify-center_newcss <?php if($padding){echo 'blocks-padding';} ?> <?php echo $bgColour; ?>">
-            <div class="repeater_zigzag_container container" <?php if(!$padding){echo 'style="padding:0"';} ?>>
+        <section class="double_wysigywg <?php if($padding){echo 'blocks-padding';} ?> <?php echo $bgColour; ?>">
+            <div class="container" <?php if(!$padding){echo 'style="padding:0"';} ?>>
                 <div class="row_double_wysigywg <?php echo $order ?>">
                     <div class="flex-1">
                         <div class="front-zig zig_content">
