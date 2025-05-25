@@ -25,3 +25,12 @@ function my_tinymce_config( $init ) {
     return $init;
 }
 add_filter('tiny_mce_before_init', 'my_tinymce_config');
+
+function remove_css_js_version( $src ) {
+    if ( strpos( $src, '?ver=' ) ) {
+        $src = remove_query_arg( 'ver', $src );
+    }
+    return $src;
+}
+add_filter( 'style_loader_src', 'remove_css_js_version', 10, 2 );
+add_filter( 'script_loader_src', 'remove_css_js_version', 10, 2 );
