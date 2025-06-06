@@ -18,26 +18,6 @@ if ( function_exists('acf_add_options_page') ) {
     ));
 }
 
-function my_acf_prepopulate_blocks($post_id) {
-    if (get_post_type($post_id) !== 'page' || is_admin() === false) {
-        return;
-    }
-    $template = get_page_template_slug($post_id);
-    $target_template = 'blocks-location.php';
-    if ($template !== $target_template) {
-        return;
-    }
-    $blocks = get_field('blocks', $post_id);
-    if (empty($blocks)) {
-        $option_blocks = get_field('blocks', 'option');
-        if (!empty($option_blocks)) {
-            $formatted_blocks = array_map('acf_prepare_for_import', $option_blocks);
-            update_field('blocks', $formatted_blocks, $post_id);
-        }
-    }
-}
-add_action('acf/save_post', 'my_acf_prepopulate_blocks', 20);
-
 function enqueue_block_styles() {
     if (is_singular()) {
         global $post;
