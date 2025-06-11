@@ -47,6 +47,9 @@ body{
   position: relative;
   z-index: 1;
 }
+.cta_buttons_nav svg{
+	z-index: 9;
+}
 .cta_number a{
   text-decoration: none;
   font-size: 24px;
