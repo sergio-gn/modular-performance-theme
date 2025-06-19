@@ -1,5 +1,19 @@
 .grid_images{
-    padding: 2rem 0;
+    padding: 4rem 0;
+}
+.grid_images_headingtext h2, .grid_images_headingtext h3, .grid_images_headingtext h3, .grid_images_headingtext h4, .grid_images_headingtext h5, .grid_images_headingtext h6 {
+    color: var(--main_colour_darker);
+    font-weight: 400;
+    font-family: Jost, 'sans-serif';
+    margin: 2rem 0 1rem 0;
+    line-height: 1;
+    margin: 1rem 0;
+}
+.grid_images h5, .grid_images h6 {
+	font-size: 1rem;
+	font-weight: 400;
+	padding: .25rem 0;
+	color: var(--main-colour);
 }
 .front-grid-img-wrap{
     position: relative;
@@ -12,28 +26,93 @@
 }
 .grid_square_images {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
+    gap: 2rem;
     justify-content: center;
-    align-items: stretch;
-    align-content: flex-start;
-    gap: 1rem;
+}
+.grid_square_images a{
+    text-decoration: none;
+    color: var(--black_tone);
+}
+.grid_images p a{
+    color: #2baf4a;
 }
 .text_grid{
+    position: relative;
+    z-index: 1;
     padding: 1rem 0;
 }
 .text_grid p{
-    font-size: 1.2rem;
-    padding: 0;
-    margin:0;
+    font-size: 1rem;
+    padding: 0;    
+    margin: 1rem 0;
 }
-@media(orientation: portrait){
+/* Default fallback — can be removed if always using numbered classes */
+.grid_square_images > * {
+    flex: 1 1 calc(33.33% - 2rem);
+}
+
+/* === Front Images with 2 items per row === */
+.grid_square_images.front-images-2 > * {
+    flex: 1 1 calc(50% - 2rem);
+}
+
+/* === Front Images with 3 items per row === */
+.grid_square_images.front-images-3 > * {
+    flex: 1 1 calc(33.33% - 2rem);
+}
+
+/* === Front Images with 4 items per row === */
+.grid_square_images.front-images-4 > * {
+    flex: 1 1 calc(25% - 2rem);
+}
+
+/* === Front Images with 5 items per row === */
+.grid_square_images.front-images-5 > * {
+    flex: 1 1 calc(20% - 2rem);
+}
+
+/* === Front Images with 6 items per row === */
+.grid_square_images.front-images-6 > * {
+    flex: 1 1 calc(16.66% - 2rem);
+}
+
+
+/* === Responsive Breakpoints === */
+@media(max-width:1100px){
+    .grid_images{
+        padding: 2rem 0;
+    }
     .front-grid-img-wrap{
         position: relative;
         overflow: hidden;
         height: 20rem;
-        width: 80vw;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+    .front-images-2,.front-images-3,.front-images-4,.front-images-5,.front-images-6 {
+        flex: unset;
+    }
+}
+/* Tablet */
+@media (max-width: 900px) {
+    .grid_square_images.front-images-2 > *,
+    .grid_square_images.front-images-3 > * {
+        flex: 1 1 calc(50% - 2rem);
+    }
+
+    .grid_square_images.front-images-4 > *,
+    .grid_square_images.front-images-5 > *,
+    .grid_square_images.front-images-6 > * {
+        flex: 1 1 calc(33.33% - 2rem);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+	.grid_square_images.front-images-2 > *,.grid_square_images.front-images-3 > *,.grid_square_images.front-images-4 > *,.grid_square_images.front-images-5 > *,.grid_square_images.front-images-6 > * {
+		flex: 1 1 100%;
+	}
 }
