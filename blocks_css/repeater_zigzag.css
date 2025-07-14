@@ -1,69 +1,222 @@
-.repeater_zigzag{
-    display:flex;
-    justify-content:center;
-    
-    h1, h2, h3, h4, h5, h6{
-        font-size: 2rem;
-        color: var(--main_colour);
-    }
-    h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
-        font-size: 3rem;
-        font-weight: 900;
-        background: -webkit-linear-gradient(var(--main_colour), var(--main_colour_darker));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-    }
-    p{
-        padding:1rem 0;
-        font-size: 1rem;
-        margin: 0;
-    }
-    li{
-        list-style-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="%2300aeef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>');
-    }
-    .order-right{
-        flex-direction: row;
-    }
-    .order-left{
-        flex-direction: row-reverse;
-    }
+/* ===============================
+   Base styles (no color defined)
+================================ */
+.repeater_zigzag {
+    display: flex;
+    justify-content: center;
+}
+.repeater_zigzag p,
+.repeater_zigzag li,
+.repeater_zigzag h1,
+.repeater_zigzag h2,
+.repeater_zigzag h3,
+.repeater_zigzag h5,
+.repeater_zigzag h6 {
+    margin: 0;
+    padding: .5rem 0;
+}
+.repeater_zigzag h4{
+    margin: 0;
+    padding: .5rem 0;
+}
+.repeater_zigzag p,
+.repeater_zigzag li{
+    font-size:1.4rem;
+}
+.repeater_zigzag h1{
+	font-size: 4rem;
+}
+.repeater_zigzag h2{
+	font-size: 2rem;
+}
+.repeater_zigzag h3{
+	font-size: 1.8rem;
+}
+.repeater_zigzag h4{
+	font-size: 1.6rem;
+}
+.repeater_zigzag h5{
+	font-size: 1.4rem;
+}
+.repeater_zigzag h6{
+	font-size: 1.2rem;
+}
+.repeater_zigzag p a{
+	color: #130fbb;
+    text-decoration: none;	
+}
+/* ===============================
+   Background-based color overrides
+================================ */
+
+/* LIGHT */
+.repeater_zigzag.light {
+    background-color: var(--white_tone);
+    color: var(--main_colour);
+}
+.repeater_zigzag.light h2{
+    font-size:2.2rem;
+}
+.repeater_zigzag.light h3{
+    font-size:2.2rem;
+    color: var(--main_colour);
+}
+.repeater_zigzag.medium p{
+    color: var(--main_colour);
+    font-size: 1.8rem;
+}
+.repeater_zigzag.light h2,
+.repeater_zigzag.light h3,
+.repeater_zigzag.light h4,
+.repeater_zigzag.light h5,
+.repeater_zigzag.light h6,
+.repeater_zigzag.medium li,
+.repeater_zigzag.medium h1,
+.repeater_zigzag.medium h2,
+.repeater_zigzag.medium h3,
+.repeater_zigzag.medium h4,
+.repeater_zigzag.medium h5,
+.repeater_zigzag.medium h6 {
+    color: var(--main_colour);
+}
+.repeater_zigzag.light h1 strong,
+.repeater_zigzag.light h2 strong,
+.repeater_zigzag.light h3 strong,
+.repeater_zigzag.light h4 strong,
+.repeater_zigzag.light h5 strong,
+.repeater_zigzag.light h6 strong,
+.repeater_zigzag.medium p strong,
+.repeater_zigzag.medium li strong,
+.repeater_zigzag.medium h1 strong,
+.repeater_zigzag.medium h2 strong,
+.repeater_zigzag.medium h3 strong,
+.repeater_zigzag.medium h4 strong,
+.repeater_zigzag.medium h5 strong,
+.repeater_zigzag.medium h6 strong {
+    background: linear-gradient(var(--main_colour), var(--main_colour_darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+.repeater_zigzag.light p,
+.repeater_zigzag.light li{
+    color: var(--black_tone);
+}
+/* MEDIUM */
+.repeater_zigzag.medium {
+    background-color: var(--light_grey_tone);
+    color: var(--main_colour);
+}
+/* DARK */
+.repeater_zigzag.dark {
+    background-color: var(--main_colour);
+    color: var(--white_tone);
+}
+.repeater_zigzag.dark h3 {
+    font-size:2.2rem;
+    color: var(--white_tone);
 }
 .repeater_zigzag.dark p{
     color: var(--white_tone);
+    font-size: 1.8rem;
 }
-.repeater_zigzag.dark li{
+
+.repeater_zigzag.dark li,
+.repeater_zigzag.dark h1,
+.repeater_zigzag.dark h2,
+.repeater_zigzag.dark h4,
+.repeater_zigzag.dark h5,
+.repeater_zigzag.dark h6,
+.repeater_zigzag.darker p,
+.repeater_zigzag.darker li,
+.repeater_zigzag.darker h1,
+.repeater_zigzag.darker h2,
+.repeater_zigzag.darker h3,
+.repeater_zigzag.darker h4,
+.repeater_zigzag.darker h5,
+.repeater_zigzag.darker h6 {
     color: var(--white_tone);
 }
-.repeater_align{
+/* DARKER */
+.repeater_zigzag.darker {
+    background-color: var(--main_colour_darker);
+    color: var(--white_tone);
+}
+.repeater_zigzag.dark h1 strong,
+.repeater_zigzag.dark h2 strong,
+.repeater_zigzag.dark h3 strong,
+.repeater_zigzag.dark h4 strong,
+.repeater_zigzag.dark h5 strong,
+.repeater_zigzag.dark h6 strong,
+.repeater_zigzag.darker p strong,
+.repeater_zigzag.darker li strong,
+.repeater_zigzag.darker h1 strong,
+.repeater_zigzag.darker h2 strong,
+.repeater_zigzag.darker h3 strong,
+.repeater_zigzag.darker h4 strong,
+.repeater_zigzag.darker h5 strong,
+.repeater_zigzag.darker h6 strong {
+    color: var(--secondary_colour);
+}
+/* ===============================
+   Other styles (unchanged)
+================================ */
+.repeater_zigzag li {
+    list-style-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="%2300aeef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.repeater_zigzag .order-right {
+    flex-direction: row;
+}
+.repeater_zigzag .order-left {
+    flex-direction: row-reverse;
+}
+.repeater_zigzag .repeater_content {
+    display: flex;
+}
+.repeater_zigzag .repeater_content .front-zig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.repeater_align {
     display: flex;
     justify-content: center;
     align-content: center;
-    gap: 3rem;
+    gap: 10rem;
 }
-.repeater_content{
-    flex:1;
+.repeater_content {
+    flex: 1;
 }
-.img_wrapper_repeater_zigzag{
-    overflow:hidden;
+.img_wrapper_repeater_zigzag {
+    overflow: hidden;
     max-height: 40rem;
-    flex:1;
+    flex: 1;
 }
-.img_wrapper_repeater_zigzag_imgtag{
+.img_wrapper_repeater_zigzag_imgtag {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 1rem;
 }
-@media(orientation: portrait){
-    .repeater_align{
-        flex-direction: column;
+@media (orientation: portrait) {
+    .repeater_zigzag .order-left {
+    flex-direction: column;
+    align-items: center;
     }
-    .img_wrapper_repeater_zigzag{
+    .repeater_zigzag .order-right,.repeater_zigzag .order-left {
+		flex-direction: column;
+	}
+    .repeater_align {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .img_wrapper_repeater_zigzag {
         height: 20rem;
         flex: unset;
+        object-fit: contain;
     }
-    .order-left,.order-right{
+    .order-left, .order-right {
         flex-direction: column;
     }
 }

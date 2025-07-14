@@ -16,7 +16,7 @@ body{
   color: var(--main_colour);
 }
 .custom-logo img {
-  height: auto;
+  max-width: 10rem;
   max-height: 7rem;
 }
 /* Custom Buttons */
@@ -129,6 +129,11 @@ body{
 }
 .nav_links{
   background:#32363f;
+}
+.custom_buttons{
+  display: flex;
+  gap: 10px;
+  margin: 1rem 0;
 }
 /* Custom Buttons */
 
@@ -315,6 +320,7 @@ body{
   position: relative;
   z-index: 90;
   padding: 1rem 0;
+  background-color: var(--light_grey_tone);
 }
 
 .top-details li{
