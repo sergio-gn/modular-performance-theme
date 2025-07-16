@@ -18,6 +18,8 @@ get_template_part( 'parts/navigation' );
                             return basename($file, '.php');
                         }, $block_files);
 
+                        $carousel_script_included = false;
+                        
                         if (have_rows('blocks')): 
                             while (have_rows('blocks')): the_row();
                                 $layout = get_row_layout();
