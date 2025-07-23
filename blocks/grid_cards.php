@@ -5,7 +5,7 @@
         </div>
         <?php $gridNumber = get_sub_field('grid_column_number');?>
         <?php if( have_rows('grid_images') ): ?>
-            <div class="front-grid-<?php echo $gridNumber; ?> front-grid_mb d-grid_newcss gap_1">
+            <div class="grid_cards_layout front-grid-<?php echo $gridNumber; ?>">
                 <?php $count = 0; ?>
                 <?php while( have_rows('grid_images') ): the_row(); 
                     $link = get_sub_field('link');
